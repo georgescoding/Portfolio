@@ -44,7 +44,7 @@ function send(name, email, message, captchaToken) {
         (error) => {
             alert("There was an error in sending the message. Please contact support@georgescoding.com.");
         },
-    );  
+    );
     document.getElementById("form").reset();
     grecaptcha.reset();
 }

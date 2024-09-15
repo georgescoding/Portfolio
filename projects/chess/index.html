@@ -10,11 +10,6 @@
     <title>Projects: Chess</title>
     <script src="https://kit.fontawesome.com/6eb7aace7e.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $("#content").load("/src/template.html");
-        });
-    </script>
 </head>
 <a id="top"></a>
 
@@ -27,6 +22,12 @@
         + " the files into an executable using PyInstaller. The board is represented through a 2D array with pieces and spaces being numbers. For a"
         + " more in-depth explanation of each component of the game, please visit the GitHub repository of the project.";
     const param = ['Chess', 'Python, PyGame, MiniMax', "https://github.com/GeorgesCoding/Chess", text, "/assets/Chess.exe", "/assets/chess-demo.mp4"];
+</script>
+
+<script>
+    $(document).ready(function () {
+        $("#content").load("/src/template.html");
+    });
 </script>
 
 <body onload="change(param)"></body>
