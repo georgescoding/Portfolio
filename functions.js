@@ -29,7 +29,7 @@ function flip(x) {
 
 
 /* Sends form to email via EmailJS, resets form and reCAPTCHA */
-function send(name, email, message) {
+function send(name, email, message, captchaToken) {
     var templateParams = {
         to_name: 'George',
         from_name: name,
@@ -77,7 +77,7 @@ function valid() {
     else if (captchaToken.length == 0) {
         alert("Please complete the reCAPTCHA before sending your message!")
     }
-    else { send(name, email, message); }
+    else { send(name, email, message, captchaToken); }
 }
 
 
