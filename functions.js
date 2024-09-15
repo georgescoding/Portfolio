@@ -37,7 +37,7 @@ function send(name, email, message) {
         message: "Email: " + email + "\n\n" + message,
         "g-recaptcha-response": captchaToken
     };
-    emailjs.send('service_j2mkwmy', 'template_zilck42', templateParams, 'OmkW-QBfWdiQpxshy').then(
+    emailjs.send('service_j2mkwmy', 'template_zilck42', templateParams, 'wcwKCcPMETQ63x_aP').then(
         (response) => {
             alert("Message successfully sent!");
         },
