@@ -5,6 +5,27 @@ window.addEventListener("keydown", (e) => videoAction(e.key));
 if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
 }
 
+/* Parameters for Chess Page */
+var chessText = "A traditional chess game developed in Python using only the PyGame module, utilizing piece-square tables found in the Chess Programming Wiki."
+    + "Includes two-player mode and an AI bot using a minimax algorithm with alpha-beta pruning. Incorporates a dialogue window to announce moves,"
+    + "game state and castles or checks. Also created a separate packaging module with file manipulation to help optimize the process of packaging"
+    + " the files into an executable using PyInstaller. The board is represented through a 2D array with pieces and spaces being numbers. For a"
+    + " more in-depth explanation of each component of the game, please visit the GitHub repository of the project.";
+
+const chessParam = ['Chess', 'Python, PyGame, MiniMax', "https://github.com/GeorgesCoding/Chess", text, "/assets/Chess.exe", "/assets/chess-demo.mp4"];
+
+
+/* Array with All Parameters */
+const globalParam = [chessParam];
+
+
+
+
+
+
+
+
+
 
 
 
@@ -82,12 +103,12 @@ function valid() {
 
 
 /* adds text and media into the template html file */
-function change(param) {
-    document.getElementById("projectName").innerHTML = param[0];
-    document.getElementById("tools").innerHTML += param[1];
-    document.getElementById("github").href = param[2];
+function change(num) {
+    document.getElementById("projectName").innerHTML = globalParam[num[0]];
+    document.getElementById("tools").innerHTML += globalParam[num[1]];
+    document.getElementById("github").href = globalParam[num[2]];
     document.getElementById("github").style.fontSize = "50px";
-    document.getElementById("text").innerHTML = param[3];
+    document.getElementById("text").innerHTML = globalParam[num[3]];
 
     var video = document.getElementById('video');
     var click = document.getElementById("clickable");
@@ -100,19 +121,19 @@ function change(param) {
     var forward = document.getElementById("forward");
 
     /* adds link to coming soon page */
-    if (param[4] == 1) {
+    if (globalParam[num[4]] == 1) {
         click.remove();
     }
-    else if (param[4] == 2) {
+    else if (globalParam[num[4]] == 2) {
         document.getElementById("button").innerHTML = "Click Me!";
         click.setAttribute("href", "portfolio/coming-soon");
     }
     else {
-        click.setAttribute("href", param[4]);
+        click.setAttribute("href", globalParam[num[4]]);
     }
 
     /* adds videos to projects where applicable */
-    if (param[5] == 1) {
+    if (globalParam[num[5]] == 1) {
         video.remove();
         playpause.remove();
         refresh.remove();
@@ -120,7 +141,7 @@ function change(param) {
         backward.remove();
         forward.remove();
     }
-    else if (param[5] == 2) {
+    else if (globalParam[num[5]] == 2) {
         video.remove();
         playpause.remove();
         refresh.remove();
@@ -130,21 +151,21 @@ function change(param) {
 
         const projectPic = document.createElement('img');
         projectPic.setAttribute('class', "picture");
-        projectPic.setAttribute('src', param[6]);
+        projectPic.setAttribute('src', globalParam[num[6]]);
         picture.appendChild(projectPic);
     }
     else {
         var source = document.createElement('source');
-        source.setAttribute('src', param[5]);
+        source.setAttribute('src', globalParam[num[5]]);
         source.setAttribute('type', 'video/mp4');
         video.appendChild(source);
     }
 
     /* adds extra pictures for hardware projects */
-    if (param[7] == 1 || param[7] == null) {
+    if (globalParam[num[7]] == 1 || globalParam[num[7]] == null) {
         otherPics.remove();
     }
-    else if (param[7] == 2) {
+    else if (globalParam[num[7]] == 2) {
         otherPics.setAttribute("class", "pictureGrid1");
 
         const otherPic1 = document.createElement("img");
@@ -152,11 +173,11 @@ function change(param) {
         const otherPic3 = document.createElement("img");
 
         otherPic1.setAttribute("class", "otherPicture");
-        otherPic1.setAttribute("src", param[8][0]);
+        otherPic1.setAttribute("src", globalParam[num[8]][0]);
         otherPic2.setAttribute("class", "otherPicture");
-        otherPic2.setAttribute("src", param[8][1]);
+        otherPic2.setAttribute("src", globalParam[num[8]][1]);
         otherPic3.setAttribute("class", "otherPicture");
-        otherPic3.setAttribute("src", param[8][2]);
+        otherPic3.setAttribute("src", globalParam[num[8]][2]);
 
         otherPics.appendChild(otherPic1);
         otherPics.appendChild(otherPic2);
@@ -171,15 +192,15 @@ function change(param) {
         const otherPic5 = document.createElement("img");
 
         otherPic1.setAttribute("class", "otherPicture");
-        otherPic1.setAttribute("src", param[8][0]);
+        otherPic1.setAttribute("src", globalParam[num[8]][0]);
         otherPic2.setAttribute("class", "otherPicture");
-        otherPic2.setAttribute("src", param[8][1]);
+        otherPic2.setAttribute("src", globalParam[num[8]][1]);
         otherPic3.setAttribute("class", "otherPicture");
-        otherPic3.setAttribute("src", param[8][2]);
+        otherPic3.setAttribute("src", globalParam[num[8]][2]);
         otherPic4.setAttribute("class", "otherPicture");
-        otherPic4.setAttribute("src", param[8][3]);
+        otherPic4.setAttribute("src", globalParam[num[8]][3]);
         otherPic5.setAttribute("class", "otherPicture");
-        otherPic5.setAttribute("src", param[8][4]);
+        otherPic5.setAttribute("src", globalParam[num[8]][4]);
 
         otherPics.appendChild(otherPic1);
         otherPics.appendChild(otherPic2);
