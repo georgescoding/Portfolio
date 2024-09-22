@@ -21,19 +21,6 @@
     });
 </script>
 
-<script> /* name, tools, GitHub, media */
-    text = "After acquiring some engineering design skills and knowledge, I decided to test this by making a breathalyzer along with a friend."
-        + "It tackled a real-world problem of drunk driving that was extremely prevalent, especially in America. Our project revolved around an MQ3"
-        + " alcohol sensor that would interface with an STM32 board, displaying the result on an LCD screen. The first problem was reading the data"
-        + " from the sensor and interpreting it so it could be read as a blood alcohol percentage. Through much research on the sensor itself and"
-        + " converting it to %BAC, we discovered an algorithm that works to our needs. However, another fact we learned about the sensor was its"
-        + " unreliability and inaccuracy. So to help alleviate this flaw, I implemented a calibration system. It takes real-time data on the"
-        + " surrounding air, using this in the computation for %BAC rather than a guessed constant. This helps with accuracy in various environments"
-        + " and creates a more reliable response.";
-    pictures = ["/assets/breath-circuit.png", "/assets/breath-diagram.png", "/assets/breath-model.png", "/assets/breath-log.jpg", "/assets/breath-slope.png"]
-    const param = ['Breathalyzer', 'C/C++, Arduino, STM32, AutoCAD', "https://github.com/GeorgesCoding/Breathalyzer", text, 1, 2, "/assets/breathalyzer.jpg", 3, pictures];
-</script>
-
-<body onload="change(param)"></body>
+<script>setTimeout(function () { change(2); }, 100);</script>
 
 </html>
