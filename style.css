@@ -264,24 +264,12 @@ cursor width is 1/2 border width */
 
 /* Work */
 
-.left-right{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr;
-    padding-right: 10%;
-    overflow: visible;
-}
-
-
-
-
 .experience {
     width: 100%;
     height: 100%;
     text-align: right;
     overflow-y: visible;
     margin-bottom: 300px;
-
 }
 
 .experience h3 {
@@ -291,7 +279,7 @@ cursor width is 1/2 border width */
     text-decoration: underline;
 }
 
-.experience h4 {
+.experience .plangroup h4 {
     padding-right: 10%;
     font-size: 2.1vw;
 }
@@ -304,7 +292,7 @@ cursor width is 1/2 border width */
 .experience p {
     margin-top: 20px;
     font-size: 1.5vw;
-    width: 39%;
+    width: 85%;
     padding-right: 10%;
     display: flex;
     float: right;
@@ -317,22 +305,26 @@ cursor width is 1/2 border width */
 }
 
 .experience .plangroup #selfie {
-    margin-top: 3vw;
+    margin-top: -45vh;
+    margin-right: -2vw;
+    height: 25vw;
 }
 
 .experience .plangroup {
     display: grid;
-    grid-template-columns: repeat(12, 1fr);
+    grid-template-columns: 1fr 1fr;
     position: relative;
-    float: left;
-    margin-left: 2%;
+    column-gap: 20px;
+    width: 95vw;
+    padding-right: 5vw;
 }
 
 .experience .plangroup #ALICE {
     height: 30vw;
-    width: 45vw;
+    width: 40vw;
     float: left;
     vertical-align: top;
+    margin-left: 5vw;
 }
 
 
