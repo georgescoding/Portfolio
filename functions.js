@@ -121,10 +121,9 @@ function flip(x) {
 /* Sends form to email via EmailJS, resets form and reCAPTCHA */
 function send(name, email, message, captchaToken) {
     var templateParams = {
-        to_name: 'George',
-        from_name: name,
-        subject: 'Contact Form Message',
-        message: "Email: " + email + "\n\n" + message,
+        name: name,
+        message: message,
+        email: email,
         "g-recaptcha-response": captchaToken
     };
     emailjs.send('service_j2mkwmy', 'template_zilck42', templateParams).then(

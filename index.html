@@ -28,9 +28,10 @@
         <div class="right-header">
             <a href="#about">About</a>
             <a href="#work">Work</a>
-            <div class="dropdown"> <a href="#projects">Projects</a>
-                <div class="content">
-                    <a href="/projects/chess">1. Chess App</a>
+            <div id="dropdown">
+                <a href="#projects">Projects</a>
+                <div id="content">
+                    <a id="chess" href="/projects/chess">1. Chess App</a>
                     <a href="/projects/portfolio">2. Portfolio Website</a>
                     <a href="/projects/breathalyzer">3. Breathalyzer</a>
                     <a href="/projects/blackjack">4. Blackjack</a>
@@ -77,21 +78,31 @@
 
     <!-- Work -->
     <div class="experience">
-        <h3>Work Experience</h3>
-        <h4> Plan Group - Electrical Designer</h4>
-        <h5> Date: Jan 2023 - Apr 2023</h5>
-        <p>My time at Plan Group began with Project ALICE, an initiative to help improve the productivity of CAD design
-            by developing custom tools for designers. I developed 5 different optimization tools in C# for Revit
-            design. Subsequently, I transitioned to help with quality inspection control for electrical floor plan
-            layouts in Revit for Sick Kids Hospital. In total, I examined over 40 layouts across two buildings, aiding
-            in a 70% reduction in completion time per layout. Lastly, I designed plumbing and electrical fixtures in
-            Revit for TD Bank electrical floor plan layouts and helped fix faulty conduit placements.
-        </p>
-        <div class="plangroup">
-            <img id="ALICE" src='/assets/work-alice.png'>
-            <img id="selfie" src='/assets/work-selfie.jpg'>
+        <div class="left-right">
+
+            <div id="left">
+                <div class="plangroup">
+                    <img id="ALICE" src='/assets/work-alice.png'>
+                    <img id="selfie" src='/assets/work-selfie.jpg'>
+                </div>
+            </div>
+
+            <div id="right">
+                <h3>Work Experience</h3>
+                <h4> Plan Group - Electrical Designer</h4>
+                <h5> Date: Jan 2023 - Apr 2023</h5>
+                <p>My time at Plan Group began with Project ALICE, an initiative to help improve the productivity of CAD design
+                    by developing custom tools for designers. I developed 5 different optimization tools in C# for Revit
+                    design. Subsequently, I transitioned to help with quality inspection control for electrical floor plan
+                    layouts in Revit for Sick Kids Hospital. In total, I examined over 40 layouts across two buildings, aiding
+                    in a 70% reduction in completion time per layout. Lastly, I designed plumbing and electrical fixtures in
+                    Revit for TD Bank electrical floor plan layouts and helped fix faulty conduit placements.
+                </p>
+            </div>
+
         </div>
     </div>
+
 
 
     <!-- Projects -->
