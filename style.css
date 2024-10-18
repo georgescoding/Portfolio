@@ -134,6 +134,7 @@ body {
 
 #see-all {
     padding-left: 2.5vw;
+    align-items: center;
 }
 
 
@@ -263,7 +264,6 @@ cursor width is 1/2 border width */
 
 
 /* Work */
-
 #experience {
     padding-left: 10%;
     width: 100%;
@@ -274,7 +274,6 @@ cursor width is 1/2 border width */
     text-align: right;
     float: right;
     margin-bottom: 25%;
-
 }
 
 #experience h3 {
@@ -302,7 +301,7 @@ cursor width is 1/2 border width */
 #experience .plangroup img {
     border-radius: 25px;
     border: 0.5vw solid rgb(23, 39, 45);
-    z-index: -1;    
+    z-index: -1;
 }
 
 #experience .plangroup #selfie {
@@ -329,43 +328,38 @@ cursor width is 1/2 border width */
 
 
 /* Projects */
-.projects {
-    width: 100%;
-    height: 110%;
+#projects {
     z-index: -1;
-    overflow: visible;
-    text-align: center;
-    margin-bottom: 300px;
+    padding-right: 10%;
+    padding-left: 10%;
+    margin-bottom: 25%;
+    height: 100vh;
+    display: inline-block
 }
 
-.projects .grid {
+#projects .grid {
     margin-top: 20px;
-    height: 90%;
+    height: 70vh;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     column-gap: 20px;
     row-gap: 20px;
-    padding-left: 10%;
-    padding-right: 10%;
-    font-size: 40px;
     perspective: 1000px;
     overflow: visible;
 }
 
-.projects h3 {
-    text-align: left;
-    padding-left: 10%;
-    padding-top: 20px;
-    font-size: 80px;
+#projects h3 {
+    font-size: 4.6vw;
     text-decoration: underline;
+    height: fit-content;
 }
 
 .card .front img {
     width: 95%;
     height: 75%;
-    border-radius: 25px 25px 0 0;
-    margin-top: 15px;
+    border-radius: 25px 25px 10px 10px;
+    margin-top: 0.5vw;
 }
 
 .card {
@@ -384,9 +378,9 @@ cursor width is 1/2 border width */
     transform: rotateY(180deg);
 }
 
-
 .front {
     position: absolute;
+    font-size: 2vw;
 }
 
 .front,
@@ -394,7 +388,6 @@ cursor width is 1/2 border width */
     width: 100%;
     height: 100%;
     text-align: center;
-    font-size: 40px;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
 }
@@ -402,13 +395,15 @@ cursor width is 1/2 border width */
 .back {
     position: relative;
     transform: rotateY(180deg);
-    font-size: 22px;
+    font-size: 1dvw;
     border-radius: 25px;
     text-align: center;
     width: auto;
     height: 100%;
     margin: 20px;
     overflow: visible;
+    vertical-align: middle;
+
 }
 
 .back .info {
@@ -420,6 +415,11 @@ cursor width is 1/2 border width */
     transform: translateX(-50%)
 }
 
+.back .info a {
+    font-size: 2vw;
+    padding-top: 90px;
+}
+
 .back a {
     overflow: visible;
     padding-bottom: 15px;
@@ -427,13 +427,13 @@ cursor width is 1/2 border width */
     transition: all 0.3s ease-in-out;
 }
 
-.projects button {
+#projects button {
     background-color: rgb(62, 105, 121);
 
 }
 
-.projects .seeMore {
-    font-size: 40px;
+#projects .seeMore {
+    font-size: 2.25vw;
     padding: 15px 32px;
     margin-top: 40px;
 }
@@ -444,14 +444,16 @@ cursor width is 1/2 border width */
     position: relative;
 }
 
-.projects .card a button {
-    font-size: 15px;
+#projects .card a button {
+    font-size: 1vw;
     border-radius: 25px;
     padding: 7px 17px 7px 17px;
     box-shadow: none;
+    margin-bottom: 20px;
+
 }
 
-.projects .info a:hover,
+#projects .info a:hover,
 .info a button:hover {
     transform: translateY(2px);
     box-shadow: none;
@@ -460,21 +462,22 @@ cursor width is 1/2 border width */
 
 
 /* Contact and Socials*/
-.contact {
+#contact {
     margin-top: 230px;
     z-index: -1;
     text-align: left;
     padding-left: 10%;
     margin-right: 10%;
+    height: 100%;
 }
 
-.contact h3 {
+#contact h3 {
     padding-top: 20px;
     font-size: 80px;
     text-decoration: underline;
 }
 
-.contact .grid {
+#contact .grid {
     margin-top: 20px;
     height: 70%;
     display: grid;
@@ -483,7 +486,7 @@ cursor width is 1/2 border width */
     border-radius: 25px;
 }
 
-.contact h4 {
+#contact h4 {
     font-size: 40px;
     text-align: center;
     padding-top: 20px;
@@ -493,11 +496,11 @@ cursor width is 1/2 border width */
     border-bottom: 5px lightgray solid;
 }
 
-.contact .socials h4 {
+#contact .socials h4 {
     background-color: rgb(23, 39, 45);
 }
 
-.contact h4 {
+#contact h4 {
     background-color: rgb(62, 105, 121);
 }
 
@@ -547,7 +550,7 @@ textarea {
     padding-left: 5px;
 }
 
-.contact .grid button {
+#contact .grid button {
     background-color: rgb(62, 105, 121);
     font-size: 40px;
     padding: 15px 32px;
