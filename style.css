@@ -27,9 +27,9 @@ html {
 /* Background Picture */
 body {
     overflow-y: visible;
-    margin-top: 5vw;
+    margin-top: 4.75vw;
     height: calc(100vh - 5vw);
-
+    padding-bottom: 0.25vw;
     background-color: rgb(23, 39, 45);
     background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.2)),
         url("assets/background.gif");
