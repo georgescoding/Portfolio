@@ -334,7 +334,7 @@ cursor width is 1/2 border width */
     padding-left: 10%;
     margin-bottom: 25%;
     height: 100vh;
-    display: inline-block
+    display: inline-block;
 }
 
 #projects .grid {
@@ -395,53 +395,38 @@ cursor width is 1/2 border width */
 .back {
     position: relative;
     transform: rotateY(180deg);
-    font-size: 1dvw;
+    font-size: 2.25dvh;
     border-radius: 25px;
     text-align: center;
     width: auto;
     height: 100%;
-    margin: 20px;
+    margin: 3dvh;
     overflow: visible;
     vertical-align: middle;
-
 }
 
 .back .info {
     margin: none;
     position: absolute;
-    bottom: 40px;
+    bottom: 5dvh;
     width: max-content;
     left: 50%;
     transform: translateX(-50%)
 }
 
-.back .info a {
-    font-size: 2vw;
-    padding-top: 90px;
-}
-
-.back a {
-    overflow: visible;
-    padding-bottom: 15px;
-    padding-top: 30px;
-    transition: all 0.3s ease-in-out;
-}
 
 #projects button {
     background-color: rgb(62, 105, 121);
-
 }
 
-#projects .seeMore {
+.middle {
+    text-align: center;
+}
+
+#projects .seeAll {
     font-size: 2.25vw;
-    padding: 15px 32px;
+    padding: 1.5vh 1.5vw;
     margin-top: 40px;
-}
-
-.seeMore:hover {
-    transform: translateY(2px);
-    box-shadow: none;
-    position: relative;
 }
 
 #projects .card a button {
@@ -449,12 +434,12 @@ cursor width is 1/2 border width */
     border-radius: 25px;
     padding: 7px 17px 7px 17px;
     box-shadow: none;
-    margin-bottom: 20px;
-
+    margin-bottom: 2vh;
 }
 
 #projects .info a:hover,
-.info a button:hover {
+.info a button:hover,
+.seeAll:hover {
     transform: translateY(2px);
     box-shadow: none;
     position: relative;
@@ -463,7 +448,6 @@ cursor width is 1/2 border width */
 
 /* Contact and Socials*/
 #contact {
-    margin-top: 230px;
     z-index: -1;
     text-align: left;
     padding-left: 10%;
@@ -473,27 +457,25 @@ cursor width is 1/2 border width */
 
 #contact h3 {
     padding-top: 20px;
-    font-size: 80px;
+    font-size: 4.6vw;
     text-decoration: underline;
 }
 
 #contact .grid {
     margin-top: 20px;
-    height: 70%;
     display: grid;
     grid-template-columns: 0.6fr 0.4fr;
-    font-size: 32px;
+    font-size: 1.5vw;
     border-radius: 25px;
 }
 
 #contact h4 {
-    font-size: 40px;
+    font-size: 2vw;
     text-align: center;
-    padding-top: 20px;
     border-radius: 25px 25px 0 0;
-    vertical-align: top;
-    padding-bottom: 10px;
-    border-bottom: 5px lightgray solid;
+    padding: 0.8vw 0px;
+    vertical-align: middle;
+    border-bottom: 0.25vw lightgray solid;
 }
 
 #contact .socials h4 {
@@ -511,16 +493,16 @@ cursor width is 1/2 border width */
 }
 
 #form {
-    padding-right: 40px;
-    margin-top: 20px;
+    padding-right: 1.25vw;
+    margin-top: 1vw;
 }
 
 .form label,
 input,
 textarea {
-    margin-left: 40px;
-    line-height: 40px;
-    margin-bottom: 32px;
+    margin-left: 2vw;
+    line-height: 2vw;
+    margin-bottom: 1.75vw;
     vertical-align: middle;
 }
 
@@ -535,27 +517,26 @@ textarea {
     resize: none;
     border-radius: 10px;
     background-color: lightgray;
-    font-size: 26px;
+    font-size: 1.1vw;
     color: black;
     text-shadow: none;
-    padding: 5px;
-
+    padding: 0.35vw;
+    padding-left: 0.5vw
 }
 
 ::placeholder {
     color: gray;
     text-shadow: none;
-    font-size: 25px;
+    font-size: 1.15vw;
     text-decoration: none;
-    padding-left: 5px;
 }
 
 #contact .grid button {
     background-color: rgb(62, 105, 121);
-    font-size: 40px;
-    padding: 15px 32px;
-    margin-bottom: 40px;
-    margin-left: 50px;
+    font-size: 1.9vw;
+    padding: 0.65vw 1.7vw;
+    margin-bottom: 2vw;
+    margin-left: 2vw;
 }
 
 .grid button:hover {
@@ -565,15 +546,15 @@ textarea {
 }
 
 .g-recaptcha {
-    margin-left: 50px;
-    margin-bottom: 20px;
-    font-size: 20px;
+    margin-left: 2vw;
+    margin-bottom: 1vw;
+    font-size: 0.95vw;
 }
 
 .grid .socials {
     width: auto;
-    margin-left: 15px;
-    font-size: 25px;
+    margin-left: 0.75vw;
+    font-size: 1.25vw;
     overflow: visible;
 }
 
@@ -615,13 +596,7 @@ a:focus {
     background-color: rgb(62, 105, 121);
     border-radius: 25px;
     height: 110%;
-}
-
-.grid .center button {
-    margin: 0px 0px 32px;
-    background-color: rgb(23, 39, 45);
-    border-radius: 25px;
-    border: 2px rgb(32, 32, 32) solid;
+    padding-bottom: 1vw;
 }
 
 
@@ -632,7 +607,7 @@ a:focus {
 }
 
 button {
-    border: 2px rgb(32, 32, 32) solid;
+    border: 0.1vw rgb(32, 32, 32) solid;
     border-radius: 25px;
     transition: all 0.3s ease-in-out;
     color: white;
@@ -640,14 +615,14 @@ button {
     display: inline-block;
     cursor: pointer;
     animation-fill-mode: both;
-    box-shadow: 10px 5px 0px rgb(211, 211, 211);
+    box-shadow: 0.4vw 0.3vw 0px rgb(211, 211, 211);
 }
 
 /* Copyright */
 .copyright {
     margin-bottom: 10px;
-    font-size: 20px;
+    font-size: 1vw;
+    margin-top: 20vh;
     text-align: center;
-    margin-top: 50px;
     width: 100%;
 }
