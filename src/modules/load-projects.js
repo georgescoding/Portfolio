@@ -1,4 +1,4 @@
-import { projectParam } from "./projects.js";
+import { projectParam } from "./projects-param.js";
 
 
 /* adds text and media into the template html file */

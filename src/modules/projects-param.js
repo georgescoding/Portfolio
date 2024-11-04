@@ -1,4 +1,4 @@
-import projects from './projects.json' with {type: "json"};
+import projects from '../project-param.json' with {type: "json"};
 
 const chess = projects.chess;
 const breathalyzer = projects.breathalyzer;
