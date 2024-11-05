@@ -1,10 +1,38 @@
-import { projectParam } from "./projects-param.js";
+import param from '../data/project-param.json' with {type: "json"};
+import summary from '../data/project-summary.json' with {type: "json"};
+import home from '../data/home-text.json' with {type: "json"};
+
+
+export function loadHome() {
+    document.getElementById("overviewText").innerHTML = home.overview;
+    document.getElementById("workText").innerHTML = home.plangroup;
+}
+
+
+export function loadSummary() {
+    document.getElementById("chessText").innerHTML += summary.chess;
+    document.getElementById("breathalyzerText").innerHTML += summary.breathalyzer;
+    document.getElementById("portfolioText").innerHTML += summary.portfolio;
+    document.getElementById("blackjackText").innerHTML += summary.blackjack;
+    document.getElementById("sensorText").innerHTML += summary.pHsensor;
+    document.getElementById("minesweeperText").innerHTML += summary.minesweeper;
+}
+
+
+
+
+
+
+
+
 
 
 /* adds text and media into the template html file */
-export function change(num) {
-
+export function loadProject(num) {
+    const projectParam = [param.chess, param.breathalyzer, param.blackjack, param.calculator, param.minesweeper, param.pHsensor, param.portfolio];
+    console.log(num)
     document.getElementById("projectName").innerHTML = projectParam[num].name;
+     /*    document.getElementById("projectName").innerHTML = projectParam[num].name;
     document.getElementById("tools").innerHTML += projectParam[num].tools;
     document.getElementById("github").href = projectParam[num].github;
     document.getElementById("github").style.fontSize = "50px";
@@ -20,7 +48,7 @@ export function change(num) {
     var backward = document.getElementById("backward");
     var forward = document.getElementById("forward");
 
-    /* adds link to coming soon page */
+    // adds link to coming soon page 
     if (projectParam[num].download = null) {
         click.remove();
     }
@@ -34,7 +62,7 @@ export function change(num) {
 
 
 
-    /* adds videos to projects where applicable */
+    // adds videos to projects where applicable
     if (projecctParam[num][5] == 1) {
         video.remove();
         playpause.remove();
@@ -63,7 +91,7 @@ export function change(num) {
         video.appendChild(source);
     }
 
-    /* adds extra pictures for hardware projects */
+    // adds extra pictures for hardware projects
     if (projecctParam[num][7] == 1 || projecctParam[num][7] == null) {
         otherPics.remove();
     }
@@ -109,5 +137,5 @@ export function change(num) {
         otherPics.appendChild(otherPic3);
         otherPics.appendChild(otherPic4);
         otherPics.appendChild(otherPic5);
-    }
+    } */
 }
