@@ -1,3 +1,9 @@
+//////////////////////////////////////////////////
+///// validate and sends email using EmailJS /////
+//////////////////////////////////////////////////
+
+
+
 // Validates the contents of the form and reCAPTCHA and sends the email is everything is correct
 export function validate() {
     var name = String(document.querySelector('[name="name"]').value);

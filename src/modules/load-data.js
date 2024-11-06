@@ -3,75 +3,89 @@ import summary from '../data/project-summary.json' with {type: "json"};
 import home from '../data/home-text.json' with {type: "json"};
 
 
+
+
+
+//////////////////////////////////////////////
+///// load data from json into HTML file /////
+//////////////////////////////////////////////
+
+
+
+// loads contents of the home page
 export function loadHome() {
     document.getElementById("overviewText").innerHTML = home.overview;
     document.getElementById("workText").innerHTML = home.plangroup;
 }
 
 
-export function loadSummary() {
+// loads each the project summary for each card
+export function loadSummary(mainPage) {
     document.getElementById("chessText").innerHTML += summary.chess;
     document.getElementById("breathalyzerText").innerHTML += summary.breathalyzer;
     document.getElementById("portfolioText").innerHTML += summary.portfolio;
     document.getElementById("blackjackText").innerHTML += summary.blackjack;
     document.getElementById("sensorText").innerHTML += summary.pHsensor;
     document.getElementById("minesweeperText").innerHTML += summary.minesweeper;
+
+    if (!mainPage) {
+        document.getElementById("calculatorText").innerHTML += summary.calculator;
+    }
 }
 
 
+// returns the project's order in the parameter list
+function getProjectNum(projectName) {
+    const projectMap = new Map([
+        ["chess", 0],
+        ["breathalyzer", 1],
+        ["blackjack", 2],
+        ["calculator", 3],
+        ["minesweeper", 4],
+        ["ph-sensor", 5],
+        ["portfolio", 6]
+    ]);
+    return projectMap.get(projectName.replace("/projects/", ""));
+}
 
 
-
-
-
-
-
-
-/* adds text and media into the template html file */
-export function loadProject(num) {
+// adds text and media into template file
+export function loadProject(projectName) {
+    let num = getProjectNum(projectName);
     const projectParam = [param.chess, param.breathalyzer, param.blackjack, param.calculator, param.minesweeper, param.pHsensor, param.portfolio];
-    console.log(num)
-    document.getElementById("projectName").innerHTML = projectParam[num].name;
-     /*    document.getElementById("projectName").innerHTML = projectParam[num].name;
-    document.getElementById("tools").innerHTML += projectParam[num].tools;
-    document.getElementById("github").href = projectParam[num].github;
-    document.getElementById("github").style.fontSize = "50px";
-    document.getElementById("text").innerHTML = projectParam[num].description;
+    let project = projectParam[num];
+
+    document.getElementById("projectName").innerHTML = project.name;
+    document.getElementById("projectName").innerHTML = project.name;
+    document.getElementById("tools").innerHTML += project.tools;
+    document.getElementById("github").href = project.github;
+    document.getElementById("github").style.fontSize = "3vw";
+    document.getElementById("text").innerHTML = project.description;
 
     var video = document.getElementById('video');
     var click = document.getElementById("clickable");
-    var picture = document.getElementById("projectPic");
-    var otherPics = document.getElementById("otherPics");
     var playpause = document.getElementById("playbutton");
     var refresh = document.getElementById("refresh");
     var fullscreen = document.getElementById("fullscreen");
     var backward = document.getElementById("backward");
     var forward = document.getElementById("forward");
+    var slideshow = document.getElementById("slideshowContainer");
 
-    // adds link to coming soon page 
-    if (projectParam[num].download = null) {
-        click.remove();
-    }
-    else if (projectParam[num][4] == 2) {
+
+    // add or remove link to clickable
+    if (num == 6) {
         document.getElementById("button").innerHTML = "Click Me!";
         click.setAttribute("href", "portfolio/coming-soon");
     }
+    else if (typeof project.download == 'undefined') {
+        click.remove();
+    }
     else {
-        click.setAttribute("href", projecctParam[num][4]);
+        click.setAttribute("href", project.download);
     }
 
-
-
-    // adds videos to projects where applicable
-    if (projecctParam[num][5] == 1) {
-        video.remove();
-        playpause.remove();
-        refresh.remove();
-        fullscreen.remove();
-        backward.remove();
-        forward.remove();
-    }
-    else if (projecctParam[num][5] == 2) {
+    // add pictures to template
+    if (typeof project.video == 'undefined') {
         video.remove();
         playpause.remove();
         refresh.remove();
@@ -79,63 +93,45 @@ export function loadProject(num) {
         backward.remove();
         forward.remove();
 
-        const projectPic = document.createElement('img');
-        projectPic.setAttribute('class', "picture");
-        projectPic.setAttribute('src', projecctParam[num][6]);
-        picture.appendChild(projectPic);
+        // add pictures to slideshow
+        if (typeof project.pictures != 'undefined') {
+            var length = project.pictures.length;
+
+            for (let i = 0; i < length; i++) {
+                let fade = document.createElement("div");
+                let number = document.createElement("div");
+                let image = document.createElement("img");
+                let caption = document.createElement("img");
+
+                fade.setAttribute("class", "slides");
+                number.setAttribute("class", "number");
+                image.setAttribute("src", project.pictures[i]);
+                caption.setAttribute("class", "text");
+                caption.innerHTML = project.captions[i];
+                
+                fade.appendChild(number);
+                fade.appendChild(image);
+                fade.appendChild(caption);
+                slideshow.appendChild(fade);
+            }
+            let prev = document.createElement("a");
+            let next = document.createElement("a");
+
+            prev.setAttribute("class", "prev");
+            next.setAttribute("class", "next");
+
+            prev.innerHTML = "&#10094;";
+            next.innerHTML = "&#10095;";
+
+            slideshow.appendChild(prev);
+            slideshow.appendChild(next);
+        }
     }
-    else {
+    else { // add videos to template
+        slideshow.remove();
         var source = document.createElement('source');
-        source.setAttribute('src', projecctParam[num][5]);
+        source.setAttribute('src', project.video);
         source.setAttribute('type', 'video/mp4');
         video.appendChild(source);
     }
-
-    // adds extra pictures for hardware projects
-    if (projecctParam[num][7] == 1 || projecctParam[num][7] == null) {
-        otherPics.remove();
-    }
-    else if (projecctParam[num][7] == 2) {
-        otherPics.setAttribute("class", "pictureGrid1");
-
-        const otherPic1 = document.createElement("img");
-        const otherPic2 = document.createElement("img");
-        const otherPic3 = document.createElement("img");
-
-        otherPic1.setAttribute("class", "otherPicture");
-        otherPic1.setAttribute("src", projecctParam[num][8][0]);
-        otherPic2.setAttribute("class", "otherPicture");
-        otherPic2.setAttribute("src", projecctParam[num][8][1]);
-        otherPic3.setAttribute("class", "otherPicture");
-        otherPic3.setAttribute("src", projecctParam[num][8][2]);
-
-        otherPics.appendChild(otherPic1);
-        otherPics.appendChild(otherPic2);
-        otherPics.appendChild(otherPic3);
-    }
-    else {
-        otherPics.setAttribute("class", "pictureGrid2");
-        const otherPic1 = document.createElement("img");
-        const otherPic2 = document.createElement("img");
-        const otherPic3 = document.createElement("img");
-        const otherPic4 = document.createElement("img");
-        const otherPic5 = document.createElement("img");
-
-        otherPic1.setAttribute("class", "otherPicture");
-        otherPic1.setAttribute("src", projecctParam[num][8][0]);
-        otherPic2.setAttribute("class", "otherPicture");
-        otherPic2.setAttribute("src", projecctParam[num][8][1]);
-        otherPic3.setAttribute("class", "otherPicture");
-        otherPic3.setAttribute("src", projecctParam[num][8][2]);
-        otherPic4.setAttribute("class", "otherPicture");
-        otherPic4.setAttribute("src", projecctParam[num][8][3]);
-        otherPic5.setAttribute("class", "otherPicture");
-        otherPic5.setAttribute("src", projecctParam[num][8][4]);
-
-        otherPics.appendChild(otherPic1);
-        otherPics.appendChild(otherPic2);
-        otherPics.appendChild(otherPic3);
-        otherPics.appendChild(otherPic4);
-        otherPics.appendChild(otherPic5);
-    } */
 }
