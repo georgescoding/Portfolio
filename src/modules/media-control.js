@@ -31,6 +31,22 @@ export function videoAction(pressedKey) {
 }
 
 
+// adds event listeners to the video buttons
+export function buttonPress(document) {
+    var play = document.getElementById("play");
+    var backward = document.getElementById('backward');
+    var forward = document.getElementById('forward');
+    var refresh = document.getElementById('refresh');
+    var fullscreen = document.getElementById('fullscreen');
+
+    backward.addEventListener("click", function () { videoAction("j") });
+    play.addEventListener("click", function () { videoAction("k") });
+    forward.addEventListener("click", function () { videoAction("l") });
+    refresh.addEventListener("click", function () { videoAction("r") });
+    fullscreen.addEventListener("click", function () { videoAction("f") });
+}
+
+
 // plays video
 function play() {
     var video = document.getElementById('video');

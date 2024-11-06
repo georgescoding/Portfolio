@@ -39,7 +39,6 @@ export function slideshow() {
     let slideIndex = 1;
     let i;
     let slides = document.querySelectorAll("slideshow");
-    console.log(slides)
 
    /*  if (n > slides.length) { slideIndex = 1 }
     if (n < 1) { slideIndex = slides.length }

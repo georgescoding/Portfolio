@@ -1,5 +1,7 @@
+// remove "/" from pathname
 window.history.pushState('', '', location.pathname.slice(0, -1));
 
+// dark mode
 if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
 }
 
@@ -43,6 +45,7 @@ else if (window.location.pathname == "/projects") {
 else if (window.location.pathname.includes("/projects/")) {
     import("./modules/media-control.js").then((control) => {
         window.addEventListener("keydown", (e) => control.videoAction(e.key));
+        control.buttonPress(document);
     });
     import("./modules/load-data.js").then((loadText) => {
         loadText.loadProject(window.location.pathname);
