@@ -26,25 +26,20 @@ export function flip(x) {
 
 // Next/previous controls
 export function plusSlides(n) {
-    showSlides(slideIndex += n);
+    slideshow(slideIndex += n);
 }
 
-// Thumbnail image controls
-export function currentSlide(n) {
-    showSlides(slideIndex = n);
-}
+let slideIndex = 1;
 
 // creates a slideshow to loop through project pictures
-export function slideshow() {
-    let slideIndex = 1;
-    let i;
-    let slides = document.querySelectorAll("slideshow");
-
-   /*  if (n > slides.length) { slideIndex = 1 }
-    if (n < 1) { slideIndex = slides.length }
-    slides.forEach(element => {
-        element.style.display = "none"
-    });
-
-    slides[slideIndex - 1].style.display = "block"; */
+function slideshow(n) {
+    let pictures = setTimeout(function () {
+        return document.querySelectorAll(".slides");
+    }, 50)
+    if (n > pictures.length) { slideIndex = 1 }
+    if (n < 1) { slideIndex = pictures.length }
+    for (let i = 0; i < pictures.length; i++) {
+        pictures[i].style.display = "none";
+    }
+    pictures[slideIndex - 1].style.display = "block";
 }

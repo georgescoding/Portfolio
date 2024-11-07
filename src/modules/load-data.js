@@ -103,7 +103,7 @@ export function loadProject(projectName) {
                 let image = document.createElement("img");
                 let caption = document.createElement("img");
 
-                fade.setAttribute("class", "slides");
+                fade.setAttribute("class", "slides fade");
                 number.setAttribute("class", "number");
                 image.setAttribute("src", project.pictures[i]);
                 caption.setAttribute("class", "text");

@@ -6,8 +6,7 @@
 
 // performs a media control action based on the user's keyboard input
 export function videoAction(pressedKey) {
-    var video = document.getElementById("video");
-    if (video != null) {
+    if (document.getElementById("video") != null) {
         switch (pressedKey) {
             case "k":
                 play();
@@ -33,17 +32,19 @@ export function videoAction(pressedKey) {
 
 // adds event listeners to the video buttons
 export function buttonPress(document) {
-    var play = document.getElementById("play");
-    var backward = document.getElementById('backward');
-    var forward = document.getElementById('forward');
-    var refresh = document.getElementById('refresh');
-    var fullscreen = document.getElementById('fullscreen');
+    if (document.getElementById("video") != null) {
+        var play = document.getElementById("play");
+        var backward = document.getElementById('backward');
+        var forward = document.getElementById('forward');
+        var refresh = document.getElementById('refresh');
+        var fullscreen = document.getElementById('fullscreen');
 
-    backward.addEventListener("click", function () { videoAction("j") });
-    play.addEventListener("click", function () { videoAction("k") });
-    forward.addEventListener("click", function () { videoAction("l") });
-    refresh.addEventListener("click", function () { videoAction("r") });
-    fullscreen.addEventListener("click", function () { videoAction("f") });
+        backward.addEventListener("click", function () { videoAction("j") });
+        play.addEventListener("click", function () { videoAction("k") });
+        forward.addEventListener("click", function () { videoAction("l") });
+        refresh.addEventListener("click", function () { videoAction("r") });
+        fullscreen.addEventListener("click", function () { videoAction("f") });
+    }
 }
 
 
