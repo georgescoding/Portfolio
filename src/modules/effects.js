@@ -23,19 +23,38 @@ export function flip(x) {
 }
 
 
-
 // Next/previous controls
-export function plusSlides(n) {
+let slideIndex = 1;
+export async function plusSlides(n) {
     slideshow(slideIndex += n);
 }
 
-let slideIndex = 1;
+
+export async function addListeners() {
+    let nextResult = new Promise(function (resolve, reject) {
+        setTimeout(function () { resolve(document.getElementsByClassName("next")) }
+            , 100);
+    });
+    let prevResult = new Promise(function (resolve, reject) {
+        setTimeout(function () { resolve(document.getElementsByClassName("prev")) }
+            , 200);
+    });
+    let next = await nextResult;
+    let prev = await prevResult; 
+
+    prev[0].addEventListener("click", function () { plusSlides(-1) });
+    next[0].addEventListener("click", function () { plusSlides(1) })
+}
+
 
 // creates a slideshow to loop through project pictures
-function slideshow(n) {
-    let pictures = setTimeout(function () {
-        return document.querySelectorAll(".slides");
-    }, 50)
+export async function slideshow(n) {
+    let promiseResult = new Promise(function (resolve, reject) {
+        setTimeout(function () { resolve(document.querySelectorAll(".slides")) }
+            , 100);
+    });
+    let pictures = await promiseResult;
+    console.log(pictures)
     if (n > pictures.length) { slideIndex = 1 }
     if (n < 1) { slideIndex = pictures.length }
     for (let i = 0; i < pictures.length; i++) {

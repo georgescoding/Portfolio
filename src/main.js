@@ -51,18 +51,7 @@ else if (window.location.pathname.includes("/projects/")) {
         loadText.loadProject(window.location.pathname);
     });
     import("./modules/effects.js").then((slideshow) => {
-        let prev = setTimeout(function () {
-            return document.getElementsByClassName("prev");
-    }, 50)
-
-
-
-
-
-
-
-    let next = document.getElementsByClassName("next");
-    prev.addEventListener("click", function () { slideshow.plusSlides(-1) });
-    next.addEventListener("click", function () { slideshow.plusSlides(1) });
-});
+      slideshow.addListeners();
+      slideshow.slideshow(1);
+    });
 }
