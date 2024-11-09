@@ -37,7 +37,7 @@ export async function addListeners() {
     });
     let prevResult = new Promise(function (resolve, reject) {
         setTimeout(function () { resolve(document.getElementsByClassName("prev")) }
-            , 200);
+            , 100);
     });
     let next = await nextResult;
     let prev = await prevResult; 
@@ -51,10 +51,9 @@ export async function addListeners() {
 export async function slideshow(n) {
     let promiseResult = new Promise(function (resolve, reject) {
         setTimeout(function () { resolve(document.querySelectorAll(".slides")) }
-            , 100);
+            , 999);
     });
     let pictures = await promiseResult;
-    console.log(pictures)
     if (n > pictures.length) { slideIndex = 1 }
     if (n < 1) { slideIndex = pictures.length }
     for (let i = 0; i < pictures.length; i++) {
