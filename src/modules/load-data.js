@@ -48,6 +48,25 @@ function getProjectNum(projectName) {
     return projectMap.get(projectName.replace("/projects/", ""));
 }
 
+function wait(selector) {
+    return new Promise(resolve => {
+        if (document.getElementById(selector)) {
+            return resolve(document.getElementById(selector));
+        }
+
+        const observer = new MutationObserver(mutations => {
+            if (document.getElementById(selector)) {
+                observer.disconnect();
+                resolve(document.getElementById(selector));
+            }
+        });
+
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true
+        });
+    });
+}
 
 // adds text and media into template file
 export function loadProject(projectName) {
@@ -55,12 +74,13 @@ export function loadProject(projectName) {
     const projectParam = [param.chess, param.breathalyzer, param.blackjack, param.calculator, param.minesweeper, param.pHsensor, param.portfolio];
     let project = projectParam[num];
 
-    document.getElementById("projectName").innerHTML = project.name;
-    document.getElementById("projectName").innerHTML = project.name;
-    document.getElementById("tools").innerHTML += project.tools;
-    document.getElementById("github").href = project.github;
-    document.getElementById("github").style.fontSize = "3vw";
-    document.getElementById("text").innerHTML = project.description;
+    wait("projectName").then(() => {
+        document.getElementById("projectName").innerHTML = project.name;
+        document.getElementById("tools").innerHTML += project.tools;
+        document.getElementById("github").href = project.github;
+        document.getElementById("github").style.fontSize = "3vw";
+        document.getElementById("text").innerHTML = project.description;
+    });
 
     var video = document.getElementById('video');
     var click = document.getElementById("clickable");
@@ -70,7 +90,6 @@ export function loadProject(projectName) {
     var backward = document.getElementById("backward");
     var forward = document.getElementById("forward");
     var slideshow = document.getElementById("slideshowContainer");
-
 
     // add or remove link to clickable
     if (num == 6) {
@@ -108,7 +127,7 @@ export function loadProject(projectName) {
                 image.setAttribute("src", project.pictures[i]);
                 caption.setAttribute("class", "text");
                 caption.innerHTML = project.captions[i];
-                
+
                 fade.appendChild(number);
                 fade.appendChild(image);
                 fade.appendChild(caption);
