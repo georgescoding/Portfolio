@@ -68,20 +68,7 @@ function wait(selector) {
     });
 }
 
-// adds text and media into template file
-export function loadProject(projectName) {
-    let num = getProjectNum(projectName);
-    const projectParam = [param.chess, param.breathalyzer, param.blackjack, param.calculator, param.minesweeper, param.pHsensor, param.portfolio];
-    let project = projectParam[num];
-
-    wait("projectName").then(() => {
-        document.getElementById("projectName").innerHTML = project.name;
-        document.getElementById("tools").innerHTML += project.tools;
-        document.getElementById("github").href = project.github;
-        document.getElementById("github").style.fontSize = "3vw";
-        document.getElementById("text").innerHTML = project.description;
-    });
-
+function editTemplate(project, num) {
     var video = document.getElementById('video');
     var click = document.getElementById("clickable");
     var playpause = document.getElementById("playbutton");
@@ -153,4 +140,21 @@ export function loadProject(projectName) {
         source.setAttribute('type', 'video/mp4');
         video.appendChild(source);
     }
+}
+
+
+// adds text and media into template file
+export function loadProject(projectName) {
+    let num = getProjectNum(projectName);
+    const projectParam = [param.chess, param.breathalyzer, param.blackjack, param.calculator, param.minesweeper, param.pHsensor, param.portfolio];
+    let project = projectParam[num];
+
+    wait("projectName").then(() => {
+        document.getElementById("projectName").innerHTML = project.name;
+        document.getElementById("tools").innerHTML += project.tools;
+        document.getElementById("github").href = project.github;
+        document.getElementById("github").style.fontSize = "3vw";
+        document.getElementById("text").innerHTML = project.description;
+        editTemplate(project, num);
+    });
 }
