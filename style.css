@@ -24,6 +24,7 @@ html {
     position: absolute;
 }
 
+
 /* Background Picture */
 body {
     overflow-y: visible;
@@ -39,7 +40,17 @@ body {
     background-size: cover;
 }
 
+@keyframes fadeIn {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
 
+    100% {
+        transform: translateY(0%);
+        opacity: 1;
+    }
+}
 
 /* Navigation Bar */
 #navbar {
@@ -119,7 +130,6 @@ body {
     background-color: rgb(23, 39, 45);
     z-index: 1;
 }
-
 
 #content a {
     float: none;

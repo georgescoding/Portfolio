@@ -6,9 +6,6 @@ if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').match
 }
 
 
-
-
-
 ///////////////////////////////////////////////////////////////////////
 ///// dynamically load modules depending on the current directory /////
 ///////////////////////////////////////////////////////////////////////
@@ -43,19 +40,7 @@ else if (window.location.pathname == "/projects") {
 }
 // individual project directory
 else if (window.location.pathname.includes("/projects/")) {
-    setTimeout(function () {
-        import("./modules/media-control.js").then((control) => {
-            window.addEventListener("keydown", (e) => control.videoAction(e.key));
-            control.buttonPress(document);
-        });
-        import("./modules/load-data.js").then((loadText) => {
-            loadText.loadProject(window.location.pathname);
-        });
-        if (document.getElementById("video") == null) {
-            import("./modules/effects.js").then((slideshow) => {
-                slideshow.addListeners();
-                slideshow.slideshow(1);
-            });
-        }
-    }, 100)
+    import("./modules/load-data.js").then((load) => {
+        load.loadProject(window.location.pathname);
+    });
 }

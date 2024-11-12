@@ -1,6 +1,7 @@
 import param from '../data/project-param.json' with {type: "json"};
 import summary from '../data/project-summary.json' with {type: "json"};
 import home from '../data/home-text.json' with {type: "json"};
+import wait from './wait.js';
 
 
 
@@ -48,26 +49,8 @@ function getProjectNum(projectName) {
     return projectMap.get(projectName.replace("/projects/", ""));
 }
 
-function wait(selector) {
-    return new Promise(resolve => {
-        if (document.getElementById(selector)) {
-            return resolve(document.getElementById(selector));
-        }
 
-        const observer = new MutationObserver(mutations => {
-            if (document.getElementById(selector)) {
-                observer.disconnect();
-                resolve(document.getElementById(selector));
-            }
-        });
-
-        observer.observe(document.body, {
-            childList: true,
-            subtree: true
-        });
-    });
-}
-
+// edits the template file for the project's individual page
 function editTemplate(project, num) {
     var video = document.getElementById('video');
     var click = document.getElementById("clickable");
@@ -78,7 +61,7 @@ function editTemplate(project, num) {
     var forward = document.getElementById("forward");
     var slideshow = document.getElementById("slideshowContainer");
 
-    // add or remove link to clickable
+    // add or remove clickable button
     if (num == 6) {
         document.getElementById("button").innerHTML = "Click Me!";
         click.setAttribute("href", "portfolio/coming-soon");
@@ -131,6 +114,7 @@ function editTemplate(project, num) {
 
             slideshow.appendChild(prev);
             slideshow.appendChild(next);
+            return false
         }
     }
     else { // add videos to template
@@ -139,22 +123,37 @@ function editTemplate(project, num) {
         source.setAttribute('src', project.video);
         source.setAttribute('type', 'video/mp4');
         video.appendChild(source);
+        return true
     }
 }
 
 
 // adds text and media into template file
-export function loadProject(projectName) {
+export async function loadProject(projectName) {
     let num = getProjectNum(projectName);
     const projectParam = [param.chess, param.breathalyzer, param.blackjack, param.calculator, param.minesweeper, param.pHsensor, param.portfolio];
     let project = projectParam[num];
 
-    wait("projectName").then(() => {
+    // wait untill the template page has loaded
+    wait("projectName", 1).then(() => {
         document.getElementById("projectName").innerHTML = project.name;
         document.getElementById("tools").innerHTML += project.tools;
         document.getElementById("github").href = project.github;
         document.getElementById("github").style.fontSize = "3vw";
         document.getElementById("text").innerHTML = project.description;
-        editTemplate(project, num);
+
+        // add event listeners to video elements
+        if (editTemplate(project, num)) {
+            import("./media-control.js").then((control) => {
+                control.buttonPress()
+                window.addEventListener("keydown", (e) => control.videoAction(e.key));
+            });
+        }
+        else { // add event llisteners to slideshow elements and create the slideshow
+            import("./effects.js").then((effects) => {
+                effects.addListeners()
+                effects.slideshow(1);
+            });
+        }
     });
 }

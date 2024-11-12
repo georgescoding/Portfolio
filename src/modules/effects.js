@@ -29,31 +29,24 @@ export async function plusSlides(n) {
     slideshow(slideIndex += n);
 }
 
-
-export async function addListeners() {
-    let nextResult = new Promise(function (resolve, reject) {
-        setTimeout(function () { resolve(document.getElementsByClassName("next")) }
-            , 100);
-    });
-    let prevResult = new Promise(function (resolve, reject) {
-        setTimeout(function () { resolve(document.getElementsByClassName("prev")) }
-            , 100);
-    });
-    let next = await nextResult;
-    let prev = await prevResult; 
+// adds listeners to the prev and next buttons for the slideshow
+export function addListeners() {
+    let next = document.getElementsByClassName("next")
+    let prev = document.getElementsByClassName("prev")
 
     prev[0].addEventListener("click", function () { plusSlides(-1) });
     next[0].addEventListener("click", function () { plusSlides(1) })
 }
 
+export function fadeText() {
+
+}
+
 
 // creates a slideshow to loop through project pictures
-export async function slideshow(n) {
-    let promiseResult = new Promise(function (resolve, reject) {
-        setTimeout(function () { resolve(document.querySelectorAll(".slides")) }
-            , 999);
-    });
-    let pictures = await promiseResult;
+export function slideshow(n) {
+    let pictures = document.querySelectorAll(".slides");
+    console.log(pictures)
     if (n > pictures.length) { slideIndex = 1 }
     if (n < 1) { slideIndex = pictures.length }
     for (let i = 0; i < pictures.length; i++) {
