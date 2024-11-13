@@ -17,7 +17,19 @@ import wait from './wait.js';
 export function loadHome() {
     document.getElementById("overviewText").innerHTML = home.overview;
     document.getElementById("workText").innerHTML = home.plangroup;
+
+    var prev = document.getElementById("prevSection"),
+        next = document.getElementById("nextSection");
+
+    prev.addEventListener("click", function () { toggleSection(1) })
+    next.addEventListener("click", function () { toggleSection(2) })
 }
+
+function toggleSection(selector) {
+    
+
+}
+
 
 
 // loads each the project summary for each card
@@ -52,14 +64,14 @@ function getProjectNum(projectName) {
 
 // edits the template file for the project's individual page
 function editTemplate(project, num) {
-    var video = document.getElementById('video');
-    var click = document.getElementById("clickable");
-    var playpause = document.getElementById("playbutton");
-    var refresh = document.getElementById("refresh");
-    var fullscreen = document.getElementById("fullscreen");
-    var backward = document.getElementById("backward");
-    var forward = document.getElementById("forward");
-    var slideshow = document.getElementById("slideshowContainer");
+    var video = document.getElementById('video'),
+        click = document.getElementById("clickable"),
+        playpause = document.getElementById("playbutton"),
+        refresh = document.getElementById("refresh"),
+        fullscreen = document.getElementById("fullscreen"),
+        backward = document.getElementById("backward"),
+        forward = document.getElementById("forward"),
+        slideshow = document.getElementById("slideshowContainer");
 
     // add or remove clickable button
     if (num == 6) {
@@ -87,10 +99,10 @@ function editTemplate(project, num) {
             var length = project.pictures.length;
 
             for (let i = 0; i < length; i++) {
-                let fade = document.createElement("div");
-                let number = document.createElement("div");
-                let image = document.createElement("img");
-                let caption = document.createElement("img");
+                let fade = document.createElement("div"),
+                    number = document.createElement("div"),
+                    image = document.createElement("img"),
+                    caption = document.createElement("img");
 
                 fade.setAttribute("class", "slides fade");
                 number.setAttribute("class", "number");
@@ -103,8 +115,8 @@ function editTemplate(project, num) {
                 fade.appendChild(caption);
                 slideshow.appendChild(fade);
             }
-            let prev = document.createElement("a");
-            let next = document.createElement("a");
+            let prev = document.createElement("a"),
+                next = document.createElement("a");
 
             prev.setAttribute("class", "prev");
             next.setAttribute("class", "next");

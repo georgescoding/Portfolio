@@ -31,8 +31,8 @@ export async function plusSlides(n) {
 
 // adds listeners to the prev and next buttons for the slideshow
 export function addListeners() {
-    let next = document.getElementsByClassName("next")
-    let prev = document.getElementsByClassName("prev")
+    let next = document.getElementsByClassName("next"),
+        prev = document.getElementsByClassName("prev")
 
     prev[0].addEventListener("click", function () { plusSlides(-1) });
     next[0].addEventListener("click", function () { plusSlides(1) })

@@ -31,11 +31,11 @@ export function videoAction(pressedKey) {
 
 // adds event listeners to the video buttons
 export function buttonPress() {
-    var play = document.getElementById("play");
-    var backward = document.getElementById('backward');
-    var forward = document.getElementById('forward');
-    var refresh = document.getElementById('refresh');
-    var fullscreen = document.getElementById('fullscreen');
+    var play = document.getElementById("play"),
+        backward = document.getElementById('backward'),
+        forward = document.getElementById('forward'),
+        refresh = document.getElementById('refresh'),
+        fullscreen = document.getElementById('fullscreen');
 
     backward.addEventListener("click", function () { videoAction("j") });
     play.addEventListener("click", function () { videoAction("k") });
@@ -47,8 +47,8 @@ export function buttonPress() {
 
 // plays video
 function play() {
-    var video = document.getElementById('video');
-    var button = document.getElementById('play');
+    var video = document.getElementById('video'),
+        button = document.getElementById('play');
 
     if (video.paused == true) {
         video.play();
@@ -63,8 +63,8 @@ function play() {
 
 // restarts the video from the beginning
 function restart() {
-    var video = document.getElementById('video');
-    var button = document.getElementById('play');
+    var video = document.getElementById('video'),
+        button = document.getElementById('play');
 
     video.currentTime = 0;
     video.pause();

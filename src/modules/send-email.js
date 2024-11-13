@@ -6,11 +6,11 @@
 
 // Validates the contents of the form and reCAPTCHA and sends the email is everything is correct
 export function validate() {
-    var name = String(document.querySelector('[name="name"]').value);
-    var email = String(document.querySelector('[name="email"]').value);
-    var message = String(document.querySelector('[name="message"]').value);
-    var format = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/;
-    var captchaToken = grecaptcha.getResponse();
+    var name = String(document.querySelector('[name="name"]').value),
+        email = String(document.querySelector('[name="email"]').value),
+        message = String(document.querySelector('[name="message"]').value),
+        format = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/,
+        captchaToken = grecaptcha.getResponse();
 
     if (name == "") {
         alert("Name must be filled");
