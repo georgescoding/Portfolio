@@ -26,9 +26,53 @@ export function loadHome() {
 }
 
 function toggleSection(selector) {
-    
+    /* have to somehow find out what the next and previous section is, get the string and  */
+    var header = document.getElementById("header"),
+        typing = document.getElementById("typing"),
+        overview = document.getElementById("overview"),
+        experience = document.getElementById("experience"),
+        projects = document.getElementById("projects"),
+        contact = document.getElementById("contact"),
+        elements = [header, typing, overview, experience, projects, contact];
 
+    for (var i = 0, max = elements.length; i < max; i++) {
+        if (isInViewport(elements[i])) {
+            if ((i == 0 || i == 1) && selector == 2) {
+                document.getElementById("overview").scrollIntoView()
+            }
+            else if ((i == 0 || i == 1) && selector == 1) {
+                alert("no")
+            }
+            else if (i == 5 && selector == 2) {
+                alert("also no")
+            }
+            else if (i > 1 && i < 5 && selector == 1) {
+                alert(elements[i-1])
+                elements[i - 1].scrollIntoView();
+            }
+            else if (i > 1 && i < 5 && selector == 2) {
+                elements[i + 1].scrollIntoView();
+                alert('hi')
+            }
+            else {
+                alert("catestrophic failure")
+            }
+        }
+    }
 }
+
+/* currenty the whole element needs to be visivle, need it to change so that partials can work
+do so ifv 50% of element is visible, then it is that section */
+function isInViewport(element) {
+    const rect = element.getBoundingClientRect();
+    return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+}
+
 
 
 
