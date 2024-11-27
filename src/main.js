@@ -22,6 +22,9 @@ if (window.location.pathname == "/") {
     import("./modules/load-data.js").then((loadText) => {
         loadText.loadHome();
         loadText.loadSummary(true);
+        window.addEventListener("load", (event) => {
+            loadText.createObserver();
+        }, false);
     });
     import("./modules/send-email.js").then((email) => {
         let button = document.getElementById("sendButton");

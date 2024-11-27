@@ -6,17 +6,18 @@ import wait from './wait.js';
 
 
 
-
 //////////////////////////////////////////////
 ///// load data from json into HTML file /////
 //////////////////////////////////////////////
 
 
 
-// loads contents of the home page
+// loads contents of the home page and adds event listeners
 export function loadHome() {
     document.getElementById("overviewText").innerHTML = home.overview;
     document.getElementById("workText").innerHTML = home.plangroup;
+    document.getElementById("marqueeText").innerHTML = home.marqueeText;
+    document.getElementById("marqueeText2").innerHTML += home.marqueeText;
 
     var prev = document.getElementById("prevSection"),
         next = document.getElementById("nextSection");
@@ -25,53 +26,74 @@ export function loadHome() {
     next.addEventListener("click", function () { toggleSection(2) })
 }
 
+
+// scrolls to the next or previous section of main page
 function toggleSection(selector) {
-    /* have to somehow find out what the next and previous section is, get the string and  */
-    var header = document.getElementById("header"),
-        typing = document.getElementById("typing"),
+    var typing = document.getElementById("typing"),
         overview = document.getElementById("overview"),
         experience = document.getElementById("experience"),
         projects = document.getElementById("projects"),
         contact = document.getElementById("contact"),
-        elements = [header, typing, overview, experience, projects, contact];
+        top = document.getElementById("top"),
+        navbar = document.getElementById("navbar"),
+        elements = [typing, overview, experience, projects, contact];
 
-    for (var i = 0, max = elements.length; i < max; i++) {
-        if (isInViewport(elements[i])) {
-            if ((i == 0 || i == 1) && selector == 2) {
-                document.getElementById("overview").scrollIntoView()
-            }
-            else if ((i == 0 || i == 1) && selector == 1) {
-                alert("no")
-            }
-            else if (i == 5 && selector == 2) {
-                alert("also no")
-            }
-            else if (i > 1 && i < 5 && selector == 1) {
-                alert(elements[i-1])
-                elements[i - 1].scrollIntoView();
-            }
-            else if (i > 1 && i < 5 && selector == 2) {
-                elements[i + 1].scrollIntoView();
-                alert('hi')
+}
+
+
+
+export function createObserver() {
+    let observer;
+    let options = {
+        root: null,
+        rootMargin: "75% 0% 0%",
+        threshold: 0.3
+    };
+    observer = new IntersectionObserver(handleIntersect, options);
+    let target = document.querySelectorAll(".section")
+    target.forEach(section => {
+        observer.observe(section)
+    })
+}
+
+
+function handleIntersect(entries) {
+    entries.forEach((entry) => {
+        if (entry.intersectionRatio > 0) {
+            let href;
+            if (entry.target.id === "typing" || entry.target.id === "marquee") {
+                href = "#top";
             }
             else {
-                alert("catestrophic failure")
+                href = "#" + entry.target.id;
             }
+            removeUnderline();
+            document.querySelector("a[href='" + href + "']").style.textDecoration = "underline"
         }
-    }
+    })
 }
 
-/* currenty the whole element needs to be visivle, need it to change so that partials can work
-do so ifv 50% of element is visible, then it is that section */
-function isInViewport(element) {
-    const rect = element.getBoundingClientRect();
-    return (
-        rect.top >= 0 &&
-        rect.left >= 0 &&
-        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-    );
+
+// removes underline from navbar sections
+function removeUnderline() {
+    var top = document.querySelector("a[href='#top']"),
+        about = document.querySelector("a[href='#overview']"),
+        work = document.querySelector("a[href='#experience']"),
+        projects = document.querySelector("a[href='#projects']"),
+        contact = document.querySelector("a[href='#contact']"),
+        navbar = [top, about, work, projects, contact];
+
+    navbar.forEach((section) => {
+        section.style.textDecoration = "none";
+    })
 }
+
+
+/* problem is that the handleIntersect function only triggers when there is a change in section, so if the section stays the same, it will not trigger
+    need something to remember the last section that is passed through to toggleSection */
+
+
+
 
 
 

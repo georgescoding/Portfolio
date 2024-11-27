@@ -30,7 +30,7 @@
     <div id="navbar">
         <a class="logo" href="#top"> <img src=assets/favicon.ico>GeorgesCoding</a>
         <div class="right-header">
-            <a href="#about">About</a>
+            <a href="#overview">About</a>
             <a href="#experience">Work</a>
             <div id="dropdown">
                 <a href="#projects">Projects</a>
@@ -51,18 +51,21 @@
 
     <!--Introduction-->
     <div id="header">
-        <h1 id="typing"></h1>
+        <h1 id="typing" class="section"></h1>
         <h2>University of Waterloo | Electrical Engineering</h2>
+        <div id="marquee" class="wrapper section">
+            <div class="marquee"><span id="marqueeText"></span><span id="marqueeText2"></span></div>
+        </div>
         <div class="button"> <a href="#about"><button class="readmore">Read More</button></a>
             <a href="#contact"><button class="contactbutton">Contact</button></a>
         </div>
     </div>
-    <a id="about"></a>
+    <a id="overview"></a>
 
 
 
     <!--Overview-->
-    <div id="overview">
+    <div id="overview" class="section">
         <h3>About Me</h3>
         <div class="box">
             <p id="overviewText"></p>
@@ -72,7 +75,7 @@
 
 
     <!-- Work -->
-    <div id="experience">
+    <div id="experience" class="section">
 
         <div class="plangroup">
             <div class="left">
@@ -92,7 +95,7 @@
 
 
     <!-- Projects -->
-    <div id="projects">
+    <div id="projects" class="section">
 
         <h3>Projects</h3>
         <div class="grid">
@@ -100,8 +103,7 @@
             <div class="card" id="1">
                 <div class="front"><img src='/assets/pictures/projects-chess.png'>Chess App</div>
                 <div class="back" id="chessText">
-                    <div class="info"><a href="https://github.com/GeorgesCoding/Chess" target="_blank"
-                            class="fa fa-github"></a>
+                    <div class="info"><a href="https://github.com/GeorgesCoding/Chess" target="_blank" class="fa fa-github"></a>
                         <a href="/projects/chess"><button class="learnMore">Learn More</button></a>
                         <br>Python
                     </div>
@@ -111,8 +113,7 @@
             <div class="card" id="2">
                 <div class="front"><img src='/assets/pictures/projects-portfolio.png'>Portfolio Website</div>
                 <div class="back" id="portfolioText">
-                    <div class="info"><a href="https://github.com/GeorgesCoding/Portfolio" target="_blank"
-                            class="fa fa-github"></a>
+                    <div class="info"><a href="https://github.com/GeorgesCoding/Portfolio" target="_blank" class="fa fa-github"></a>
                         <a href="/projects/portfolio"><button class="learnMore">Learn More</button></a>
                         <br>HTML, CSS, JavaScript
                     </div>
@@ -122,8 +123,7 @@
             <div class="card" id="3">
                 <div class="front"><img src='/assets/pictures/projects-breathalyzer.jpg'>Breathalyzer</div>
                 <div class="back" id="breathalyzerText">
-                    <div class="info"><a href="https://github.com/GeorgesCoding/Breathalyzer" target="_blank"
-                            class="fa fa-github"></a>
+                    <div class="info"><a href="https://github.com/GeorgesCoding/Breathalyzer" target="_blank" class="fa fa-github"></a>
                         <a href="/projects/breathalyzer/index.html"><button class="learnMore">Learn
                                 More</button></a>
                         <br>C/C++, Arduino, STM32, AutoCAD
@@ -134,8 +134,7 @@
             <div class="card" id="4">
                 <div class="front"><img src='/assets/pictures/projects-blackjack.png'>Blackjack</div>
                 <div class="back" id="blackjackText">
-                    <div class="info"><a href="https://github.com/GeorgesCoding/Blackjack" target="_blank"
-                            class="fa fa-github"></a>
+                    <div class="info"><a href="https://github.com/GeorgesCoding/Blackjack" target="_blank" class="fa fa-github"></a>
                         <a href="/projects/blackjack/index.html"><button class="learnMore">Learn More</button></a>
                         <br>Java
                     </div>
@@ -145,8 +144,7 @@
             <div class="card" id="5">
                 <div class="front"><img src='/assets/pictures/projects-sensor.jpg'>pH-Sensor</div>
                 <div class="back" id="sensorText">
-                    <div class="info"><a href="https://github.com/GeorgesCoding/pH-Sensor" target="_blank"
-                            class="fa fa-github"></a>
+                    <div class="info"><a href="https://github.com/GeorgesCoding/pH-Sensor" target="_blank" class="fa fa-github"></a>
                         <a href="/projects/ph-sensor"><button class="learnMore">Learn More</button></a>
                         <br>C/C++, Arduino, STM32, AutoCAD
                     </div>
@@ -171,7 +169,7 @@
 
 
     <!-- Contact/Socials-->
-    <div id="contact">
+    <div id="contact" class="section">
         <h3>Contact</h3>
         <div class="grid">
 
@@ -180,17 +178,14 @@
                 <form id="form">
 
                     <label for="name">Name:</label>
-                    <input id="name" type="name" name="name" placeholder="Your Name" autocomplete="on"
-                        aria-required="true"><br>
+                    <input id="name" type="name" name="name" placeholder="Your Name" autocomplete="on" aria-required="true"><br>
 
                     <label for="email">Email:</label>
-                    <input id="email" type="email" name="email" placeholder="Your Email" autocomplete="on"
-                        aria-required="true"><br>
+                    <input id="email" type="email" name="email" placeholder="Your Email" autocomplete="on" aria-required="true"><br>
 
                     <label for="message">Message:</label>
-                    <textarea id="message" name="message" placeholder="Your Message" rows="5"
-                        aria-required="true"></textarea>
-                    <div class="g-recaptcha" data-sitekey="6LfUxMQpAAAAANxEA_tNe3RvqT_d0iclalzDqmz8">
+                    <textarea id="message" name="message" placeholder="Your Message" rows="5" aria-required="true"></textarea>
+                    <div class="g-recaptcha" data-sitekey="6LfUxMQpAAAAANxEA_tNe3RvqT_d0iclalzDqmz8" data-size="compact">
 
                 </form>
             </div>
@@ -218,11 +213,9 @@
 
 
     <!--Copyright-->
-    <div class="copyright">
-        <p>Copyright ©
-            <script>document.write(new Date().getFullYear());</script> George Chen
-        </p>
-    </div>
+    <footer>
+        <p class="copyright">Copyright © George Chen 2024</p>
+    </footer>
 </body>
 
 </html>
