@@ -174,6 +174,18 @@ function videoTimer(video) {
     document.getElementById("progressBar").value = Math.round((video.currentTime / video.duration) * 100);
 }
 
+function setCookie(c_name, value, exdays) { var exdate = new Date(); exdate.setDate(exdate.getDate() + exdays); var c_value = escape(value) + ((exdays == null) ? "" : "; expires=" + exdate.toUTCString()); document.cookie = c_name + "=" + c_value; }
+
+function getCookie(c_name) { var c_value = document.cookie; var c_start = c_value.indexOf(" " + c_name + "="); if (c_start == -1) { c_start = c_value.indexOf(c_name + "="); } if (c_start == -1) { c_value = null; } else { c_start = c_value.indexOf("=", c_start) + 1; var c_end = c_value.indexOf(";", c_start); if (c_end == -1) { c_end = c_value.length; } c_value = unescape(c_value.substring(c_start, c_end)); } return c_value; }
+
+export function checkSession() {
+    var c = getCookie("visited");
+    if (c === "yes") {
+    } else {
+        alert("Welcome new visitor! \n\n Please note that this website is still under development, so features may or may not work properly. If you an encounter an error or have any feedback, please email support@georgescoding.com. \n\n Thanks for your understanding! \n\n - George");
+    }
+    setCookie("visited", "yes", 7); // expire in 1 year; or use null to never expire
+}
 
 // edits the template file for the project's individual page
 function editTemplate(project, num) {

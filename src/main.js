@@ -20,6 +20,7 @@ if (window.location.pathname == "/") {
         cards.forEach(element => element.addEventListener("click", function () { effects.flip(element) }));
     });
     import("./modules/load-data.js").then((loadText) => {
+        loadText.checkSession();
         loadText.loadHome();
         loadText.loadSummary(true);
         window.addEventListener("load", () => {
