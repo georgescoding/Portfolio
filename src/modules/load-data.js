@@ -6,10 +6,14 @@ import wait from './wait.js';
 
 
 
+
 //////////////////////////////////////////////
 ///// load data from json into HTML file /////
 //////////////////////////////////////////////
 
+
+// global variable to track which section the user is currently viewing
+var currentSection;
 
 
 // loads contents of the home page and adds event listeners
@@ -29,19 +33,35 @@ export function loadHome() {
 
 // scrolls to the next or previous section of main page
 function toggleSection(selector) {
-    var typing = document.getElementById("typing"),
+    var top = document.getElementById("top"),
         overview = document.getElementById("overview"),
         experience = document.getElementById("experience"),
         projects = document.getElementById("projects"),
         contact = document.getElementById("contact"),
-        top = document.getElementById("top"),
-        navbar = document.getElementById("navbar"),
-        elements = [typing, overview, experience, projects, contact];
+        elements = [top, overview, experience, projects, contact];
 
+    if (currentSection === 'top' && selector === 1) {
+        top.scrollIntoView();
+    }
+    else if (currentSection === 'contact' && selector === 2) {
+        contact.scrollIntoView();
+    }
+    else {
+        var index = getSectionNum(currentSection);
+        if (selector == 1) {
+            elements[index - 1].scrollIntoView();
+        }
+        else if (selector == 2) {
+            elements[index + 1].scrollIntoView();
+        }
+        else {
+            alert("Catastrophic failure, please contact support@georgescoding.com.")
+        }
+    }
 }
 
 
-
+// creates an intersection observer to see when the user's viewport has crossed into the next or previous section
 export function createObserver() {
     let observer;
     let options = {
@@ -49,6 +69,11 @@ export function createObserver() {
         rootMargin: "75% 0% 0%",
         threshold: 0.3
     };
+    let vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
+    if (vw < 750) {
+        options.threshold = 0.6;
+    }
+
     observer = new IntersectionObserver(handleIntersect, options);
     let target = document.querySelectorAll(".section")
     target.forEach(section => {
@@ -57,6 +82,7 @@ export function createObserver() {
 }
 
 
+// updates the navbar section style depending on the current section
 function handleIntersect(entries) {
     entries.forEach((entry) => {
         if (entry.intersectionRatio > 0) {
@@ -67,15 +93,18 @@ function handleIntersect(entries) {
             else {
                 href = "#" + entry.target.id;
             }
-            removeUnderline();
-            document.querySelector("a[href='" + href + "']").style.textDecoration = "underline"
+            removeStyle();
+            currentSection = href.slice(1);
+            document.querySelector("a[href='" + href + "']").style.backgroundColor = "rgb(62, 105, 121)";
+            document.querySelector("a[href='" + href + "']").style.borderRadius = "10px";
+            document.querySelector("a[href='" + href + "']").style.padding = "0px 10px";
         }
     })
 }
 
 
-// removes underline from navbar sections
-function removeUnderline() {
+// removes all styling from every navbar section
+function removeStyle() {
     var top = document.querySelector("a[href='#top']"),
         about = document.querySelector("a[href='#overview']"),
         work = document.querySelector("a[href='#experience']"),
@@ -84,18 +113,11 @@ function removeUnderline() {
         navbar = [top, about, work, projects, contact];
 
     navbar.forEach((section) => {
-        section.style.textDecoration = "none";
+        section.style.backgroundColor = "";
+        section.style.borderRadois = "";
+        section.style.padding = "";
     })
 }
-
-
-/* problem is that the handleIntersect function only triggers when there is a change in section, so if the section stays the same, it will not trigger
-    need something to remember the last section that is passed through to toggleSection */
-
-
-
-
-
 
 
 // loads each the project summary for each card
@@ -128,16 +150,43 @@ function getProjectNum(projectName) {
 }
 
 
+// returns the section's order in the parameter list
+function getSectionNum(sectionName) {
+    const sectionMap = new Map([
+        ["top", 0],
+        ["overview", 1],
+        ["experience", 2],
+        ["projects", 3],
+        ["contact", 4]
+    ]);
+
+    return sectionMap.get(sectionName);
+}
+
+
+// adds the video timer to the video
+function videoTimer(video) {
+    var mins = (video.duration / 60) | 0,
+        seconds = (video.duration - (mins * 60)) | 0,
+        currentMin = (video.currentTime / 60) | 0,
+        currentSeconds = ((video.currentTime - (currentMin * 60)) | 0).toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false })
+    document.getElementById("time").innerHTML = currentMin + ":" + currentSeconds + "/" + mins + ":" + seconds;
+    document.getElementById("progressBar").value = Math.round((video.currentTime / video.duration) * 100);
+}
+
+
 // edits the template file for the project's individual page
 function editTemplate(project, num) {
     var video = document.getElementById('video'),
         click = document.getElementById("clickable"),
-        playpause = document.getElementById("playbutton"),
+        playpause = document.getElementById("videoButtons"),
         refresh = document.getElementById("refresh"),
         fullscreen = document.getElementById("fullscreen"),
         backward = document.getElementById("backward"),
         forward = document.getElementById("forward"),
-        slideshow = document.getElementById("slideshowContainer");
+        slideshow = document.getElementById("slideshowContainer"),
+        progressBar = document.getElementById("progressContainer"),
+        time = document.getElementById("time");
 
     // add or remove clickable button
     if (num == 6) {
@@ -159,6 +208,8 @@ function editTemplate(project, num) {
         fullscreen.remove();
         backward.remove();
         forward.remove();
+        progressBar.remove();
+        time.remove();
 
         // add pictures to slideshow
         if (typeof project.pictures != 'undefined') {
@@ -201,6 +252,10 @@ function editTemplate(project, num) {
         source.setAttribute('src', project.video);
         source.setAttribute('type', 'video/mp4');
         video.appendChild(source);
+        video.onloadedmetadata = function () {
+            videoTimer(video);
+            video.addEventListener("timeupdate", () => videoTimer(video))
+        }
         return true
     }
 }

@@ -1,3 +1,5 @@
+// function that only runs code once an element has been loaded
+// is more smoother than waiting for the entire document to be loaded
 export default function wait(name, selector) {
     let nameObject;
     if (selector == 1) {
@@ -12,7 +14,7 @@ export default function wait(name, selector) {
             return resolve(document.getElementById(name));
         }
 
-        const observer = new MutationObserver(mutations => {
+        const observer = new MutationObserver(() => {
             if (document.getElementById(name)) {
                 observer.disconnect();
                 resolve(document.getElementById(name));

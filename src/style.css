@@ -169,7 +169,8 @@ html {
 .center #refresh,
 .center #fullscreen,
 .center #forward,
-.center #backward {
+.center #backward,
+.center #time {
     background-color: rgb(62, 105, 121);
     transition: all 0.3s ease-in-out;
     font-size: 40px;
@@ -181,11 +182,21 @@ html {
     animation-fill-mode: both;
 }
 
+.center #progressBar {
+    border-radius: 25px;
+    margin-top: 15px;
+    border: gray 1px solid;
+    height: 1vh;
+    width: 64vw;
+    background-color: rgb(62, 105, 121);
+}
+
 .center #play,
 .center #refresh,
 .center #fullscreen,
 .center #forward,
-.center #backward {
+.center #backward,
+.center #time {
     box-shadow: none;
 }
 
@@ -200,11 +211,16 @@ a button:hover,
     box-shadow: none;
 }
 
+.center #time {
+    font-size: 2vw;
+}
+
 #play,
 #refresh,
 #fullscreen,
 #forward,
-#backward {
+#backward,
+#time {
     margin-top: 15px;
     margin-bottom: 45px;
     margin-right: 15px;
@@ -212,7 +228,7 @@ a button:hover,
 
 video {
     position: relative;
-    width: auto;
+    width: 65vw;
     margin-top: 32px;
     border-radius: 25px;
     border: rgb(23, 39, 45) 10px solid;
@@ -225,6 +241,13 @@ video:hover {
 
 video::-webkit-media-controls {
     display: none !important;
+}
+
+
+progress[value]::-webkit-progress-value {
+    background-color: rgb(62, 105, 121);
+    position: relative;
+    transition: width 1s linear;
 }
 
 .picture {
@@ -380,5 +403,3 @@ body {
         opacity: 1
     }
 }
-
- 

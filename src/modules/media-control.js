@@ -25,7 +25,6 @@ export function videoAction(pressedKey) {
             backward();
             break;
     }
-
 }
 
 

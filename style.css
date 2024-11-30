@@ -516,11 +516,9 @@ cursor width is 1/2 border width */
 
 /* Contact and Socials*/
 #contact {
-    z-index: -1;
     text-align: left;
-    padding-left: 10%;
+    margin-left: 10%;
     margin-right: 10%;
-    height: 100%;
 }
 
 #contact h3 {
@@ -668,8 +666,7 @@ a:focus {
 
 
 .center {
-    display: flex;
-    overflow: visible;
+    display: block;
     justify-content: center
 }
 
@@ -689,8 +686,9 @@ button {
 .copyright {
     font-size: 1vw;
     text-align: center;
+    display: inline-block;
     width: 100%;
-    padding-top: 15vw;
+    padding-top: 30px;
     padding-bottom: 15px;
     bottom: 0;
 }

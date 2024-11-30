@@ -22,7 +22,10 @@ if (window.location.pathname == "/") {
     import("./modules/load-data.js").then((loadText) => {
         loadText.loadHome();
         loadText.loadSummary(true);
-        window.addEventListener("load", (event) => {
+        window.addEventListener("load", () => {
+            loadText.createObserver();
+        }, false);
+        window.addEventListener("resize", () => {
             loadText.createObserver();
         }, false);
     });
