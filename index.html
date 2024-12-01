@@ -29,7 +29,7 @@
     <!--Navigation Bar-->
     <div id="navbar">
         <a class="logo" href="#top"> <img src=assets/favicon.ico>GeorgesCoding</a>
-        <div class="right-header">
+        <div class="right-nav">
             <a href="#overview">About</a>
             <a href="#experience">Work</a>
             <div id="dropdown">
@@ -163,8 +163,7 @@
             </div>
 
         </div>
-        <div class="middle"> <a href="/projects"><button class="seeAll">See All</button></a>
-        </div>
+        <div class="middle"> <a href="/projects"><button class="seeAll">See All</button></a></div>
     </div>
 
 
@@ -185,30 +184,30 @@
 
                     <label for="message">Message:</label>
                     <textarea id="message" name="message" placeholder="Your Message" rows="5" aria-required="true"></textarea>
-                    <div class="g-recaptcha" data-sitekey="6LfUxMQpAAAAANxEA_tNe3RvqT_d0iclalzDqmz8" data-size="compact">
-
+                    <div id="recaptcha">
+                        <div class="g-recaptcha" data-sitekey="6LfUxMQpAAAAANxEA_tNe3RvqT_d0iclalzDqmz8"></div>
+                    </div>
+                    <button id="sendButton">Send</button>
+                    <button type="reset" form="form">Clear</button>
                 </form>
             </div>
-            <button id="sendButton">Send</button>
-            <button type="reset" form="form">Clear</button>
-        </div>
 
-        <div class="socials">
-            <h4>Say Hi!</h4>
-            <p class="icons">
-                <a href="https://github.com/GeorgesCoding" target="_blank" class="fa fa-github"></a>
-                <a href="mailto:george@georgescoding.com" class="fa fa-envelope"></a>
-                <a href="https://www.linkedin.com/in/georgechn" target="_blank" class="fa fa-linkedin"></a>
-            </p>
+            <div class="socials">
+                <div id="socials">
+                    <h4>Say Hi!</h4>
+                    <p class="icons">
+                        <a href="https://github.com/GeorgesCoding" target="_blank" class="fa fa-github"></a>&nbsp&nbsp
+                        <a href="mailto:george@georgescoding.com" class="fa fa-envelope"></a>&nbsp&nbsp
+                        <a href="https://www.linkedin.com/in/georgechn" target="_blank" class="fa fa-linkedin"></a>
+                    </p>
+                </div>
 
-            <div class="resume">
-                <h4>View My Resume</h4>
-                <div class="center"><a href="/assets/resume.pdf" target="_blank"><button>Click Me!</button></a>
+                <div class="resume">
+                    <h4>View My Resume</h4>
+                    <div id="resume"><a href="/assets/resume.pdf" target="_blank"><button>Click Me!</button></a></div>
                 </div>
             </div>
         </div>
-
-    </div>
     </div>
 
 

@@ -45,7 +45,7 @@ export function buttonPress() {
 
 
 // plays video
-function play() {
+export function play() {
     var video = document.getElementById('video'),
         button = document.getElementById('play');
 

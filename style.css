@@ -95,7 +95,7 @@ body {
     margin-bottom: 0.2vw;
 }
 
-.right-header {
+.right-nav {
     float: right;
     font-size: 1.5vw;
     margin-right: 1%;
@@ -115,7 +115,7 @@ body {
     transition: color 0.4s ease-out;
 }
 
-.right-header a {
+.right-nav a {
     display: inline-block;
     list-style: none;
     margin: 0.5vw 1.25vw;
@@ -131,7 +131,7 @@ body {
     color: rgb(62, 105, 121);
 }
 
-.right-header a:hover {
+.right-nav a:hover {
     color: rgb(62, 105, 121);
 }
 
@@ -537,10 +537,11 @@ cursor width is 1/2 border width */
 
 #contact h4 {
     font-size: 2vw;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 25px 25px 0 0;
-    padding: 0.8vw 0px;
-    vertical-align: middle;
+    height: 3.5vw;
     border-bottom: 0.25vw lightgray solid;
 }
 
@@ -601,7 +602,10 @@ textarea {
     background-color: rgb(62, 105, 121);
     font-size: 1.9vw;
     padding: 0.65vw 1.7vw;
-    margin-bottom: 2vw;
+    margin-bottom: 1vw;
+}
+
+.form button {
     margin-left: 2vw;
 }
 
@@ -611,10 +615,7 @@ textarea {
     position: relative;
 }
 
-.g-recaptcha {
-    margin-left: 2vw;
-    margin-bottom: 1vw;
-}
+
 
 .grid .socials {
     width: auto;
@@ -634,19 +635,23 @@ a:focus {
     text-decoration: none;
     font-size: 3.5vw;
     transition: all 0.3s linear;
-    height: 32px;
-    margin-top: 25px;
     align-content: center;
-    margin-right: 20px;
 }
 
 .icons a:hover {
     transform: translate(0px, -10px);
 }
 
+#socials {
+    padding-bottom: 8vw;
+}
+
 .socials .icons {
-    text-align: center;
-    padding-bottom: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 7vw;
+    width: 100%;
 }
 
 .socials {
@@ -654,21 +659,31 @@ a:focus {
     background-color: rgb(62, 105, 121);
     border-radius: 25px;
     width: 30%;
-    height: 22%;
+    height: 11vw;
 }
+
+#resume {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 7vw;
+}
+
 
 .resume {
     background-color: rgb(62, 105, 121);
     border-radius: 25px;
-    height: 110%;
-    
+    height: 11vw;
+}
+
+#recaptcha {
+    margin-left: 2vw;
+    margin-bottom: 2vw;
+    height: 5vw;
+    width: 20vw;
 }
 
 
-.center {
-    display: block;
-    justify-content: center
-}
 
 button {
     border: 0.1vw rgb(32, 32, 32) solid;

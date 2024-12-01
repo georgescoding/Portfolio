@@ -10,8 +10,6 @@ if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').match
 ///// dynamically load modules depending on the current directory /////
 ///////////////////////////////////////////////////////////////////////
 
-
-
 // root directory
 if (window.location.pathname == "/") {
     import("./modules/effects.js").then((effects) => {

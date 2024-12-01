@@ -16,7 +16,7 @@ import wait from './wait.js';
 var currentSection;
 
 
-// loads contents of the home page and adds event listeners
+// loads contents of the home page, adds event listeners and rescales recaptcha 
 export function loadHome() {
     document.getElementById("overviewText").innerHTML = home.overview;
     document.getElementById("workText").innerHTML = home.plangroup;
@@ -28,6 +28,11 @@ export function loadHome() {
 
     prev.addEventListener("click", function () { toggleSection(1) })
     next.addEventListener("click", function () { toggleSection(2) })
+
+    wait(".g-recaptcha", 2).then(() => {
+        scaleCaptcha();
+        window.addEventListener('resize', () => { scaleCaptcha() });
+    });
 }
 
 
@@ -286,12 +291,14 @@ export async function loadProject(projectName) {
         document.getElementById("github").href = project.github;
         document.getElementById("github").style.fontSize = "3vw";
         document.getElementById("text").innerHTML = project.description;
+        var video = document.getElementById("video");
 
         // add event listeners to video elements
         if (editTemplate(project, num)) {
             import("./media-control.js").then((control) => {
                 control.buttonPress()
                 window.addEventListener("keydown", (e) => control.videoAction(e.key));
+                video.addEventListener("click", () => control.play())
             });
         }
         else { // add event llisteners to slideshow elements and create the slideshow
@@ -301,4 +308,16 @@ export async function loadProject(projectName) {
             });
         }
     });
+}
+
+
+// resizes recaptcha 
+function scaleCaptcha() {
+    var width = document.getElementById("recaptcha").offsetWidth,
+        scale = width / 304,
+        recaptcha = document.querySelector(".g-recaptcha");
+
+    recaptcha.style.transform = 'scale(' + scale + ')';
+    recaptcha.style.webkitTransform = 'scale(' + scale + ')';
+    recaptcha.style.transformOrigin = '0 0';
 }
