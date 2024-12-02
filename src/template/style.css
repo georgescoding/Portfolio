@@ -16,10 +16,6 @@ html {
     position: relative;
 }
 
-#content {
-    height: 100%;
-    width: 100%;
-}
 
 /* Navigation Bar */
 #navbar {
@@ -88,6 +84,10 @@ html {
 
 #dropdown {
     height: 0;
+}
+
+#dropdown:hover {
+    height: 100%;
 }
 
 #dropdownContent {

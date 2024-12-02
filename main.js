@@ -12,40 +12,41 @@ if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').match
 
 // root directory
 if (window.location.pathname == "/") {
-    import("./modules/effects.js").then((effects) => {
+    import("./src/modules/effects.js").then((effects) => {
         effects.typewriter();
         let cards = document.querySelectorAll(".card");
         cards.forEach(element => element.addEventListener("click", function () { effects.flip(element) }));
     });
-    import("./modules/load-data.js").then((loadText) => {
-        loadText.checkSession();
-        loadText.loadHome();
-        loadText.loadSummary(true);
+    import("./src/modules/load-data.js").then((load) => {
+        load.checkSession();
+        load.home();
+        load.summary(true);
         window.addEventListener("load", () => {
-            loadText.createObserver();
+            load.observer();
         }, false);
         window.addEventListener("resize", () => {
-            loadText.createObserver();
+            load.observer();
         }, false);
     });
-    import("./modules/send-email.js").then((email) => {
+    import("./src/modules/send-email.js").then((email) => {
         let button = document.getElementById("sendButton");
         button.addEventListener("click", function () { email.validate() });
     });
 }
 // projects directory
 else if (window.location.pathname == "/projects") {
-    import("./modules/load-data.js").then((loadText) => {
-        loadText.loadSummary(false);
+    import("./src/modules/load-data.js").then((load) => {
+        load.summary(false);
     });
-    import("./modules/effects.js").then((effects) => {
+    import("./src/modules/effects.js").then((effects) => {
         let cards = document.querySelectorAll(".card");
         cards.forEach(element => element.addEventListener("click", function () { effects.flip(element) }));
     });
 }
 // individual project directory
 else if (window.location.pathname.includes("/projects/")) {
-    import("./modules/load-data.js").then((load) => {
-        load.loadProject(window.location.pathname);
+    import("./src/modules/load-data.js").then((load) => {
+        load.template()
+        load.project(window.location.pathname);
     });
 }

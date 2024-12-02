@@ -1,6 +1,6 @@
 import param from '../data/project-param.json' with {type: "json"};
-import summary from '../data/project-summary.json' with {type: "json"};
-import home from '../data/home-text.json' with {type: "json"};
+import projectSummary from '../data/project-summary.json' with {type: "json"};
+import homePage from '../data/home-text.json' with {type: "json"};
 import wait from './wait.js';
 
 
@@ -17,11 +17,11 @@ var currentSection;
 
 
 // loads contents of the home page, adds event listeners and rescales recaptcha 
-export function loadHome() {
-    document.getElementById("overviewText").innerHTML = home.overview;
-    document.getElementById("workText").innerHTML = home.plangroup;
-    document.getElementById("marqueeText").innerHTML = home.marqueeText;
-    document.getElementById("marqueeText2").innerHTML += home.marqueeText;
+export function home() {
+    document.getElementById("overviewText").innerHTML = homePage.overview;
+    document.getElementById("workText").innerHTML = homePage.plangroup;
+    document.getElementById("marqueeText").innerHTML = homePage.marqueeText;
+    document.getElementById("marqueeText2").innerHTML += homePage.marqueeText;
 
     var prev = document.getElementById("prevSection"),
         next = document.getElementById("nextSection");
@@ -67,7 +67,7 @@ function toggleSection(selector) {
 
 
 // creates an intersection observer to see when the user's viewport has crossed into the next or previous section
-export function createObserver() {
+export function observer() {
     let observer;
     let options = {
         root: null,
@@ -147,16 +147,16 @@ function revealSection(currentSection) {
 
 
 // loads each the project summary for each card
-export function loadSummary(mainPage) {
-    document.getElementById("chessText").innerHTML += summary.chess;
-    document.getElementById("breathalyzerText").innerHTML += summary.breathalyzer;
-    document.getElementById("portfolioText").innerHTML += summary.portfolio;
-    document.getElementById("blackjackText").innerHTML += summary.blackjack;
-    document.getElementById("sensorText").innerHTML += summary.pHsensor;
-    document.getElementById("minesweeperText").innerHTML += summary.minesweeper;
+export function summary(mainPage) {
+    document.getElementById("chessText").innerHTML += projectSummary.chess;
+    document.getElementById("breathalyzerText").innerHTML += projectSummary.breathalyzer;
+    document.getElementById("portfolioText").innerHTML += projectSummary.portfolio;
+    document.getElementById("blackjackText").innerHTML += projectSummary.blackjack;
+    document.getElementById("sensorText").innerHTML += projectSummary.pHsensor;
+    document.getElementById("minesweeperText").innerHTML += projectSummary.minesweeper;
 
     if (!mainPage) {
-        document.getElementById("calculatorText").innerHTML += summary.calculator;
+        document.getElementById("calculatorText").innerHTML += projectSummary.calculator;
     }
 }
 
@@ -299,8 +299,27 @@ function editTemplate(project, num) {
 }
 
 
+// loads template html into individual project page using an XHL request
+export function template() {
+    var request = new XMLHttpRequest();
+
+    request.open('GET', '../src/template', true);
+
+    request.onload = function () {
+        if (request.status >= 200 && request.status < 400) {
+            var text = request.responseText;
+
+            document.querySelector('#content').innerHTML = text;
+        }
+    };
+
+    request.send();
+}
+
+
 // adds text and media into template file
-export async function loadProject(projectName) {
+export async function project(projectName) {
+
     let num = getProjectNum(projectName);
     const projectParam = [param.chess, param.breathalyzer, param.blackjack, param.calculator, param.minesweeper, param.pHsensor, param.portfolio];
     let project = projectParam[num];
