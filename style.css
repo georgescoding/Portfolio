@@ -140,10 +140,7 @@ body {
     transition: color 0.4s ease-out;
 }
 
-#navbar a:hover {
-    color: rgb(62, 105, 121);
-}
-
+#navbar a:hover,
 .right-nav a:hover {
     color: rgb(62, 105, 121);
 }

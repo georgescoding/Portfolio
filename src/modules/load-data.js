@@ -257,7 +257,7 @@ function editTemplate(project, num) {
                 let fade = document.createElement("div"),
                     number = document.createElement("div"),
                     image = document.createElement("img"),
-                    caption = document.createElement("img");
+                    caption = document.createElement("div");
 
                 fade.setAttribute("class", "slides fade");
                 number.setAttribute("class", "number");

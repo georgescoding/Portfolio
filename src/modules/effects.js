@@ -52,5 +52,5 @@ export function slideshow(n) {
     for (let i = 0; i < pictures.length; i++) {
         pictures[i].style.display = "none";
     }
-    pictures[slideIndex - 1].style.display = "block";
+    pictures[slideIndex - 1].style.display = "inline-block";
 }
