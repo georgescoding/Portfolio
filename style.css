@@ -65,7 +65,7 @@ body {
 
 @keyframes fadeIn {
     0% {
-        transform: translateY(100%);
+        transform: translateY(5%);
         opacity: 0;
     }
 
@@ -73,6 +73,19 @@ body {
         transform: translateY(0%);
         opacity: 1;
     }
+}
+
+#overview,
+#experience,
+#projects,
+#contact {
+    visibility: hidden;
+}
+
+.section.fade {
+    animation: fadeIn 0.75s linear;
+    animation-delay: 0.1s;
+    animation-fill-mode: both;
 }
 
 /* Navigation Bar */

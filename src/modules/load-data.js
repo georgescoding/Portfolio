@@ -99,10 +99,13 @@ function handleIntersect(entries) {
                 href = "#" + entry.target.id;
             }
             removeStyle();
+            revealSection(entry.target);
+
             currentSection = href.slice(1);
             document.querySelector("a[href='" + href + "']").style.backgroundColor = "rgb(62, 105, 121)";
             document.querySelector("a[href='" + href + "']").style.borderRadius = "10px";
             document.querySelector("a[href='" + href + "']").style.padding = "0px 10px";
+
         }
     })
 }
@@ -122,6 +125,24 @@ function removeStyle() {
         section.style.borderRadois = "";
         section.style.padding = "";
     })
+}
+
+
+function revealSection(currentSection) {
+    let sections = document.querySelectorAll(".section");
+    sections = [].slice.call(sections, 2)
+
+    sections.forEach((section) => {
+        if (section != currentSection) {
+            section.classList.remove("fade");
+            section.style.visibility = "hidden";
+        }
+    })
+
+    if ((!currentSection.classList.contains("fade")) && currentSection.id != "typing" && currentSection.id != "marquee") {
+        currentSection.classList.add("fade")
+        currentSection.style.visibility = "visible";
+    }
 }
 
 
