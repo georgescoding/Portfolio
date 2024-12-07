@@ -156,7 +156,6 @@ html {
     background-color: rgb(23, 39, 45);
     border-radius: 25px;
     padding: 1.5vw 2vw 1.5vw 2vw;
-
 }
 
 .center a button,
@@ -183,7 +182,6 @@ html {
     display: flex;
     overflow: visible;
     justify-content: center;
-
 }
 
 .center #progressBar {
