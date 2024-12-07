@@ -43,7 +43,7 @@ function toggleSection(selector) {
         experience = document.getElementById("experience"),
         projects = document.getElementById("projects"),
         contact = document.getElementById("contact"),
-        elements = [top, overview, experience, projects, contact];
+        sections = [top, overview, experience, projects, contact];
 
     if (currentSection === 'top' && selector === 1) {
         top.scrollIntoView();
@@ -54,10 +54,10 @@ function toggleSection(selector) {
     else {
         var index = getSectionNum(currentSection);
         if (selector == 1) {
-            elements[index - 1].scrollIntoView();
+            sections[index - 1].scrollIntoView();
         }
         else if (selector == 2) {
-            elements[index + 1].scrollIntoView();
+            sections[index + 1].scrollIntoView();
         }
         else {
             alert("Catastrophic failure, please contact support@georgescoding.com.")
@@ -105,7 +105,6 @@ function handleIntersect(entries) {
             document.querySelector("a[href='" + href + "']").style.backgroundColor = "rgb(62, 105, 121)";
             document.querySelector("a[href='" + href + "']").style.borderRadius = "10px";
             document.querySelector("a[href='" + href + "']").style.padding = "0px 10px";
-
         }
     })
 }
@@ -195,10 +194,11 @@ function videoTimer(video) {
     var mins = (video.duration / 60) | 0,
         seconds = (video.duration - (mins * 60)) | 0,
         currentMin = (video.currentTime / 60) | 0,
-        currentSeconds = ((video.currentTime - (currentMin * 60)) | 0).toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false })
+        currentSeconds = ((video.currentTime - (currentMin * 60)) | 0).toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false });
     document.getElementById("time").innerHTML = currentMin + ":" + currentSeconds + "/" + mins + ":" + seconds;
     document.getElementById("progressBar").value = Math.round((video.currentTime / video.duration) * 100);
 }
+
 
 function setCookie(c_name, value, exdays) { var exdate = new Date(); exdate.setDate(exdate.getDate() + exdays); var c_value = escape(value) + ((exdays == null) ? "" : "; expires=" + exdate.toUTCString()); document.cookie = c_name + "=" + c_value; }
 
@@ -251,36 +251,51 @@ function editTemplate(project, num) {
 
         // add pictures to slideshow
         if (typeof project.pictures != 'undefined') {
-            var length = project.pictures.length;
+            var length = project.pictures.length,
+                slides = [];
 
             for (let i = 0; i < length; i++) {
                 let fade = document.createElement("div"),
-                    number = document.createElement("div"),
-                    image = document.createElement("img"),
-                    caption = document.createElement("div");
+                    image = document.createElement("img");
 
                 fade.setAttribute("class", "slides fade");
-                number.setAttribute("class", "number");
+                fade.setAttribute("value", i)
                 image.setAttribute("src", project.pictures[i]);
-                caption.setAttribute("class", "text");
-                caption.innerHTML = project.captions[i];
 
-                fade.appendChild(number);
                 fade.appendChild(image);
-                fade.appendChild(caption);
                 slideshow.appendChild(fade);
+
+                slides.push(fade);
             }
             let prev = document.createElement("a"),
-                next = document.createElement("a");
+                next = document.createElement("a"),
+                number = document.createElement("div"),
+                caption = document.createElement("div"),
+                buttonContainer = document.createElement("div"),
+                captionContainer = document.createElement("div");
 
-            prev.setAttribute("class", "prev");
-            next.setAttribute("class", "next");
+            prev.setAttribute("id", "prev");
+            prev.setAttribute("title", "Previous picture")
+            next.setAttribute("id", "next");
+            next.setAttribute("title", "Next picture")
+
+            number.setAttribute("id", "number");
+            caption.setAttribute("id", "caption");
+
+            buttonContainer.setAttribute("class", "center");
+            captionContainer.setAttribute("class", "center")
 
             prev.innerHTML = "&#10094;";
             next.innerHTML = "&#10095;";
 
-            slideshow.appendChild(prev);
-            slideshow.appendChild(next);
+            buttonContainer.appendChild(prev);
+            buttonContainer.appendChild(number);
+            buttonContainer.appendChild(next);
+            captionContainer.appendChild(caption)
+
+            slideshow.appendChild(captionContainer)
+            slideshow.appendChild(buttonContainer);
+
             return false
         }
     }
@@ -329,7 +344,6 @@ export async function project(projectName) {
         document.getElementById("projectName").innerHTML = project.name;
         document.getElementById("tools").innerHTML += project.tools;
         document.getElementById("github").href = project.github;
-        document.getElementById("github").style.fontSize = "3vw";
         document.getElementById("text").innerHTML = project.description;
         var video = document.getElementById("video");
 
@@ -341,11 +355,11 @@ export async function project(projectName) {
                 video.addEventListener("click", () => control.play())
             });
         }
-        else { // add event llisteners to slideshow elements and create the slideshow
+        else { // add event llisteners to slideshow elements and initializes the slideshow
             import("./effects.js").then((effects) => {
-                effects.addListeners()
-                effects.slideshow(1);
-            });
+                effects.addListeners(project.captions)
+                effects.slideshow(1, project.captions);
+            })
         }
     });
 }

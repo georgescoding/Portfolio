@@ -114,7 +114,7 @@ html {
 }
 
 #see-all {
-    padding-left: 2.5vw;
+    padding-left: 2.3vw;
     align-items: center;
 }
 
@@ -131,31 +131,32 @@ html {
 }
 
 .project h3 {
-    padding-top: 20px;
+    padding-top: 2vh;
     font-size: 4.25vw;
     text-decoration: underline;
 }
 
 .project h4 {
-    padding-top: 20px;
+    padding-top: 2vh;
     font-size: 2.125vw;
 }
 
 .project h4 a {
     overflow: visible;
     padding: none;
-    font-size: 0.53125vw;
     transition: all 0.3s ease-in-out;
+    font-size: 2.25vw;
 }
 
-.project #text {
+.project #text,
+#caption {
     font-size: 1.3vw;
     width: auto;
     line-height: 1.5;
     background-color: rgb(23, 39, 45);
     border-radius: 25px;
     padding: 1.5vw 2vw 1.5vw 2vw;
-    margin: 25px 0px;
+
 }
 
 .center a button,
@@ -164,16 +165,25 @@ html {
 .center #fullscreen,
 .center #forward,
 .center #backward,
-.center #time {
+.center #time,
+#prev,
+#next,
+#number {
     background-color: rgb(62, 105, 121);
     transition: all 0.3s ease-in-out;
     font-size: 1.75vw;
     color: white;
-    padding: 0.75vw 1.5vw;
+    padding: 1vw 2.25vw;
     text-decoration: none;
     cursor: pointer;
-    box-shadow: 10px 5px 0px rgb(211, 211, 211);
     animation-fill-mode: both;
+}
+
+.center {
+    display: flex;
+    overflow: visible;
+    justify-content: center;
+
 }
 
 .center #progressBar {
@@ -211,19 +221,22 @@ a button:hover,
 #forward,
 #backward,
 #time {
-    margin-top: 15px;
-    margin-bottom: 45px;
-    margin-right: 15px;
+    margin-top: 2vw;
+    margin-bottom: 6vh;
+    margin-right: 2vw;
 }
+
 
 video {
     position: relative;
-    width: 65vw;
-    margin-top: 32px;
+    object-fit: fill;
+    margin-top: 3vh;
     border-radius: 25px;
     border: rgb(23, 39, 45) 10px solid;
-    background-color: rgb(23, 39, 45);
+    max-height: 85vh;
+    max-width: 57vw;
 }
+
 
 video:hover {
     cursor: pointer;
@@ -251,7 +264,7 @@ a:focus {
 
 button,
 #play {
-    border: 2px rgb(32, 32, 32) solid;
+    border: 0.1vw rgb(32, 32, 32) solid;
     border-radius: 25px;
     transition: all 0.3s ease-in-out;
     color: white;
@@ -259,7 +272,7 @@ button,
     display: inline-block;
     cursor: pointer;
     animation-fill-mode: both;
-    box-shadow: 10px 5px 0px rgb(211, 211, 211);
+    box-shadow: 0.4vw 0.3vw 0px rgb(211, 211, 211);
 }
 
 /* Copyright */
@@ -268,7 +281,7 @@ button,
     text-align: center;
     display: inline-block;
     width: 100%;
-    padding-top: 30px;
+    padding-top: 5vh;
     padding-bottom: 15px;
     bottom: 0;
 }
@@ -305,70 +318,46 @@ body {
     align-items: center;
 }
 
+#button {
+    margin-top: 3vw;
+}
+
 .slides img {
-    width: 80%;
-    height: 85vh;
     border-radius: 25px;
     z-index: -1;
     display: inline-block;
     justify-content: center;
     align-items: center;
     border: rgb(62, 105, 121) 0.5vw solid;
+    max-height: 85vh;
+    max-width: 57vw;
 }
 
-.projectPic .center{
+.projectPic .center {
     width: min-content;
 }
 
 /* Next & previous buttons */
-.prev,
-.next {
+#prev,
+#next,
+#number {
+    margin-bottom: 20px;
     cursor: pointer;
-    position: absolute;
-    color: white;
-    font-weight: bold;
-    font-size: 2.5vw;
-    transition: 0.6s ease;
-    border-radius: 0 3px 3px 0;
-    user-select: none;
+    border-radius: 25px;
+    border: rgb(23, 39, 45) 0.3vw solid;
 }
 
-/* Position the "next button" to the right */
-.next {
-    right: auto;
+#number {
+    margin-left: 10px;
+    margin-right: 10px;
+    cursor: default;
 }
-
-.prev{
-    left: auto;
-}
-
-
 
 
 /* On hover, add a black background color with a little bit see-through */
-.prev:hover,
-.next:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-}
-
-/* Caption text */
-.text {
-    display: none;
-    color: #f2f2f2;
-    font-size: 1vw;
-    padding: 8px 12px;
-    bottom: 8px;
-    width: 100%;
-    text-align: center;
-}
-
-/* Number text (1/3 etc) */
-.number {
-    display: none;
-    color: #f2f2f2;
-    font-size: 12px;
-    padding: 8px 12px;
-    top: 0;
+#prev:hover,
+#next:hover {
+    background-color: rgb(23, 39, 45);
 }
 
 /* Fading animation */
@@ -385,4 +374,9 @@ body {
     to {
         opacity: 1
     }
+}
+
+#caption {
+    font-size: 1vw;
+    margin-bottom: 5px;
 }

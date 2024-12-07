@@ -19,16 +19,14 @@
             "/assets/pictures/breath-circuit.png",
             "/assets/pictures/breath-diagram.png",
             "/assets/pictures/breath-model.png",
-            "/assets/pictures/breath-log.jpg",
-            "/assets/pictures/breath-slope.png"
+            "/assets/pictures/breath-log.jpg"
         ],
         "captions": [
-            "one",
-            "two",
-            "three",
-            "four",
-            "five",
-            "six"
+            "Real life picture with components all connected",
+            "Simplified circuit diagram",
+            "Markup of CAD drawing for the breathalyzer case",
+            "CAD design of system with breadboard wiring",
+            "Calculation for concentration of blood alcohol percentage in air"
         ]
     },
     "blackjack": {
@@ -66,10 +64,10 @@
             "/assets/pictures/sensor-oldcad.png"
         ],
         "captions": [
-            "one",
-            "two",
-            "three",
-            "four"
+            "Real life picture with components all connected",
+            "Secondary picture without the pH probe attached",
+            "CAD design of waterproof case made in AutoCAD",
+            "Secondary angle of case"
         ]
     },
     "portfolio": {
