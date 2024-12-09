@@ -310,7 +310,7 @@ cursor width is 1/2 border width */
     padding-right: 10%;
     height: 100%;
     padding-left: 10%;
-    margin-bottom: 25%;
+    margin-bottom: 50vh;
 }
 
 #overview .box {
@@ -351,7 +351,7 @@ cursor width is 1/2 border width */
     display: flex;
     text-align: right;
     float: right;
-    margin-bottom: 25%;
+    margin-bottom: 50vh;
 }
 
 #experience h3 {
@@ -410,7 +410,7 @@ cursor width is 1/2 border width */
     z-index: -1;
     padding-right: 10%;
     padding-left: 10%;
-    margin-bottom: 25%;
+    margin-bottom: 50vh;
     height: 100vh;
     display: inline-block;
 }
@@ -438,6 +438,13 @@ cursor width is 1/2 border width */
     height: 75%;
     border-radius: 25px 25px 10px 10px;
     margin-top: 0.5vw;
+}
+
+#projectName {
+    height: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .card {
@@ -473,13 +480,12 @@ cursor width is 1/2 border width */
 .back {
     position: relative;
     transform: rotateY(180deg);
-    font-size: 2.25dvh;
+    font-size: 2.5dvh;
     border-radius: 25px;
     text-align: center;
     width: auto;
     height: 100%;
     margin: 3dvh;
-    overflow: visible;
     vertical-align: middle;
 }
 
@@ -487,7 +493,6 @@ cursor width is 1/2 border width */
     margin: none;
     position: absolute;
     bottom: 5dvh;
-    width: max-content;
     left: 50%;
     transform: translateX(-50%)
 }
@@ -499,6 +504,7 @@ cursor width is 1/2 border width */
 
 .middle {
     text-align: center;
+    position: relative;
 }
 
 #projects .seeAll {
@@ -521,6 +527,11 @@ cursor width is 1/2 border width */
     transform: translateY(2px);
     box-shadow: none;
     position: relative;
+}
+
+#icon {
+    font-size: 1.75vw;
+    vertical-align: middle;
 }
 
 
@@ -649,7 +660,7 @@ a:focus {
 }
 
 .icons a:hover {
-    transform: translate(0px, -10px);
+    transform: translate(0px, -1vw);
 }
 
 #socials {
@@ -693,8 +704,6 @@ a:focus {
     width: 20vw;
 }
 
-
-
 button {
     border: 0.1vw rgb(32, 32, 32) solid;
     border-radius: 25px;
@@ -716,4 +725,18 @@ button {
     padding-top: 30px;
     padding-bottom: 15px;
     bottom: 0;
+}
+
+body::-webkit-scrollbar {
+    width: 0.8em;
+}
+
+body::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: rgb(23, 39, 45);
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+    border-radius: 8px;
 }

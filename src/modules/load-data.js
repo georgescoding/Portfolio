@@ -36,6 +36,7 @@ export function home() {
 }
 
 
+
 // scrolls to the next or previous section of main page
 function toggleSection(selector) {
     var top = document.getElementById("top"),
@@ -75,8 +76,15 @@ export function observer() {
         threshold: 0.3
     };
     let vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
-    if (vw < 750) {
+    if (vw < 775) {
         options.threshold = 0.6;
+    }
+    else if (vw < 550) {
+        options.threshold = 0.7;
+    }
+    else if (vw < 480) { // about section to work section does not work
+        options.threshold = 0.1;
+        options.rootMargin = "100% 0% 0%";
     }
 
     observer = new IntersectionObserver(handleIntersect, options);
@@ -108,6 +116,16 @@ function handleIntersect(entries) {
         }
     })
 }
+
+
+
+/* 
+1. when vw gets too small while vh is large, each card in the projects grid gets too vertically long
+2. when the vw gets to small while vh is large, crossing from the about section to experience section has difficulties
+*/
+
+
+
 
 
 // removes all styling from every navbar section
@@ -147,6 +165,9 @@ function revealSection(currentSection) {
 
 // loads each the project summary for each card
 export function summary(mainPage) {
+    scaleProjects(mainPage);
+    window.addEventListener('resize', () => { scaleProjects(mainPage) });
+
     document.getElementById("chessText").innerHTML += projectSummary.chess;
     document.getElementById("breathalyzerText").innerHTML += projectSummary.breathalyzer;
     document.getElementById("portfolioText").innerHTML += projectSummary.portfolio;
@@ -364,6 +385,86 @@ export async function project(projectName) {
     });
 }
 
+
+
+
+
+function scaleProjects(mainPage) {
+    let vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0),
+        vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
+
+    var grid = document.querySelector(".grid"),
+        info = document.querySelectorAll(".info"),
+        icons = document.querySelectorAll("#icon"),
+        learnMore = document.querySelectorAll(".learnMore"),
+        chess = document.getElementById("chessText"),
+        breathalyzer = document.getElementById("breathalyzerText"),
+        portfolio = document.getElementById("portfolioText"),
+        blackjack = document.getElementById("blackjackText"),
+        sensor = document.getElementById("sensorText"),
+        minesweeper = document.getElementById("minesweeperText"),
+        projects = [chess, breathalyzer, portfolio, blackjack, sensor, minesweeper];
+
+    let rowTemplate = "",
+        height = "90vh";
+
+    if (!mainPage) {
+        projects.push(document.getElementById("calculatorText"));
+        rowTemplate = " 1fr";
+        height = "120vh"
+    }
+
+    if (vw < 750) {
+        grid.style.gridTemplateColumns = "1fr 1fr";
+        grid.style.gridTemplateRows = "1fr 1fr 1fr" + rowTemplate;
+        grid.style.height = "auto";
+    }
+    else {
+        if (vw > 1000) {
+            grid.style.height = height;
+        }
+        else {
+            document.getElementById("projects").style.height = "min-content"
+            grid.style.height = "auto";
+        }
+        grid.style.gridTemplateColumns = "1fr 1fr 1fr";
+        grid.style.gridTemplateRows = "1fr 1fr" + rowTemplate;
+    }
+    if (vw < 1060 || vh < 500) {
+        let percent = "65%";
+
+        if (vw > 750 && vw < 980) {
+            percent = "65%";
+        }
+
+        info.forEach((section) => {
+            section.style.height = percent;
+            section.style.width = "100%";
+        })
+        icons.forEach((icon) => {
+            icon.style.fontSize = "3vw";
+            icon.style.margin = "2vh";
+        })
+        learnMore.forEach((section) => {
+            section.style.fontSize = "1.5vw"
+        })
+        projects.forEach((section) => { section.style.visibility = "hidden" })
+    }
+    else {
+        info.forEach((section) => {
+            section.style.height = "auto";
+            section.style.width = "max-content";
+        })
+        icons.forEach((icon) => {
+            icon.style.fontSize = "1.75vw";
+            icon.style.margin = "";
+        })
+        learnMore.forEach((section) => {
+            section.style.fontSize = "1vw"
+        })
+        projects.forEach((section) => { section.style.visibility = "visible" })
+    }
+}
 
 // resizes recaptcha 
 function scaleCaptcha() {
