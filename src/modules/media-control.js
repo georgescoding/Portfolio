@@ -30,7 +30,7 @@ export function videoAction(pressedKey) {
 
 // adds event listeners to the video buttons
 export function buttonPress() {
-    var play = document.getElementById("play"),
+    let play = document.getElementById("play"),
         backward = document.getElementById('backward'),
         forward = document.getElementById('forward'),
         refresh = document.getElementById('refresh'),
@@ -46,7 +46,7 @@ export function buttonPress() {
 
 // plays video
 export function play() {
-    var video = document.getElementById('video'),
+    let video = document.getElementById('video'),
         button = document.getElementById('play');
 
     if (video.paused == true) {
@@ -62,7 +62,7 @@ export function play() {
 
 // restarts the video from the beginning
 function restart() {
-    var video = document.getElementById('video'),
+    let video = document.getElementById('video'),
         button = document.getElementById('play');
 
     video.currentTime = 0;
@@ -73,9 +73,9 @@ function restart() {
 
 // toggles fullscreen mode
 function fullscreen() {
-    var video = document.getElementById("video");
+    let video = document.getElementById("video");
 
-    var isInFullScreen = (document.fullscreenElement && document.fullscreenElement !== null) ||
+    let isInFullScreen = (document.fullscreenElement && document.fullscreenElement !== null) ||
         (document.webkitFullscreenElement && document.webkitFullscreenElement !== null) ||
         (document.mozFullScreenElement && document.mozFullScreenElement !== null) ||
         (document.msFullscreenElement && document.msFullscreenElement !== null);
@@ -106,13 +106,13 @@ function fullscreen() {
 
 // seeks the video back 10 seconds
 function backward() {
-    var video = document.getElementById('video');
+    let video = document.getElementById('video');
     video.currentTime -= 10;
 }
 
 
 // seeks the video forward 10 seconds
 function forward() {
-    var video = document.getElementById('video');
+    let video = document.getElementById('video');
     video.currentTime += 10;
 }

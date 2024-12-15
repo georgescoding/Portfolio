@@ -6,9 +6,9 @@ import wait from './wait.js';
 
 
 
-
 //////////////////////////////////////////////
 ///// load data from json into HTML file /////
+///// dynamically styles HTML files //////////
 //////////////////////////////////////////////
 
 
@@ -18,16 +18,35 @@ var currentSection;
 
 // loads contents of the home page, adds event listeners and rescales recaptcha 
 export function home() {
+
+    setHeight();
+    styleHome();
+
+    let resizeSocials = new ResizeObserver(() => {
+        scaleSocials();
+    });
+
     document.getElementById("overviewText").innerHTML = homePage.overview;
     document.getElementById("workText").innerHTML = homePage.plangroup;
     document.getElementById("marqueeText").innerHTML = homePage.marqueeText;
     document.getElementById("marqueeText2").innerHTML += homePage.marqueeText;
 
-    var prev = document.getElementById("prevSection"),
-        next = document.getElementById("nextSection");
+    let prev = document.getElementById("prevSection"),
+        next = document.getElementById("nextSection"),
+        form = document.querySelector(".form");
 
     prev.addEventListener("click", function () { toggleSection(1) })
     next.addEventListener("click", function () { toggleSection(2) })
+
+    wait(".form", 2).then(() => {
+        scaleSocials();
+        resizeSocials.observe(form);
+    });
+
+    wait("navbar", 1).then(() => {
+        window.addEventListener("resize", () => { setHeight() });
+        window.addEventListener("resize", () => { styleHome() });
+    });
 
     wait(".g-recaptcha", 2).then(() => {
         scaleCaptcha();
@@ -36,24 +55,45 @@ export function home() {
 }
 
 
+// switches css to suit landscape or portrait mode
+function styleHome() {
+    let viewport = document.documentElement.getBoundingClientRect(),
+        navbarHeight = document.getElementById("navbar").getBoundingClientRect().height,
+        vh = viewport.height - navbarHeight,
+        vw = viewport.width,
+        overviewText = document.getElementById("overviewText"),
+        workText = document.getElementById("workText");
+
+    if (vw >= vh) { // landscape
+        let flexbox = document.querySelectorAll(".flexbox");
+        flexbox.forEach((box) => { box.style.display = "flex" })
+
+
+    }
+    else {//portrait
+        overviewText.style.width = "100%";
+    }
+}
+
+
+
 
 // scrolls to the next or previous section of main page
 function toggleSection(selector) {
-    var top = document.getElementById("top"),
-        overview = document.getElementById("overview"),
-        experience = document.getElementById("experience"),
-        projects = document.getElementById("projects"),
-        contact = document.getElementById("contact"),
-        sections = [top, overview, experience, projects, contact];
+
+    let sections = document.querySelectorAll(".section");
+    sections = Array.from(sections);
 
     if (currentSection === 'top' && selector === 1) {
-        top.scrollIntoView();
+        document.getElementById("top").scrollIntoView();
     }
     else if (currentSection === 'contact' && selector === 2) {
-        contact.scrollIntoView();
+        document.getElementById("contact").scrollIntoView();
     }
     else {
-        var index = getSectionNum(currentSection);
+
+        let index = getSectionNum(currentSection);
+
         if (selector == 1) {
             sections[index - 1].scrollIntoView();
         }
@@ -68,27 +108,20 @@ function toggleSection(selector) {
 
 
 // creates an intersection observer to see when the user's viewport has crossed into the next or previous section
+// accounts for height offset from navbar
 export function observer() {
-    let observer;
-    let options = {
-        root: null,
-        rootMargin: "75% 0% 0%",
-        threshold: 0.3
-    };
-    let vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
-    if (vw < 775) {
-        options.threshold = 0.6;
-    }
-    else if (vw < 550) {
-        options.threshold = 0.7;
-    }
-    else if (vw < 480) { // about section to work section does not work
-        options.threshold = 0.1;
-        options.rootMargin = "100% 0% 0%";
-    }
+    let navbarHeight = navbar.getBoundingClientRect().height.toString(),
+        marginHeight = navbarHeight + "px 0px 0px",
+        observer,
+        options = {
+            root: null,
+            rootMargin: marginHeight,
+            threshold: 0.5
+        },
+        target = document.querySelectorAll(".section");
 
     observer = new IntersectionObserver(handleIntersect, options);
-    let target = document.querySelectorAll(".section")
+
     target.forEach(section => {
         observer.observe(section)
     })
@@ -100,7 +133,7 @@ function handleIntersect(entries) {
     entries.forEach((entry) => {
         if (entry.intersectionRatio > 0) {
             let href;
-            if (entry.target.id === "typing" || entry.target.id === "marquee") {
+            if (entry.target.id === "welcomePage") {
                 href = "#top";
             }
             else {
@@ -110,6 +143,7 @@ function handleIntersect(entries) {
             revealSection(entry.target);
 
             currentSection = href.slice(1);
+
             document.querySelector("a[href='" + href + "']").style.backgroundColor = "rgb(62, 105, 121)";
             document.querySelector("a[href='" + href + "']").style.borderRadius = "10px";
             document.querySelector("a[href='" + href + "']").style.padding = "0px 10px";
@@ -119,18 +153,33 @@ function handleIntersect(entries) {
 
 
 
-/* 
-1. when vw gets too small while vh is large, each card in the projects grid gets too vertically long
-2. when the vw gets to small while vh is large, crossing from the about section to experience section has difficulties
-*/
+// make each section fit exactly the entire pages
+function setHeight() {
+    let navbar = document.getElementById("navbar"),
+        centerVertical = document.querySelectorAll(".centerVertical"),
+        sections = document.querySelectorAll(".section");
 
+    let navbarHeight = navbar.getBoundingClientRect().height,
+        vh = Math.max(document.documentElement.getBoundingClientRect().height || 0, window.innerHeight || 0),
+        sectionHeight = vh - navbarHeight,
+        sectionHeightCSS = sectionHeight.toString() + "px",
+        height = centerVertical[0].getBoundingClientRect().height;
 
+    centerVertical.forEach((section) => section.style.top = "0px")
+    centerVertical[0].style.top = ((sectionHeight - height) / 2).toString() + "px";
 
+    sections = Array.from(sections)
+    sections.splice(3)
+
+    sections.forEach((section) => { section.style.height = sectionHeightCSS })
+
+    document.querySelector(".page").style.visibility = "visible"
+}
 
 
 // removes all styling from every navbar section
 function removeStyle() {
-    var top = document.querySelector("a[href='#top']"),
+    let top = document.querySelector("a[href='#top']"),
         about = document.querySelector("a[href='#overview']"),
         work = document.querySelector("a[href='#experience']"),
         projects = document.querySelector("a[href='#projects']"),
@@ -147,7 +196,7 @@ function removeStyle() {
 
 function revealSection(currentSection) {
     let sections = document.querySelectorAll(".section");
-    sections = [].slice.call(sections, 2)
+    sections = [].slice.call(sections, 1)
 
     sections.forEach((section) => {
         if (section != currentSection) {
@@ -156,10 +205,10 @@ function revealSection(currentSection) {
         }
     })
 
-    if ((!currentSection.classList.contains("fade")) && currentSection.id != "typing" && currentSection.id != "marquee") {
+    if (currentSection.id != "welcomePage") {
         currentSection.classList.add("fade")
-        currentSection.style.visibility = "visible";
     }
+    currentSection.style.visibility = "visible";
 }
 
 
@@ -212,7 +261,7 @@ function getSectionNum(sectionName) {
 
 // adds the video timer to the video
 function videoTimer(video) {
-    var mins = (video.duration / 60) | 0,
+    let mins = (video.duration / 60) | 0,
         seconds = (video.duration - (mins * 60)) | 0,
         currentMin = (video.currentTime / 60) | 0,
         currentSeconds = ((video.currentTime - (currentMin * 60)) | 0).toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false });
@@ -236,7 +285,7 @@ export function checkSession() {
 
 // edits the template file for the project's individual page
 function editTemplate(project, num) {
-    var video = document.getElementById('video'),
+    let video = document.getElementById('video'),
         click = document.getElementById("clickable"),
         playpause = document.getElementById("videoButtons"),
         refresh = document.getElementById("refresh"),
@@ -272,7 +321,7 @@ function editTemplate(project, num) {
 
         // add pictures to slideshow
         if (typeof project.pictures != 'undefined') {
-            var length = project.pictures.length,
+            let length = project.pictures.length,
                 slides = [];
 
             for (let i = 0; i < length; i++) {
@@ -322,7 +371,7 @@ function editTemplate(project, num) {
     }
     else { // add videos to template
         slideshow.remove();
-        var source = document.createElement('source');
+        let source = document.createElement('source');
         source.setAttribute('src', project.video);
         source.setAttribute('type', 'video/mp4');
         video.appendChild(source);
@@ -337,13 +386,13 @@ function editTemplate(project, num) {
 
 // loads template html into individual project page using an XHL request
 export function template() {
-    var request = new XMLHttpRequest();
+    let request = new XMLHttpRequest();
 
     request.open('GET', '../src/template', true);
 
     request.onload = function () {
         if (request.status >= 200 && request.status < 400) {
-            var text = request.responseText;
+            let text = request.responseText;
 
             document.querySelector('#content').innerHTML = text;
         }
@@ -366,7 +415,7 @@ export async function project(projectName) {
         document.getElementById("tools").innerHTML += project.tools;
         document.getElementById("github").href = project.github;
         document.getElementById("text").innerHTML = project.description;
-        var video = document.getElementById("video");
+        let video = document.getElementById("video");
 
         // add event listeners to video elements
         if (editTemplate(project, num)) {
@@ -393,7 +442,7 @@ function scaleProjects(mainPage) {
     let vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0),
         vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
 
-    var grid = document.querySelector(".grid"),
+    let grid = document.querySelector(".grid"),
         info = document.querySelectorAll(".info"),
         icons = document.querySelectorAll("#icon"),
         learnMore = document.querySelectorAll(".learnMore"),
@@ -468,11 +517,26 @@ function scaleProjects(mainPage) {
 
 // resizes recaptcha 
 function scaleCaptcha() {
-    var width = document.getElementById("recaptcha").offsetWidth,
+    let width = document.getElementById("recaptcha").offsetWidth,
         scale = width / 304,
         recaptcha = document.querySelector(".g-recaptcha");
 
     recaptcha.style.transform = 'scale(' + scale + ')';
     recaptcha.style.webkitTransform = 'scale(' + scale + ')';
     recaptcha.style.transformOrigin = '0 0';
+}
+
+
+// auto resizes the margins for socials to be centered with the contact form
+function scaleSocials() {
+    let formHeight = document.querySelector(".form").offsetHeight,
+        socials = document.querySelector(".socials"),
+        resume = document.querySelector(".resume"),
+        reportBug = document.querySelector(".reportBug"),
+        margin = (formHeight - resume.offsetHeight * 3) / 4,
+        marginCSS = margin.toString() + "px";
+
+    socials.style.marginTop = marginCSS;
+    resume.style.marginTop = marginCSS;
+    reportBug.style.marginTop = marginCSS;
 }

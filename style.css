@@ -24,6 +24,11 @@ html {
     position: absolute;
 }
 
+.page {
+    position: relative;
+    visibility: hidden;
+}
+
 
 /* Background Picture */
 body {
@@ -75,11 +80,8 @@ body {
     }
 }
 
-#overview,
-#experience,
-#projects,
-#contact {
-    visibility: hidden;
+.centerVertical {
+    position: relative;
 }
 
 .section.fade {
@@ -182,24 +184,26 @@ body {
 
 
 /* Header */
-#header {
-    width: 100%;
-    height: 100vh;
+#welcomePage {
+    width: 80%;
     text-align: left;
+    margin: 0% 10%;
+    margin-bottom: 25vh;
 }
 
 /* welcome page */
-#header h1 {
+#welcomePage h1 {
     width: max-content;
     overflow: hidden;
     font-size: 6.6vw;
-    margin: 10% auto auto 10%;
     white-space: nowrap;
 }
 
+
+
 /* cursor 
 cursor width is 1/2 border width */
-#header h1::after {
+#welcomePage h1::after {
     animation: blink 1060ms step-end infinite;
     animation-delay: 3s;
     content: " ";
@@ -208,12 +212,10 @@ cursor width is 1/2 border width */
     margin-left: 5px;
 }
 
-#header h2 {
+#welcomePage h2 {
     opacity: 0;
     font-size: 2.3vw;
-    padding-left: 10%;
     z-index: -1;
-    padding-right: 10%;
     animation: fade 2s linear;
     animation-delay: 1.8s;
     animation-fill-mode: both;
@@ -225,7 +227,6 @@ cursor width is 1/2 border width */
 .wrapper {
     overflow: hidden;
     max-width: 45%;
-    margin-left: 10%;
     font-size: 1.75vw;
     animation: fade 2s linear;
     animation-delay: 1.8s;
@@ -278,8 +279,7 @@ cursor width is 1/2 border width */
 
 .button .readmore {
     background-color: rgb(27, 47, 54);
-    margin-left: 10%;
-    margin-right: 30px;
+    margin-right: 3vw;
 }
 
 .button .contactbutton {
@@ -301,21 +301,16 @@ cursor width is 1/2 border width */
     box-shadow: none;
     position: relative;
 }
-
+.section{
+    visibility: hidden;
+}
 
 /* Overview */
 #overview {
-    width: 100%;
-    z-index: -1;
-    padding-right: 10%;
-    height: 100%;
-    padding-left: 10%;
-    margin-bottom: 50vh;
-}
-
-#overview .box {
-    display: flex;
-    align-items: center;
+    width: 80%;
+    text-align: left;
+    margin: 0% 10%;
+    margin-bottom: 25vh;
 }
 
 #overview h3 {
@@ -326,7 +321,7 @@ cursor width is 1/2 border width */
 
 #overview p {
     font-size: 1.5vw;
-    width: 55%;
+    width: 50vw;
     float: left;
     padding-right: 2vw
 }
@@ -334,7 +329,6 @@ cursor width is 1/2 border width */
 #profile-image img {
     border-radius: 50%;
     width: 30vw;
-    margin-right: 18vw;
     background-color: rgb(23, 39, 45);
     border: 0.5vw solid rgb(23, 39, 45);
     position: sticky;
@@ -343,21 +337,20 @@ cursor width is 1/2 border width */
 
 /* Work */
 #experience {
-    padding-left: 10%;
-    width: 100%;
-    z-index: -1;
-    padding-right: 10%;
-    height: 100%;
-    display: flex;
+    margin: 0% 10%;
+    margin-bottom: 25vh;
+    height: 100vh;
     text-align: right;
     float: right;
-    margin-bottom: 50vh;
+    margin-bottom: 25vh;
+    width: 80%;
+    overflow: hidden;
 }
 
 #experience h3 {
     font-size: 4.6vw;
     text-decoration: underline;
-    height: fit-content;
+    width: max-content;
 }
 
 #experience .plangroup h4 {
@@ -370,53 +363,53 @@ cursor width is 1/2 border width */
 }
 
 #experience p {
-    margin-top: 20px;
+    margin-top: 2.5vh;
+    width: 90%;
     font-size: 1.5vw;
-    width: 41.2vw;
     float: right;
+}
+
+.left {
+    margin-right: 3vw;
+    width: 110%;
 }
 
 #experience .plangroup img {
     border-radius: 25px;
     border: 0.5vw solid rgb(23, 39, 45);
     z-index: -1;
+    margin-top: 10vw;
 }
 
 #experience .plangroup #selfie {
-    margin-top: -45vh;
-    height: 25vw;
-    margin-right: -2.5vw;
+    margin-top: -40vh;
+    width: 32%;
+    margin-right: -1vw;
 }
 
 #experience .plangroup {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    column-gap: 20px;
-    width: 100vw;
+    column-gap: 2vw;
+    height: 100%;
     align-items: center;
-    padding-left: 12vw;
 }
 
 #experience .plangroup #ALICE {
-    height: 30vw;
-    width: 40vw;
+    width: 97%;
     float: left;
-    vertical-align: top;
 }
 
 
 /* Projects */
 #projects {
-    z-index: -1;
-    padding-right: 10%;
-    padding-left: 10%;
-    margin-bottom: 50vh;
-    height: 100vh;
+    padding-top: 3vh;
+    margin: 0% 10%;
+    margin-bottom: 25vh;
     display: inline-block;
 }
 
 #projects .grid {
-    margin-top: 20px;
     height: 70vh;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -623,11 +616,14 @@ textarea {
     background-color: rgb(62, 105, 121);
     font-size: 1.9vw;
     padding: 0.65vw 1.7vw;
-    margin-bottom: 1vw;
 }
 
 .form button {
     margin-left: 2vw;
+}
+
+#form button {
+    margin-bottom: 2vw;
 }
 
 .grid button:hover {
@@ -635,8 +631,6 @@ textarea {
     box-shadow: none;
     position: relative;
 }
-
-
 
 .grid .socials {
     width: auto;
@@ -663,15 +657,10 @@ a:focus {
     transform: translate(0px, -1vw);
 }
 
-#socials {
-    padding-bottom: 8vw;
-}
-
 .socials .icons {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 7vw;
     width: 100%;
 }
 
@@ -680,10 +669,13 @@ a:focus {
     background-color: rgb(62, 105, 121);
     border-radius: 25px;
     width: 30%;
-    height: 11vw;
+    height: 7vw;
+    display: block;
 }
 
-#resume {
+#resume,
+#reportBug,
+.icons {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -691,11 +683,20 @@ a:focus {
 }
 
 
-.resume {
+
+
+.socials button {
+    margin-bottom: 1vw;
+}
+
+.resume,
+.reportBug,
+.links {
     background-color: rgb(62, 105, 121);
     border-radius: 25px;
     height: 11vw;
 }
+
 
 #recaptcha {
     margin-left: 2vw;
@@ -722,8 +723,8 @@ button {
     text-align: center;
     display: inline-block;
     width: 100%;
-    padding-top: 30px;
-    padding-bottom: 15px;
+    padding-top: 10vh;
+    padding-bottom: 3vh;
     bottom: 0;
 }
 

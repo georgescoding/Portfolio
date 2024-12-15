@@ -38,25 +38,25 @@
             font-size: 2vw;
         }
     </style>
-    <div class="noscriptmsg">
+    <h1 class="noscriptmsg">
         This website requires JavaScript, please turn it on!
-    </div>
+    </h1>
 </noscript>
 
 <body>
-    <div class="page">
+    <main class="page">
         <button id="prevSection" title="Go to last section">&#11205</button>
         <button id="nextSection" title="Go to next section">&#11206</button>
 
         <!--Navigation Bar-->
-        <div id="navbar">
+        <nav id="navbar">
             <a class="logo" href="#top"> <img src=assets/favicon.ico>GeorgesCoding</a>
             <div class="right-nav">
                 <a href="#overview">About</a>
                 <a href="#experience">Work</a>
-                <div id="dropdown">
+                <ul id="dropdown">
                     <a href="#projects">Projects</a>
-                    <div id="content">
+                    <li id="content">
                         <a id="chess" href="/projects/chess">1. Chess App</a>
                         <a href="/projects/portfolio">2. Portfolio Website</a>
                         <a href="/projects/breathalyzer">3. Breathalyzer</a>
@@ -64,60 +64,64 @@
                         <a href="/projects/ph-sensor">5. pH-Sensor</a>
                         <a href="/projects/minesweeper">6. Minesweeper</a>
                         <a id="see-all" href="/projects">See All</a>
-                    </div>
-                </div>
+                    </li>
+                </ul>
                 <a href="#contact">Contact</a>
             </div>
-        </div>
+        </nav>
 
 
         <!--Introduction-->
-        <div id="header">
-            <h1 id="typing" class="section"></h1>
-            <h2>University of Waterloo | Electrical Engineering</h2>
-            <div id="marquee" class="wrapper section">
-                <div class="marquee"><span id="marqueeText"></span><span id="marqueeText2"></span></div>
+        <section id="welcomePage" class="section">
+            <div class="centerVertical">
+                <h1 id="typing"></h1>
+                <h2>University of Waterloo | Electrical Engineering</h2>
+                <div id="marquee" class="wrapper">
+                    <div class="marquee"><span id="marqueeText"></span><span id="marqueeText2"></span></div>
+                </div>
+                <div class="button">
+                    <a href="#overview"><button class="readmore">Read More</button></a>
+                    <a href="#contact"><button class="contactbutton">Contact</button></a>
+                </div>
             </div>
-            <div class="button"> <a href="#overview"><button class="readmore">Read More</button></a>
-                <a href="#contact"><button class="contactbutton">Contact</button></a>
-            </div>
-        </div>
-        <a id="overview"></a>
+        </section>
 
 
         <!--Overview-->
-        <div id="overview" class="section">
-            <h3>About Me</h3>
-            <div class="box">
-                <p id="overviewText"></p>
-                <div id="profile-image"> <img src='/assets/pictures/overview-picture.png'></div>
+        <section id="overview" class="section">
+            <div class="centerVertical">
+                <h3>About Me</h3>
+                <span class="flexbox">
+                    <p id="overviewText"></p>
+                    <picture id="profile-image"><img src='/assets/pictures/overview-picture.png'></picture>
+                </span>
             </div>
-        </div>
+        </section>
 
 
         <!-- Work -->
-        <div id="experience" class="section">
+        <section id="experience" class="section">
+            <div class="centerVertical">
+                <div class="plangroup">
+                    <div class="left">
+                        <img id="ALICE" src='/assets/pictures/work-alice.png'>
+                        <img id="selfie" src='/assets/pictures/work-selfie.jpg'>
+                    </div>
 
-            <div class="plangroup">
-                <div class="left">
-                    <img id="ALICE" src='/assets/pictures/work-alice.png'>
-                    <img id="selfie" src='/assets/pictures/work-selfie.jpg'>
+                    <div class="right">
+                        <h3>Work Experience</h3>
+                        <h4>Plan Group - Electrical Designer</h4>
+                        <h5>Date: Jan 2023 - Apr 2023</h5>
+                        <p id="workText"></p>
+                    </div>
+
                 </div>
-
-                <div class="right">
-                    <h3>Work Experience</h3>
-                    <h4>Plan Group - Electrical Designer</h4>
-                    <h5>Date: Jan 2023 - Apr 2023</h5>
-                    <p id="workText"></p>
-                </div>
-
             </div>
-        </div>
+        </section>
 
 
         <!-- Projects -->
-        <div id="projects" class="section">
-
+        <section id="projects" class="section">
             <h3>Projects</h3>
             <div class="grid">
 
@@ -198,7 +202,7 @@
                     <div class="back">
                         <div class="info">
                             <a href="https://github.com/GeorgesCoding/Minesweeper" target="_blank" class="fa fa-github" id="icon"></a>
-                            <a href="/projects/minesweeper"><button class="learnMore">Learn More</button></a>
+                            <a href="./projects/minesweeper/index.html"><button class="learnMore">Learn More</button></a>
                             <br>C++
                         </div>
                         <div id="minesweeperText"></div>
@@ -206,12 +210,13 @@
                 </div>
 
             </div>
+
             <div class="middle"> <a href="/projects"><button class="seeAll">See All</button></a></div>
-        </div>
+        </section>
 
 
         <!-- Contact/Socials-->
-        <div id="contact" class="section">
+        <section id="contact" class="section">
             <h3>Contact</h3>
             <div class="grid">
 
@@ -236,7 +241,7 @@
                 </div>
 
                 <div class="socials">
-                    <div id="socials">
+                    <div class="links">
                         <h4>Say Hi!</h4>
                         <p class="icons">
                             <a href="https://github.com/GeorgesCoding" target="_blank" class="fa fa-github"></a>&nbsp&nbsp
@@ -249,15 +254,21 @@
                         <h4>View My Resume</h4>
                         <div id="resume"><a href="/assets/resume.pdf" target="_blank"><button>Click Me!</button></a></div>
                     </div>
+
+                    <div class="reportBug">
+                        <h4>Report a Bug!</h4>
+                        <div id="reportBug"><a href="mailto:support@georgescoding.com?subject=Issue/Bug on Website"><button class=" fa-solid fa-bug"></button></a></div>
+                    </div>
                 </div>
             </div>
-        </div>
+
+        </section>
 
         <!--Copyright-->
         <footer>
             <p class="copyright">Copyright © George Chen 2024</p>
         </footer>
-    </div>
+    </main>
 </body>
 
 </html>

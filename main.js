@@ -1,24 +1,12 @@
-// remove "/" from pathname
-window.history.pushState('', '', location.pathname.slice(0, -1));
-
-// dark mode
-if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-}
-
-
 ///////////////////////////////////////////////////////////////////////
 ///// dynamically load modules depending on the current directory /////
 ///////////////////////////////////////////////////////////////////////
 
 // root directory
 if (window.location.pathname == "/") {
-    import("./src/modules/effects.js").then((effects) => {
-        effects.typewriter();
-        let cards = document.querySelectorAll(".card");
-        cards.forEach(element => element.addEventListener("click", function () { effects.flip(element) }));
-    });
     import("./src/modules/load-data.js").then((load) => {
         load.checkSession();
+
         load.home();
         load.summary(true);
         window.addEventListener("load", () => {
@@ -27,6 +15,11 @@ if (window.location.pathname == "/") {
         window.addEventListener("resize", () => {
             load.observer();
         }, false);
+    });
+    import("./src/modules/effects.js").then((effects) => {
+        effects.typewriter();
+        let cards = document.querySelectorAll(".card");
+        cards.forEach(element => element.addEventListener("click", function () { effects.flip(element) }));
     });
     import("./src/modules/send-email.js").then((email) => {
         let button = document.getElementById("sendButton");
