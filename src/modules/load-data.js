@@ -19,8 +19,8 @@ var currentSection;
 // loads contents of the home page, adds event listeners and rescales recaptcha 
 export function home() {
 
-    setHeight();
     styleHome();
+    document.querySelector(".page").classList.remove("hide")
 
     let resizeSocials = new ResizeObserver(() => {
         scaleSocials();
@@ -44,7 +44,6 @@ export function home() {
     });
 
     wait("navbar", 1).then(() => {
-        window.addEventListener("resize", () => { setHeight() });
         window.addEventListener("resize", () => { styleHome() });
     });
 
@@ -61,20 +60,60 @@ function styleHome() {
         navbarHeight = document.getElementById("navbar").getBoundingClientRect().height,
         vh = viewport.height - navbarHeight,
         vw = viewport.width,
-        overviewText = document.getElementById("overviewText"),
-        workText = document.getElementById("workText");
+        unit,
+        stylingParam = [],
+        landscape;
 
-    if (vw >= vh) { // landscape
-        let flexbox = document.querySelectorAll(".flexbox");
-        flexbox.forEach((box) => { box.style.display = "flex" })
-
-
+    if (vw >= vh * 1.5) { // landscape
+        stylingParam = ["flex", "1.5vw", "50vw", "2vw", "2.1vw", "1.75vw", "4.6vw", "auto", "auto", ""];
+        landscape = true;
     }
     else {//portrait
-        overviewText.style.width = "100%";
+        if (vw > vh) {
+            unit = "vw"
+        }
+        else {
+            unit = "vh"
+        }
+        stylingParam = ["", "2.2" + unit, "100%", "0vw", "2.5" + unit, "2.5" + unit, "4.6" + unit, "100%", "block", "center"];
+        landscape = false;
     }
+
+    setHeight(landscape);
+    applyCSS(stylingParam)
 }
 
+
+
+
+
+// applies css to elements in home page
+function applyCSS(stylingParams) {
+    let overviewText = document.getElementById("overviewText"),
+        workText = document.getElementById("workText"),
+        flexbox = document.querySelectorAll(".flexbox"),
+        sectionName = document.querySelectorAll(".sectionName"),
+        sectionPicture = document.querySelectorAll(".sectionPicture"),
+        workName = document.querySelectorAll(".workName"),
+        workDate = document.querySelectorAll(".workDate")
+
+
+    flexbox.forEach((box) => { box.style.display = stylingParams[0] });
+
+    overviewText.style.fontSize = stylingParams[1];
+    overviewText.style.width = stylingParams[2];
+    overviewText.style.paddingRight = stylingParams[3];
+
+    workText.style.fontSize = stylingParams[1];
+    workText.style.width = stylingParams[2];
+    workName.forEach((name) => { name.style.fontSize = stylingParams[4]; });
+    workDate.forEach((date) => { date.style.fontSize = stylingParams[5]; });
+
+    sectionName.forEach((section) => { section.style.fontSize = stylingParams[6] })
+    sectionPicture.forEach((section) => { section.style.width = stylingParams[7] })
+    sectionPicture.forEach((section) => { section.style.display = stylingParams[8] })
+    sectionPicture.forEach((section) => { section.style.textAlign = stylingParams[9] })
+}
 
 
 
@@ -132,21 +171,22 @@ export function observer() {
 function handleIntersect(entries) {
     entries.forEach((entry) => {
         if (entry.intersectionRatio > 0) {
-            let href;
-            if (entry.target.id === "welcomePage") {
-                href = "#top";
-            }
-            else {
-                href = "#" + entry.target.id;
-            }
-            removeStyle();
+            let href,
+                navSection = document.querySelectorAll(".navSection"),
+                sectionIndex = getSectionNum(entry.target.id) - 1;
+
+            navSection.forEach((section) => { section.classList.remove("highlight") })
+
             revealSection(entry.target);
 
+            if (entry.target.id != "welcomePage") {
+                href = "#" + entry.target.id;
+                navSection[sectionIndex].classList.add("highlight")
+            }
+            else {
+                href = "#top"
+            }
             currentSection = href.slice(1);
-
-            document.querySelector("a[href='" + href + "']").style.backgroundColor = "rgb(62, 105, 121)";
-            document.querySelector("a[href='" + href + "']").style.borderRadius = "10px";
-            document.querySelector("a[href='" + href + "']").style.padding = "0px 10px";
         }
     })
 }
@@ -154,7 +194,7 @@ function handleIntersect(entries) {
 
 
 // make each section fit exactly the entire pages
-function setHeight() {
+function setHeight(landscape) {
     let navbar = document.getElementById("navbar"),
         centerVertical = document.querySelectorAll(".centerVertical"),
         sections = document.querySelectorAll(".section");
@@ -163,34 +203,24 @@ function setHeight() {
         vh = Math.max(document.documentElement.getBoundingClientRect().height || 0, window.innerHeight || 0),
         sectionHeight = vh - navbarHeight,
         sectionHeightCSS = sectionHeight.toString() + "px",
-        height = centerVertical[0].getBoundingClientRect().height;
+        welcomeHeight = centerVertical[0].getBoundingClientRect().height,
+        contactHeight = centerVertical[3].getBoundingClientRect().height;
 
-    centerVertical.forEach((section) => section.style.top = "0px")
-    centerVertical[0].style.top = ((sectionHeight - height) / 2).toString() + "px";
+
+
+    if (landscape) {
+        centerVertical.forEach((section) => section.style.top = ((sectionHeight - section.getBoundingClientRect().height) / 2).toString() + "px")
+    }
+    else {
+        centerVertical.forEach((section) => section.style.top = "0px")
+        centerVertical[0].style.top = ((sectionHeight - welcomeHeight) / 2).toString() + "px";
+        centerVertical[3].style.top = ((sectionHeight - welcomeHeight) / 2).toString() + "px";
+
+    }
 
     sections = Array.from(sections)
-    sections.splice(3)
-
+    sections.splice(3, 1)
     sections.forEach((section) => { section.style.height = sectionHeightCSS })
-
-    document.querySelector(".page").style.visibility = "visible"
-}
-
-
-// removes all styling from every navbar section
-function removeStyle() {
-    let top = document.querySelector("a[href='#top']"),
-        about = document.querySelector("a[href='#overview']"),
-        work = document.querySelector("a[href='#experience']"),
-        projects = document.querySelector("a[href='#projects']"),
-        contact = document.querySelector("a[href='#contact']"),
-        navbar = [top, about, work, projects, contact];
-
-    navbar.forEach((section) => {
-        section.style.backgroundColor = "";
-        section.style.borderRadois = "";
-        section.style.padding = "";
-    })
 }
 
 
@@ -201,17 +231,13 @@ function revealSection(currentSection) {
     sections.forEach((section) => {
         if (section != currentSection) {
             section.classList.remove("fade");
-            section.style.visibility = "hidden";
         }
     })
 
     if (currentSection.id != "welcomePage") {
         currentSection.classList.add("fade")
     }
-    currentSection.style.visibility = "visible";
 }
-
-
 // loads each the project summary for each card
 export function summary(mainPage) {
     scaleProjects(mainPage);
@@ -443,79 +469,88 @@ function scaleProjects(mainPage) {
         vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
 
     let grid = document.querySelector(".grid"),
-        info = document.querySelectorAll(".info"),
-        icons = document.querySelectorAll("#icon"),
-        learnMore = document.querySelectorAll(".learnMore"),
-        chess = document.getElementById("chessText"),
-        breathalyzer = document.getElementById("breathalyzerText"),
-        portfolio = document.getElementById("portfolioText"),
-        blackjack = document.getElementById("blackjackText"),
-        sensor = document.getElementById("sensorText"),
-        minesweeper = document.getElementById("minesweeperText"),
-        projects = [chess, breathalyzer, portfolio, blackjack, sensor, minesweeper];
+        info = Array.from(document.querySelectorAll(".info")),
+        icons = Array.from(document.querySelectorAll("#icon")),
+        learnMore = Array.from(document.querySelectorAll(".learnMore")),
+        projects = Array.from(document.querySelectorAll(".text")),
+        elements = [].concat(grid, info, icons, learnMore, projects);
 
-    let rowTemplate = "",
-        height = "90vh";
+    resetClasslist(elements)
 
-    if (!mainPage) {
-        projects.push(document.getElementById("calculatorText"));
-        rowTemplate = " 1fr";
-        height = "120vh"
+    if (!mainPage && vw < 750) {
+        grid.classList.add("subMedium")
     }
-
-    if (vw < 750) {
-        grid.style.gridTemplateColumns = "1fr 1fr";
-        grid.style.gridTemplateRows = "1fr 1fr 1fr" + rowTemplate;
-        grid.style.height = "auto";
-    }
-    else {
+    else if (!mainPage && vw >= 750) {
+        grid.classList.add("subBig")
         if (vw > 1000) {
-            grid.style.height = height;
+            grid.classList.add("subHeight")
         }
         else {
-            document.getElementById("projects").style.height = "min-content"
-            grid.style.height = "auto";
+            grid.classList.add("auto")
         }
-        grid.style.gridTemplateColumns = "1fr 1fr 1fr";
-        grid.style.gridTemplateRows = "1fr 1fr" + rowTemplate;
     }
-    if (vw < 1060 || vh < 500) {
-        let percent = "65%";
-
-        if (vw > 750 && vw < 980) {
-            percent = "65%";
+    else if (mainPage && vw < 750) {
+        grid.classList.add("mainMedium")
+    }
+    else if (mainPage && vw >= 750) {
+        grid.classList.add("mainBig")
+        if (vw > 1000) {
+            grid.classList.add("mainHeight")
         }
+        else {
+            grid.classList.add("auto")
+        }
+    }
 
+    if (vw < 1060 || vh < 500) {
         info.forEach((section) => {
-            section.style.height = percent;
-            section.style.width = "100%";
+            section.classList.add("less")
         })
         icons.forEach((icon) => {
-            icon.style.fontSize = "3vw";
-            icon.style.margin = "2vh";
+            icon.classList.add("less")
         })
         learnMore.forEach((section) => {
-            section.style.fontSize = "1.5vw"
+            section.classList.add("less")
         })
-        projects.forEach((section) => { section.style.visibility = "hidden" })
+        projects.forEach((section) => { section.classList.add("hide") })
     }
     else {
         info.forEach((section) => {
-            section.style.height = "auto";
-            section.style.width = "max-content";
+            section.classList.add("more")
         })
         icons.forEach((icon) => {
-            icon.style.fontSize = "1.75vw";
-            icon.style.margin = "";
+            icon.classList.add("more")
         })
         learnMore.forEach((section) => {
-            section.style.fontSize = "1vw"
+            section.classList.add("more")
         })
-        projects.forEach((section) => { section.style.visibility = "visible" })
+        projects.forEach((section) => { section.classList.add("show") })
     }
 }
 
-// resizes recaptcha 
+
+
+/* reset classlist to default class for all item(s) 
+for multiple items, add them in an array*/
+function resetClasslist(elements) {
+    elements.forEach((subelement) => {
+        let size = 1,
+            classArr = Array.from(subelement.classList);
+
+        if (subelement.classList.toString().includes("fa fa-github")) {
+            size = 2
+        }
+
+        while (classArr.length > size) {
+            classArr.splice(-1)
+        }
+
+        subelement.className = classArr.toString().replace(",", " ");
+    })
+
+}
+
+// dynamically resizes recaptcha 
 function scaleCaptcha() {
     let width = document.getElementById("recaptcha").offsetWidth,
         scale = width / 304,
@@ -527,7 +562,7 @@ function scaleCaptcha() {
 }
 
 
-// auto resizes the margins for socials to be centered with the contact form
+// dynamically resizes the margins for socials to be aligned with the contact form
 function scaleSocials() {
     let formHeight = document.querySelector(".form").offsetHeight,
         socials = document.querySelector(".socials"),

@@ -44,29 +44,32 @@
 </noscript>
 
 <body>
-    <main class="page">
+    <main class="page hide">
         <button id="prevSection" title="Go to last section">&#11205</button>
         <button id="nextSection" title="Go to next section">&#11206</button>
 
         <!--Navigation Bar-->
         <nav id="navbar">
-            <a class="logo" href="#top"> <img src=assets/favicon.ico>GeorgesCoding</a>
-            <div class="right-nav">
-                <a href="#overview">About</a>
-                <a href="#experience">Work</a>
-                <ul id="dropdown">
-                    <a href="#projects">Projects</a>
-                    <li id="content">
-                        <a id="chess" href="/projects/chess">1. Chess App</a>
-                        <a href="/projects/portfolio">2. Portfolio Website</a>
-                        <a href="/projects/breathalyzer">3. Breathalyzer</a>
-                        <a href="/projects/blackjack">4. Blackjack</a>
-                        <a href="/projects/ph-sensor">5. pH-Sensor</a>
-                        <a href="/projects/minesweeper">6. Minesweeper</a>
-                        <a id="see-all" href="/projects">See All</a>
-                    </li>
-                </ul>
-                <a href="#contact">Contact</a>
+            <div class="center">
+                <!--                 <a class="logo" href="#top"> <img src=assets/favicon.ico></a>
+ -->
+                <div class="right-nav">
+                    <a class="navSection" href="#overview">About</a>
+                    <a class="navSection" href="#experience">Work</a>
+                    <ul id="dropdown">
+                        <a class="navSection" href="#projects">Projects</a>
+                        <li id="content">
+                            <a id="chess" href="/projects/chess">1. Chess App</a>
+                            <a href="/projects/portfolio">2. Portfolio Website</a>
+                            <a href="/projects/breathalyzer">3. Breathalyzer</a>
+                            <a href="/projects/blackjack">4. Blackjack</a>
+                            <a href="/projects/ph-sensor">5. pH-Sensor</a>
+                            <a href="/projects/minesweeper">6. Minesweeper</a>
+                            <a id="see-all" href="/projects">See All</a>
+                        </li>
+                    </ul>
+                    <a class="navSection" href="#contact">Contact</a>
+                </div>
             </div>
         </nav>
 
@@ -90,10 +93,10 @@
         <!--Overview-->
         <section id="overview" class="section">
             <div class="centerVertical">
-                <h3>About Me</h3>
-                <span class="flexbox">
+                <h3 class="sectionName">About Me</h3>
+                <span class="overviewFlex">
                     <p id="overviewText"></p>
-                    <picture id="profile-image"><img src='/assets/pictures/overview-picture.png'></picture>
+                    <picture id="profile-image" class="sectionPicture"><img src='/assets/pictures/overview-picture.png'></picture>
                 </span>
             </div>
         </section>
@@ -102,21 +105,25 @@
         <!-- Work -->
         <section id="experience" class="section">
             <div class="centerVertical">
-                <div class="plangroup">
+
+                <h3 class="sectionName">Work Experience</h3>
+
+                <div id="plangroupDetails">
+                    <h4 class="workName">Plan Group</h4>
+                    <h4>Electrical Designer</h4>
+                    <h5 class="workDate">Date: Jan 2023 - Apr 2023</h5>
+                </div>
+
+                <p id="workText"></p>
+
+                </span>
+                <div class="plangroup sectionPicture">
                     <div class="left">
                         <img id="ALICE" src='/assets/pictures/work-alice.png'>
                         <img id="selfie" src='/assets/pictures/work-selfie.jpg'>
                     </div>
 
-                    <div class="right">
-                        <h3>Work Experience</h3>
-                        <h4>Plan Group - Electrical Designer</h4>
-                        <h5>Date: Jan 2023 - Apr 2023</h5>
-                        <p id="workText"></p>
-                    </div>
-
                 </div>
-            </div>
         </section>
 
 
@@ -135,7 +142,7 @@
                             <a href="/projects/chess"><button class="learnMore">Learn More</button></a>
                             <br>Python
                         </div>
-                        <div id="chessText"></div>
+                        <div id="chessText" class="text"></div>
                     </div>
                 </div>
 
@@ -149,7 +156,7 @@
                             <a href="/projects/portfolio"><button class="learnMore">Learn More</button></a>
                             <br>JavaScript, HTML, CSS
                         </div>
-                        <div id="portfolioText"></div>
+                        <div id="portfolioText" class="text"></div>
                     </div>
                 </div>
 
@@ -163,7 +170,7 @@
                             <a href="/projects/breathalyzer"><button class="learnMore">Learn More</button></a>
                             <br>C/C++, Arduino, STM32, AutoCAD
                         </div>
-                        <div id="breathalyzerText"></div>
+                        <div id="breathalyzerText" class="text"></div>
                     </div>
                 </div>
 
@@ -177,7 +184,7 @@
                             <a href="/projects/blackjack"><button class="learnMore">Learn More</button></a>
                             <br>Java
                         </div>
-                        <div id="blackjackText"></div>
+                        <div id="blackjackText" class="text"></div>
                     </div>
                 </div>
 
@@ -191,7 +198,7 @@
                             <a href="/projects/ph-sensor"><button class="learnMore">Learn More</button></a>
                             <br>C/C++, Arduino, STM32, AutoCAD
                         </div>
-                        <div id="sensorText"></div>
+                        <div id="sensorText" class="text"></div>
                     </div>
                 </div>
 
@@ -205,7 +212,7 @@
                             <a href="./projects/minesweeper/index.html"><button class="learnMore">Learn More</button></a>
                             <br>C++
                         </div>
-                        <div id="minesweeperText"></div>
+                        <div id="minesweeperText" class="text"></div>
                     </div>
                 </div>
 
@@ -217,51 +224,52 @@
 
         <!-- Contact/Socials-->
         <section id="contact" class="section">
-            <h3>Contact</h3>
-            <div class="grid">
+            <div class="centerVertical">
+                <h3>Contact</h3>
+                <div class="grid">
 
-                <div class="form">
-                    <h4>Leave a Message</h4>
-                    <form id="form">
+                    <div class="form">
+                        <h4>Leave a Message</h4>
+                        <form id="form">
 
-                        <label for="name">Name:</label>
-                        <input id="name" type="name" name="name" placeholder="Your Name" autocomplete="on" aria-required="true"><br>
+                            <label for="name">Name:</label>
+                            <input id="name" type="name" name="name" placeholder="Your Name" autocomplete="on" aria-required="true"><br>
 
-                        <label for="email">Email:</label>
-                        <input id="email" type="email" name="email" placeholder="Your Email" autocomplete="on" aria-required="true"><br>
+                            <label for="email">Email:</label>
+                            <input id="email" type="email" name="email" placeholder="Your Email" autocomplete="on" aria-required="true"><br>
 
-                        <label for="message">Message:</label>
-                        <textarea id="message" name="message" placeholder="Your Message" rows="5" aria-required="true"></textarea>
-                        <div id="recaptcha">
-                            <div class="g-recaptcha" data-sitekey="6LfUxMQpAAAAANxEA_tNe3RvqT_d0iclalzDqmz8"></div>
+                            <label for="message">Message:</label>
+                            <textarea id="message" name="message" placeholder="Your Message" rows="5" aria-required="true"></textarea>
+                            <div id="recaptcha">
+                                <div class="g-recaptcha" data-sitekey="6LfUxMQpAAAAANxEA_tNe3RvqT_d0iclalzDqmz8"></div>
+                            </div>
+                            <button id="sendButton">Send</button>
+                            <button type="reset" form="form">Clear</button>
+                        </form>
+                    </div>
+
+                    <div class="socials">
+                        <div class="links">
+                            <h4>Say Hi!</h4>
+                            <p class="icons">
+                                <a href="https://github.com/GeorgesCoding" target="_blank" class="fa fa-github"></a>&nbsp&nbsp
+                                <a href="mailto:george@georgescoding.com" class="fa fa-envelope"></a>&nbsp&nbsp
+                                <a href="https://www.linkedin.com/in/georgechn" target="_blank" class="fa fa-linkedin"></a>
+                            </p>
                         </div>
-                        <button id="sendButton">Send</button>
-                        <button type="reset" form="form">Clear</button>
-                    </form>
-                </div>
 
-                <div class="socials">
-                    <div class="links">
-                        <h4>Say Hi!</h4>
-                        <p class="icons">
-                            <a href="https://github.com/GeorgesCoding" target="_blank" class="fa fa-github"></a>&nbsp&nbsp
-                            <a href="mailto:george@georgescoding.com" class="fa fa-envelope"></a>&nbsp&nbsp
-                            <a href="https://www.linkedin.com/in/georgechn" target="_blank" class="fa fa-linkedin"></a>
-                        </p>
-                    </div>
+                        <div class="resume">
+                            <h4>View My Resume</h4>
+                            <div id="resume"><a href="/assets/resume.pdf" target="_blank"><button>Click Me!</button></a></div>
+                        </div>
 
-                    <div class="resume">
-                        <h4>View My Resume</h4>
-                        <div id="resume"><a href="/assets/resume.pdf" target="_blank"><button>Click Me!</button></a></div>
-                    </div>
-
-                    <div class="reportBug">
-                        <h4>Report a Bug!</h4>
-                        <div id="reportBug"><a href="mailto:support@georgescoding.com?subject=Issue/Bug on Website"><button class=" fa-solid fa-bug"></button></a></div>
+                        <div class="reportBug">
+                            <h4>Report a Bug!</h4>
+                            <div id="reportBug"><a href="mailto:support@georgescoding.com?subject=Issue/Bug on Website"><button class=" fa-solid fa-bug"></button></a></div>
+                        </div>
                     </div>
                 </div>
             </div>
-
         </section>
 
         <!--Copyright-->

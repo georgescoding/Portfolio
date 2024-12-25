@@ -24,7 +24,7 @@ html {
     position: absolute;
 }
 
-.page {
+.page.hide {
     position: relative;
     visibility: hidden;
 }
@@ -84,10 +84,18 @@ body {
     position: relative;
 }
 
+.center {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    vertical-align: middle;
+}
+
 .section.fade {
     animation: fadeIn 0.75s linear;
     animation-delay: 0.1s;
     animation-fill-mode: both;
+    visibility: visible;
 }
 
 /* Navigation Bar */
@@ -96,18 +104,14 @@ body {
     top: 0;
     width: 100%;
     padding: 1vw 0.7vw;
-    text-align: center;
-    vertical-align: middle;
     background-color: rgb(23, 39, 45);
     z-index: 1;
+    height: 5vh;
 }
 
 #navbar .logo img {
-    max-width: 2vw;
-    max-height: 2vw;
-    margin-right: 0.5vw;
-    vertical-align: middle;
-    margin-bottom: 0.2vw;
+    max-width: 3vw;
+    max-height: 3vw;
 }
 
 .right-nav {
@@ -120,9 +124,19 @@ body {
 }
 
 .logo {
+    display: flex;
     float: left;
     margin-left: 1%;
     font-size: 1.5vw;
+}
+
+.right-nav a {
+    display: inline-block;
+    border-radius: 10px;
+    list-style: none;
+    margin: 0.5vw 1.25vw;
+    position: relative;
+    text-align: center;
     -webkit-transition: color 0.4s ease-out;
     -moz-transition: color 0.4s ease-out;
     -o-transition: color 0.4s ease-out;
@@ -130,16 +144,9 @@ body {
     transition: color 0.4s ease-out;
 }
 
-.right-nav a {
-    display: inline-block;
-    list-style: none;
-    margin: 0.5vw 1.25vw;
-    position: relative;
-    -webkit-transition: color 0.4s ease-out;
-    -moz-transition: color 0.4s ease-out;
-    -o-transition: color 0.4s ease-out;
-    -ms-transition: color 0.4s ease-out;
-    transition: color 0.4s ease-out;
+.navSection.highlight {
+    background-color: rgb(62, 105, 121);
+    padding: 0px 10px;
 }
 
 #navbar a:hover,
@@ -189,6 +196,7 @@ body {
     text-align: left;
     margin: 0% 10%;
     margin-bottom: 25vh;
+    visibility: visible;
 }
 
 /* welcome page */
@@ -301,12 +309,14 @@ cursor width is 1/2 border width */
     box-shadow: none;
     position: relative;
 }
-.section{
+
+.section {
     visibility: hidden;
 }
 
 /* Overview */
 #overview {
+    padding-top: 3vh;
     width: 80%;
     text-align: left;
     margin: 0% 10%;
@@ -323,7 +333,8 @@ cursor width is 1/2 border width */
     font-size: 1.5vw;
     width: 50vw;
     float: left;
-    padding-right: 2vw
+    padding-right: 2vw;
+    padding-bottom: 3vh;
 }
 
 #profile-image img {
@@ -334,23 +345,32 @@ cursor width is 1/2 border width */
     position: sticky;
 }
 
+#overviewText.landscape {
+    font-size: 1.5vw;
+    width: 50vw;
+    padding-right: 2vw;
+}
+
+#overviewFlex {
+    display: flex;
+}
 
 /* Work */
 #experience {
     margin: 0% 10%;
+    padding-top: 3vh;
     margin-bottom: 25vh;
-    height: 100vh;
     text-align: right;
     float: right;
     margin-bottom: 25vh;
     width: 80%;
-    overflow: hidden;
 }
 
 #experience h3 {
     font-size: 4.6vw;
     text-decoration: underline;
-    width: max-content;
+    width: 100%;
+    float: right;
 }
 
 #experience .plangroup h4 {
@@ -364,35 +384,42 @@ cursor width is 1/2 border width */
 
 #experience p {
     margin-top: 2.5vh;
-    width: 90%;
     font-size: 1.5vw;
     float: right;
+    width: 100%;
+    height: max-content;
 }
 
 .left {
-    margin-right: 3vw;
-    width: 110%;
+    width: 100%;
+}
+
+#plangroupDetails {
+    float: right;
+    width: 100%;
 }
 
 #experience .plangroup img {
     border-radius: 25px;
     border: 0.5vw solid rgb(23, 39, 45);
     z-index: -1;
-    margin-top: 10vw;
+    height: auto;
+    margin-top: 5vh;
 }
 
 #experience .plangroup #selfie {
-    margin-top: -40vh;
+    /*     margin-top: -40vh;
+ */
     width: 32%;
-    margin-right: -1vw;
 }
 
 #experience .plangroup {
     display: grid;
     grid-template-columns: 1fr 1fr;
     column-gap: 2vw;
-    height: 100%;
     align-items: center;
+    margin-top: 10vw;
+    height: min-content
 }
 
 #experience .plangroup #ALICE {
@@ -407,18 +434,90 @@ cursor width is 1/2 border width */
     margin: 0% 10%;
     margin-bottom: 25vh;
     display: inline-block;
+    height: min-content;
 }
 
 #projects .grid {
-    height: 70vh;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
     column-gap: 20px;
     row-gap: 20px;
     perspective: 1000px;
     overflow: visible;
 }
+
+.grid.mainBig {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+
+.grid.mainHeight {
+    height: 90vh
+}
+
+.grid.autoHeight {
+    height: auto;
+}
+
+.grid.mainMedium {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    height: auto;
+}
+
+.grid.subBig {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+}
+
+.grid.subHeight {
+    height: 120vh;
+}
+
+.grid.subMedium {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    height: auto;
+}
+
+.info.less {
+    height: 65%;
+    width: 100%;
+}
+
+.info.more {
+    height: auto;
+    width: max-content;
+}
+
+#icon.less {
+    font-size: 3vw;
+    margin: 2vh;
+}
+
+#icon.less {
+    font-size: 1.75vw;
+    margin: 0%;
+}
+
+.learnMore.less {
+    font-size: 1.5vw;
+}
+
+.learnMore.more {
+    font-size: 1vw;
+}
+
+.text.show {
+    visibility: visible;
+}
+
+.text.hide {
+    visibility: hidden;
+}
+
+
+
+
 
 #projects h3 {
     font-size: 4.6vw;
@@ -528,6 +627,14 @@ cursor width is 1/2 border width */
 }
 
 
+
+
+
+
+
+
+
+
 /* Contact and Socials*/
 #contact {
     text-align: left;
@@ -536,7 +643,7 @@ cursor width is 1/2 border width */
 }
 
 #contact h3 {
-    padding-top: 20px;
+    padding-top: 3vh;
     font-size: 4.6vw;
     text-decoration: underline;
 }

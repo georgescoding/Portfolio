@@ -1,4 +1,4 @@
-// remove "/" from pathname
+// remove trailing slash from url
 window.history.pushState('', '', location.pathname.slice(0, -1));
 
 
