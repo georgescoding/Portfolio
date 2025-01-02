@@ -1,9 +1,0 @@
-{
-    "chess": "A traditional game of chess with an AI engine using a minimax algorithm with alpha-beta pruning. Developed with the PyGame module and packaged into an executable for accessibility.",
-    "portfolio": "Custom-built portfolio website to showcase engineering and software development projects and work experience. Animations programmed with pure JS and CSS.",
-    "breathalyzer": "An alcohol detection device capable of reading an approximate %BAC in the surrounding air. Created using an STM32 board and MQ3 alcohol sensor, programmed with the ArduinoIDE.",
-    "blackjack": "Casino-style blackjack game built using Java and Java Swing. Includes a computer that will determine moves based on classic casino rules.",
-    "pHsensor": "A sensory tool capable of determining the approximate pH of any liquid. Built an STM32 board and an analog electrode pH sensor compatible with Arduino.",
-    "minesweeper": "Command terminal adaptation of the retro game Minesweeper. Created using only C++.",
-    "calculator": "A simple calculator app with basic mathematical functions. Built using ASP.NET with C#."
-}
