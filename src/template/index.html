@@ -1,0 +1,62 @@
+<!--Navigation Bar-->
+<nav id="navbar">
+
+    <a class="logo" href="#top"> <img src="/assets/favicon.ico"></a>
+
+    <ul class="collapsed-dropdown">
+        <button class="collapsedNav">&#9776</button>
+        <li id="collapsed-content">
+            <a href="/projects">Back</a><br>
+            <a href="/">Home</a>
+        </li>
+    </ul>
+
+    <div class="right-nav">
+        <ul id="dropdown">
+            <a class="navSection" id="projectNav" href="#projects">Projects<i class="fa fa-caret-down" id="caret-down"></i></a>
+            <div id="invisible"></div>
+            <li id="content">
+                <a id="chess" href="/projects/chess">1. Chess App</a>
+                <a href="/projects/portfolio">2. Portfolio Website</a>
+                <a href="/projects/breathalyzer">3. Breathalyzer</a>
+                <a href="/projects/blackjack">4. Blackjack</a>
+                <a href="/projects/ph-sensor">5. pH-Sensor</a>
+                <a href="/projects/minesweeper">6. Minesweeper</a>
+                <a id="see-all" href="/projects">See All</a>
+            </li>
+        </ul>
+        <a href="/projects">Back</a>
+        <a href="/" class="fa-solid fa-house"></a>
+    </div>
+</nav>
+
+
+<!-- Project Details -->
+<section class="project">
+    <h3 id="projectName"></h3>
+    <h4 id="tools">Languages/Tools: </h4>
+    <h4 id="source">GitHub: <a id="github" href="" target="_blank" class="fa fa-github"></a></h4>
+    <picture id="projectPic" class="center">
+        <video id="video" loop></video>
+        <div class="slideshow" id="slideshowContainer"></div>
+    </picture>
+    <div class="center" id="progressContainer">
+        <progress id="progressBar" min="0" max="100" value=""></progress>
+    </div>
+    <div class="center" id="videoButtons">
+        <button id="backward" title="Seek back" class="fa-solid fa-backward"></buton>
+            <button id="play" title="Pause/Play" class="fa-solid fa-play"></buton>
+                <button id="forward" title="Seek forward" class="fa-solid fa-forward"></buton>
+                    <button id="refresh" title="Restart video" class="fa-solid fa-refresh"></buton>
+                        <button id="fullscreen" title="Fullscreen" class="fa-solid fa-expand"></buton>
+                            <button id="time"></buton>
+    </div>
+    <p id="text"></p>
+    <div class="center"><a id="clickable" href="" target="_blank"><button id="button">Download</button></a></div>
+</section>
+
+
+<!--Copyright-->
+<footer>
+    <p class="copyright">Copyright © George Chen</p>
+</footer>

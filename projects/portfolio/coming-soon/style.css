@@ -1,0 +1,91 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
+
+h1 {
+    color: #d3d3d3;
+    font-size: 8vw;
+    font-family: "Courier New", Courier, monospace;
+}
+
+
+#copyright {
+    color: #d3d3d3;
+    font-size: 1.2vw;
+    font-family: "Courier New", Courier, monospace;
+}
+
+
+a:link,
+a:visited,
+a:active,
+a:focus {
+    text-decoration: none;
+    font-size: 2.5vw;
+    color: #d3d3d3;
+}
+
+
+a {
+    transition: all 0.3s linear;
+}
+
+
+a:hover {
+    transform: translate(0px, -5px);
+}
+
+
+#center {
+    height: 90vh;
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+
+#socials {
+    margin-bottom: 1px;
+    margin-top: -15px;
+}
+
+
+body {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5),
+            rgba(0, 0, 0, 0.1)), url("background.gif");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+
+#loading:after {
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: bottom;
+    -webkit-animation: ellipsis steps(4, end) 2000ms infinite;
+    animation: ellipsis steps(4, end) 2700ms infinite;
+    content: "\2026";
+    /* ascii code for the ellipsis character */
+    width: 0px;
+}
+
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    safari {
+        background-color: #eeeeee
+    }
+}
+
+
+@keyframes ellipsis {
+    to {
+        width: 7vw;
+    }
+}

@@ -1,0 +1,510 @@
+* {
+    font-family: "Courier New", Courier, monospace;
+    text-shadow: 0px 4px 4px #282828;
+    font-weight: bold;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+
+body,
+html {
+    height: 100vh;
+    margin: 0;
+    scroll-behavior: smooth;
+    width: 100%;
+    min-height: 100%;
+    overflow-x: hidden;
+}
+
+html {
+    overflow-y: hidden;
+    height: auto;
+    position: absolute;
+}
+
+
+/* Navigation Bar */
+#navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 0vw 0.7vw;
+    background-color: rgb(23, 39, 45);
+    z-index: 1;
+    height: 9vh;
+}
+
+#navbar .logo img {
+    max-height: 6vh;
+}
+
+.logo {
+    height: 100%;
+    display: flex;
+    align-content: center;
+    float: left;
+    margin-left: 1%;
+    font-size: 1.5vw;
+    flex-wrap: wrap;
+    animation: fade 0.5s linear;
+}
+
+.right-nav,
+.collapsed-dropdown {
+    float: right;
+    font-size: 1.5vw;
+    height: 100%;
+    margin-right: 1%;
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    animation: fade 0.4s linear;
+}
+
+
+.right-nav a {
+    display: inline-block;
+    border-radius: 10px;
+    list-style: none;
+    height: min-content;
+    margin: 0vw 1.25vw;
+    position: relative;
+    -webkit-transition: color 0.4s ease-out;
+    -moz-transition: color 0.4s ease-out;
+    -o-transition: color 0.4s ease-out;
+    -ms-transition: color 0.4s ease-out;
+    transition: color 0.4s ease-out;
+}
+
+.fa-caret-down,
+.fa-x,
+#collapsed-content a {
+    -webkit-transition: color 0.4s ease-out;
+    -moz-transition: color 0.4s ease-out;
+    -o-transition: color 0.4s ease-out;
+    -ms-transition: color 0.4s ease-out;
+    transition: color 0.4s ease-out;
+}
+
+.collapsedNav {
+    border: none;
+    border-radius: 0px;
+    box-shadow: none;
+    background: none;
+    font-size: 5vh;
+    display: none;
+}
+
+.collapsed-dropdown {
+    margin-right: 3%;
+}
+
+#main.portrait .collapsedNav {
+    display: flex;
+
+}
+
+.navSection.highlight {
+    background-color: rgb(62, 105, 121);
+    padding: 0px 10px;
+}
+
+#navbar a:hover,
+.right-nav a:hover,
+.collapsedNav button:hover,
+#projectNav:hover .fa-caret-down {
+    color: rgb(62, 105, 121);
+}
+
+#dropdown:hover #content {
+    display: block;
+}
+
+#dropdown:hover #invisible,
+#invisible:hover {
+    visibility: visible;
+}
+
+#invisible {
+    visibility: hidden;
+}
+
+#collapsed-content.show {
+    font-size: 3vw;
+    float: none;
+    color: white;
+    text-decoration: none;
+    display: block;
+    line-height: 1.5;
+    padding-bottom: 2vh;
+    position: fixed;
+    overflow: hidden;
+    animation: fade 0.4s linear;
+}
+
+#collapsed-content {
+    top: 7vh;
+    right: 3.5vw;
+
+}
+
+#caret-down {
+    padding-left: 0.25vw;
+    line-height: 0;
+}
+
+#dropdown {
+    height: 0;
+
+}
+
+
+#content,
+#collapsed-content {
+    display: none;
+    padding-top: 3vh;
+    background-color: rgb(62, 105, 121);
+    top: 9vh;
+    border-radius: 25px;
+    position: absolute;
+    z-index: 1;
+    padding-bottom: 1vh;
+    animation: fade 0.4s linear;
+}
+
+
+#see-all {
+    text-align: center;
+}
+
+#collapsed-content a {
+    text-decoration: none;
+    line-height: 1.5;
+    padding: 0vw 3vw;
+}
+
+#content a {
+    float: none;
+    color: white;
+    text-decoration: none;
+    display: block;
+    font-size: 1.25vw;
+    line-height: 1.5;
+    padding-bottom: 0.5vh;
+}
+
+#main.portrait .right-nav {
+    display: none;
+    height: max-content;
+}
+
+
+
+/* Information */
+.project {
+    height: fit-content;
+    z-index: -1;
+    overflow: visible;
+    text-align: left;
+    padding-right: 10%;
+    padding-left: 10%;
+}
+
+.project h3 {
+    padding-top: 2vh;
+    font-size: 4.25vw;
+    text-decoration: underline;
+}
+
+.project h4 {
+    padding-top: 2vh;
+    font-size: 2.125vw;
+}
+
+.project h4 a {
+    overflow: visible;
+    padding: none;
+    transition: all 0.3s ease-in-out;
+    font-size: 2.25vw;
+}
+
+.project #text,
+#caption {
+    font-size: 1.3vw;
+    width: auto;
+    line-height: 1.5;
+    background-color: rgb(23, 39, 45);
+    border-radius: 25px;
+    padding: 1.5vw 2vw 1.5vw 2vw;
+}
+
+.center a button,
+.center #play,
+.center #refresh,
+.center #fullscreen,
+.center #forward,
+.center #backward,
+.center #time,
+#prev,
+#next,
+#number {
+    background-color: rgb(62, 105, 121);
+    transition: all 0.3s ease-in-out;
+    font-size: 1.75vw;
+    color: white;
+    padding: 1vw 2.25vw;
+    text-decoration: none;
+    cursor: pointer;
+    animation-fill-mode: both;
+}
+
+.center {
+    display: flex;
+    overflow: visible;
+    justify-content: center;
+}
+
+.center #progressBar {
+    border-radius: 25px;
+    margin-top: 15px;
+    border: gray 1px solid;
+    height: 1vh;
+    width: 64vw;
+    background-color: rgb(62, 105, 121);
+}
+
+.center #play,
+.center #refresh,
+.center #fullscreen,
+.center #forward,
+.center #backward,
+.center #time {
+    box-shadow: none;
+}
+
+a button:hover,
+.project a:hover,
+#play:hover,
+.center #refresh:hover,
+.center #fullscreen:hover,
+.center #forward:hover,
+.center #backward:hover {
+    transform: translateY(2px);
+    box-shadow: none;
+}
+
+#play,
+#refresh,
+#fullscreen,
+#forward,
+#backward,
+#time {
+    margin-top: 2vw;
+    margin-bottom: 6vh;
+    margin-right: 2vw;
+}
+
+
+video {
+    position: relative;
+    object-fit: fill;
+    margin-top: 3vh;
+    max-height: 85vh;
+    max-width: 57vw;
+    border-radius: 0.7rem;
+    background-color: rgb(23, 39, 45);
+    padding: 1vw;
+}
+
+video:hover {
+    cursor: pointer;
+}
+
+video::-webkit-media-controls {
+    display: none !important;
+}
+
+
+progress[value]::-webkit-progress-value {
+    background-color: rgb(62, 105, 121);
+    position: relative;
+    transition: width 1s linear;
+}
+
+
+/* Links */
+a:link,
+a:visited,
+a:active,
+a:focus {
+    text-decoration: none;
+}
+
+button,
+#play {
+    border: 0.1vw rgb(32, 32, 32) solid;
+    border-radius: 25px;
+    transition: all 0.3s ease-in-out;
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    animation-fill-mode: both;
+    box-shadow: 0.4vw 0.3vw 0px rgb(211, 211, 211);
+}
+
+/* Copyright */
+.copyright {
+    font-size: 1vw;
+    text-align: center;
+    display: inline-block;
+    width: 100%;
+    padding-top: 5vh;
+    padding-bottom: 15px;
+    bottom: 0;
+}
+
+
+/* Background Picture */
+body {
+    overflow-y: visible;
+    margin-top: 9vh;
+    height: 90.8vh;
+    background-color: rgb(23, 39, 45);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.2)),
+        url("/assets/background.gif");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+
+/* Slideshow container */
+.slideshow {
+    text-align: center;
+    align-items: center;
+    width: 80vw;
+    margin-top: 2vw;
+
+}
+
+/* Hide the images by default */
+.slides {
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+#button {
+    margin-top: 3vw;
+}
+
+.slides img {
+    border-radius: 25px;
+    z-index: -1;
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+    border: rgb(62, 105, 121) 0.5vw solid;
+    max-height: 85vh;
+    max-width: 57vw;
+}
+
+.projectPic .center {
+    width: min-content;
+}
+
+/* Next & previous buttons */
+#prev,
+#next,
+#number {
+    margin-bottom: 20px;
+    cursor: pointer;
+    border-radius: 25px;
+    border: rgb(23, 39, 45) 0.3vw solid;
+}
+
+#number {
+    margin-left: 10px;
+    margin-right: 10px;
+    cursor: default;
+}
+
+
+/* On hover, add a black background color with a little bit see-through */
+#prev:hover,
+#next:hover {
+    background-color: rgb(23, 39, 45);
+}
+
+/* Fading animation */
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@keyframes fade {
+    from {
+        opacity: .4
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+#caption {
+    font-size: 1vw;
+    margin-bottom: 5px;
+}
+
+body::-webkit-scrollbar {
+    width: 0.8em;
+}
+
+body::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: rgb(23, 39, 45);
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+    border-radius: 8px;
+}
+
+#main.portrait #projectName {
+    font-size: 6vw;
+}
+
+#main.portrait #tools,
+#main.portrait #text,
+#main.portrait #source {
+    font-size: 2.5vw;
+}
+
+#main.portrait #text {
+    padding: 4vw
+}
+
+#main.portrait .fa-github {
+    font-size: 4vw;
+}
+
+#main.portrait #button {
+    font-size: 4vw;
+    padding: 2vw 3vw
+}
+
+#main.portrait .copyright {
+    padding-top: 5vh;
+    font-size: 2vw;
+}
+
+#main.portrait #videoButtons button {
+    font-size: 2vw;
+
+}

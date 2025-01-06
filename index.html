@@ -1,24 +1,281 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <link rel="stylesheet" href="style.css">
-    <title>George's Portfolio Website</title>
-    <script src="https://kit.fontawesome.com/6eb7aace7e.js" crossorigin="anonymous"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="theme-color" content="#374c51">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<script src="https://kit.fontawesome.com/6eb7aace7e.js" crossorigin="anonymous"></script>
+<script type="module" src="/main.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script type="text/javascript">
+    (function () {
+        emailjs.init({
+            publicKey: "wcwKCcPMETQ63x_aP",
+        });
+    })();
+</script>
+<link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+<link rel="stylesheet" href="/style.css">
 </head>
+<a id="top"></a>
 
-<div id="center">
-    <h1 id="loading">COMING SOON</h1>
-</div>
+<noscript>
+    <style type="text/css">
+        .page {
+            display: none;
+        }
 
-<div style="text-align: center">
-    <p id="socials"><a href="https://github.com/GeorgesCoding" target="_blank" class="fa fa-github">&nbsp;&nbsp;</a>
-        <a href="mailto:george@georgescoding.com" class="fa fa-envelope">&nbsp;&nbsp;</a>
-        <a href="https://www.linkedin.com/in/georgechn" target="_blank" class="fa fa-linkedin"></a>
-    </p>
-    <p id="copyright">Copyright © George Chen 2025</p>
-</div>
+        .noscriptmsg {
+            display: flex;
+            overflow: visible;
+            justify-content: center;
+            vertical-align: middle;
+            height: 100%;
+            font-size: 2vw;
+        }
+    </style>
+    <h1 class="noscriptmsg">
+        This website requires JavaScript, please turn it on!
+    </h1>
+</noscript>
+
+<body id="main">
+    <main class="page hide">
+        <button id="prevSection" title="Previous section">&#11205</button>
+        <button id="nextSection" title="Next section">&#11206</button>
+
+        <!--Navigation Bar-->
+        <nav id="navbar">
+
+            <a class="logo" href="#top"> <img src="assets/favicon.ico"></a>
+
+            <ul class="collapsed-dropdown">
+                <button class="collapsedNav">&#9776</button>
+                <li id="collapsed-content">
+                    <a href="#overview">About</a><br>
+                    <a href="#experience">Work</a><br>
+                    <a href="#projects">Projects</a><br>
+                    <a href="#contact">Contact</a>
+                </li>
+            </ul>
+
+            <div class="right-nav">
+                <a class="navSection" href="#overview">About</a>
+                <a class="navSection" href="#experience">Work</a>
+                <ul id="dropdown">
+                    <a class="navSection" id="projectNav" href="#projects">Projects<i class="fa fa-caret-down" id="caret-down"></i></a>
+                    <div id="invisible"></div>
+                    <li id="content">
+                        <a id="chess" href="/projects/chess">1. Chess App</a>
+                        <a href="/projects/portfolio">2. Portfolio Website</a>
+                        <a href="/projects/breathalyzer">3. Breathalyzer</a>
+                        <a href="/projects/blackjack">4. Blackjack</a>
+                        <a href="/projects/ph-sensor">5. pH-Sensor</a>
+                        <a href="/projects/minesweeper">6. Minesweeper</a>
+                        <a id="see-all" href="/projects">See All</a>
+                    </li>
+                </ul>
+                <a class="navSection" href="#contact">Contact</a>
+            </div>
+        </nav>
+
+
+        <!--Introduction-->
+        <section id="welcomePage" class="section">
+            <div class="centerVertical">
+                <h1 id="typing"></h1>
+                <h2 id="university">University of Waterloo | Electrical Engineering</h2>
+                <div id="marquee" class="wrapper">
+                    <div class="marquee"><span id="marqueeText"></span><span id="marqueeText2"></span></div>
+                </div>
+                <div class="button">
+                    <a href="#overview"><button class="readmore">Read More</button></a>
+                    <a href="#contact"><button class="contactbutton">Contact</button></a>
+                </div>
+            </div>
+        </section>
+
+
+        <!--Overview-->
+        <section id="overview" class="section">
+            <div class="centerVertical">
+                <h3 class="sectionName">About Me</h3>
+                <span class="overviewFlex">
+                    <p id="overviewText"></p>
+                    <picture id="profile-image" class="sectionPicture"><img src='/assets/pictures/overview-picture.png'></picture>
+                </span>
+            </div>
+        </section>
+
+
+        <!-- Work -->
+        <section id="experience" class="section">
+            <div class="centerVertical">
+
+                <h3 class="sectionName">Work Experience</h3>
+
+                <div id="plangroupDetails">
+                    <h4 class="workName">Plan Group</h4>
+                    <h4 class="workTitle">Electrical Designer</h4>
+                    <h5 class="workDate">Date: Jan 2023 - Apr 2023</h5>
+                </div>
+
+                <p id="workText"></p>
+
+                <div id="plangroup" class="sectionPicture">
+                    <img id="ALICE" class="ALICE" src='/assets/pictures/work-alice.png'>
+                    <img id="selfie" class="selfie" src='/assets/pictures/work-selfie.jpg'>
+                </div>
+        </section>
+
+
+        <!-- Projects -->
+        <section id="projects" class="section">
+            <h3>Projects</h3>
+            <div class="grid">
+
+                <div class="card" id="1">
+                    <div class="front"><img src='/assets/pictures/projects-chess.png'>
+                        <div id="projectName">Chess App</div>
+                    </div>
+                    <div class="back">
+                        <div class="info">
+                            <a href="https://github.com/GeorgesCoding/Chess" target="_blank" class="fa fa-github" id="icon"></a>
+                            <a href="/projects/chess"><button class="learnMore">Learn More</button></a>
+                            <p>Python</p>
+                        </div>
+                        <div id="chessText" class="text"></div>
+                    </div>
+                </div>
+
+                <div class="card" id="2">
+                    <div class="front"><img src='/assets/pictures/projects-portfolio.png'>
+                        <div id="projectName">Portfolio Website</div>
+                    </div>
+                    <div class="back">
+                        <div class="info">
+                            <a href="https://github.com/GeorgesCoding/Portfolio" target="_blank" class="fa fa-github" id="icon"></a>
+                            <a href="/projects/portfolio"><button class="learnMore">Learn More</button></a>
+                            <p>JavaScript, HTML, CSS</p>
+                        </div>
+                        <div id="portfolioText" class="text"></div>
+                    </div>
+                </div>
+
+                <div class="card" id="3">
+                    <div class="front"><img src='/assets/pictures/projects-breathalyzer.jpg'>
+                        <div id="projectName">Breathalyzer</div>
+                    </div>
+                    <div class="back">
+                        <div class="info">
+                            <a href="https://github.com/GeorgesCoding/Breathalyzer" target="_blank" class="fa fa-github" id="icon"></a>
+                            <a href="/projects/breathalyzer"><button class="learnMore">Learn More</button></a>
+                            <p>C/C++, Arduino, STM32</p>
+                        </div>
+                        <div id="breathalyzerText" class="text"></div>
+                    </div>
+                </div>
+
+                <div class="card" id="4">
+                    <div class="front"><img src='/assets/pictures/projects-blackjack.png'>
+                        <div id="projectName">Blackjack</div>
+                    </div>
+                    <div class="back">
+                        <div class="info">
+                            <a href="https://github.com/GeorgesCoding/Blackjack" target="_blank" class="fa fa-github" id="icon"></a>
+                            <a href="/projects/blackjack"><button class="learnMore">Learn More</button></a>
+                            <p>Java</p>
+                        </div>
+                        <div id="blackjackText" class="text"></div>
+                    </div>
+                </div>
+
+                <div class="card" id="5">
+                    <div class="front"><img src='/assets/pictures/projects-sensor.jpg'>
+                        <div id="projectName">pH-Sensor</div>
+                    </div>
+                    <div class="back">
+                        <div class="info">
+                            <a href="https://github.com/GeorgesCoding/pH-Sensor" target="_blank" class="fa fa-github" id="icon"></a>
+                            <a href="/projects/ph-sensor"><button class="learnMore">Learn More</button></a>
+                            <p>C/C++, Arduino, AutoCAD</p>
+                        </div>
+                        <div id="sensorText" class="text"></div>
+                    </div>
+                </div>
+
+                <div class="card" id="6">
+                    <div class="front"><img src='/assets/pictures/projects-minesweeper.png'>
+                        <div id="projectName">Minesweeper</div>
+                    </div>
+                    <div class="back">
+                        <div class="info">
+                            <a href="https://github.com/GeorgesCoding/Minesweeper" target="_blank" class="fa fa-github" id="icon"></a>
+                            <a href="./projects/minesweeper/index.html"><button class="learnMore">Learn More</button></a>
+                            <p>C++</p>
+                        </div>
+                        <div id="minesweeperText" class="text"></div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="middle"> <a href="/projects"><button class="seeAll">See All</button></a></div>
+        </section>
+
+
+        <!-- Contact/Socials-->
+        <section id="contact" class="section">
+            <div class="centerVertical">
+                <h3>Contact</h3>
+                <div class="grid">
+
+                    <div class="form">
+                        <h4>Leave a Message</h4>
+                        <form id="form">
+
+                            <label for="name">Name:</label>
+                            <input id="name" type="name" name="name" placeholder="Your Name" autocomplete="on" aria-required="true"><br>
+
+                            <label for="email">Email:</label>
+                            <input id="email" type="email" name="email" placeholder="Your Email" autocomplete="on" aria-required="true"><br>
+
+                            <label for="message">Message:</label>
+                            <textarea id="message" name="message" placeholder="Your Message" rows="5" aria-required="true"></textarea>
+                            <div id="recaptcha">
+                                <div class="g-recaptcha" data-sitekey="6LfUxMQpAAAAANxEA_tNe3RvqT_d0iclalzDqmz8"></div>
+                            </div>
+                            <button id="sendButton">Send</button>
+                            <button type="reset" form="form">Clear</button>
+                        </form>
+                    </div>
+
+                    <div class="socials">
+                        <div class="links">
+                            <h4>Say Hi!</h4>
+                            <div class="icons">
+                                <a href="https://github.com/GeorgesCoding" target="_blank" class="fa fa-github"></a>&nbsp&nbsp
+                                <a href="mailto:george@georgescoding.com" class="fa fa-envelope"></a>&nbsp&nbsp
+                                <a href="https://www.linkedin.com/in/georgechn" target="_blank" class="fa fa-linkedin"></a>
+                            </div>
+                        </div>
+
+                        <div class="resume">
+                            <h4>View My Resume</h4>
+                            <div id="resume"><a href="/assets/resume.pdf" target="_blank"><button>Click Me!</button></a></div>
+                        </div>
+
+                        <div class="reportBug">
+                            <h4>Report a Bug!</h4>
+                            <div id="reportBug"><a href="mailto:support@georgescoding.com?subject=Issue/Bug on Website"><button class=" fa-solid fa-bug"></button></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--Copyright-->
+        <footer>
+            <p class="copyright">Copyright © George Chen</p>
+        </footer>
+    </main>
+</body>
 
 </html>
