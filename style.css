@@ -52,8 +52,11 @@ body {
 }
 
 @media screen and (max-width:400px) {
-    #main {
-        padding-bottom: 5vh;
+    #overview,
+    #experience,
+    #projects,
+    #contact {
+        padding-top: -5vh;
     }
 }
 
