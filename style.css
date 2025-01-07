@@ -51,6 +51,15 @@ body {
     }
 }
 
+@media screen and (max-width:400px) {
+    #overview,
+    #experience,
+    #projects,
+    #contact {
+        padding-top: 5vh;
+    }
+}
+
 #prevSection.portrait,
 #nextSection.portrait {
     font-size: 3.5vw;
