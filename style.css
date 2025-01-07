@@ -35,6 +35,7 @@ body {
     overflow-y: visible;
     margin-top: 9vh;
     height: 90.8vh;
+    background-color: rgb(23, 39, 45);
     background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.2)),
         url("assets/background.gif");
     background-repeat: no-repeat;
@@ -918,9 +919,9 @@ cursor width is 1/2 border width */
 #contact.portrait .resume,
 #contact.portrait .reportBug {
     height: 20vw;
-    min-height: 23vw;
-}
+    margin-top: 5vh;
 
+}
 
 #contact.portrait .icons,
 #contact.portrait #resume,

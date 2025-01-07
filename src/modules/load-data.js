@@ -712,8 +712,13 @@ function scaleSocials() {
         socials = document.querySelector(".socials"),
         resume = document.querySelector(".resume"),
         reportBug = document.querySelector(".reportBug"),
+        grid = document.querySelector("#contact .grid"),
         margin = (formHeight - resume.offsetHeight * 3) / 4,
         marginCSS = margin.toString() + "px";
+
+    if (grid.classList.contains("portrait")) {
+        marginCSS = "";
+    }
 
     socials.style.marginTop = marginCSS;
     resume.style.marginTop = marginCSS;
