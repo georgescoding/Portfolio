@@ -378,10 +378,15 @@ body {
         url("/assets/background.gif");
     background-repeat: no-repeat;
     background-position: center;
-    background-attachment: fixed;
+    background-attachment: scroll;
     background-size: cover;
 }
 
+@media screen and (max-width: 400px) {
+    #main {
+        height: -webkit-fill-available;
+    }
+}
 
 /* Slideshow container */
 .slideshow {
