@@ -108,7 +108,8 @@ function styleHome() {
         vw = viewport.width;
 
     // changable parameters
-    let unit;
+    let unit,
+        landscape;
 
     // navbar elements
     let rightnav = document.querySelector(".right-nav"),
@@ -150,6 +151,7 @@ function styleHome() {
 
     // landscape mode
     if (vw >= vh * 1.5) {
+        landscape = true;
 
         // remove font size
         overviewText.style.fontSize = "";
@@ -171,6 +173,8 @@ function styleHome() {
 
     // portrait mode
     else {
+        landscape = false;
+
         // collapse navbar options into single menu
         rightnav.classList.add("collapsed")
         collapsedNav.classList.add("collapsed")
@@ -207,7 +211,7 @@ function styleHome() {
         sectionName.forEach((section) => { section.style.fontSize = "4.6" + unit })
     }
 
-    setHeight();
+    setHeight(landscape);
 }
 
 
@@ -292,24 +296,33 @@ function handleIntersect(entries) {
 
 
 // make each section fit exactly the entire pages
-function setHeight() {
+function setHeight(landscape) {
     let navbar = document.getElementById("navbar"),
         centerVertical = document.querySelectorAll(".centerVertical"),
-        sections = document.querySelectorAll(".section"),
-        plangroup = document.getElementById("plangroup");
+        sections = document.querySelectorAll(".section");
 
     let navbarHeight = navbar.getBoundingClientRect().height,
         vh = Math.max(document.documentElement.getBoundingClientRect().height || 0, window.innerHeight || 0),
         sectionHeight = vh - navbarHeight,
         sectionHeightCSS = sectionHeight.toString() + "px",
-        welcomeHeight = centerVertical[0].getBoundingClientRect().height;
+        welcomeHeight = centerVertical[0].getBoundingClientRect().height,
+        overviewHeight = centerVertical[1].getBoundingClientRect().height,
+        workHeight = centerVertical[2].getBoundingClientRect().height;
+
+    let overview = document.getElementById("overview"),
+        styles = window.getComputedStyle(overview),
+        padding = styles.getPropertyValue('padding-top').toString().replace("px", "");
 
     centerVertical.forEach((section) => section.style.top = "0px")
     centerVertical[0].style.top = ((sectionHeight - welcomeHeight) / 2).toString() + "px";
-    /* if is portrait mode, then make contact section in the middle */
+
+    if (landscape) {
+        centerVertical[1].style.paddingTop = ((sectionHeight - overviewHeight - padding * 3) / 2).toString() + "px";
+        centerVertical[2].style.paddingTop = ((sectionHeight - workHeight - padding * 3) / 2).toString() + "px";
+    }
+
     sections = Array.from(sections)
     sections.splice(3, 2)
-    sections.push(plangroup)
     sections.forEach((section) => { section.style.height = sectionHeightCSS })
 }
 

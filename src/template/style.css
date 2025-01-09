@@ -233,12 +233,16 @@ html {
 
 .project #text,
 #caption {
-    font-size: 1.3vw;
+    font-size: 1.5vw;
     width: auto;
     line-height: 1.5;
     background-color: rgb(23, 39, 45);
     border-radius: 25px;
     padding: 1.5vw 2vw 1.5vw 2vw;
+}
+
+.project #text {
+    font-size: 2vw;
 }
 
 .center a button,
@@ -358,7 +362,7 @@ button,
 
 /* Copyright */
 .copyright {
-    font-size: 1vw;
+    font-size: 1.25vw;
     text-align: center;
     display: inline-block;
     width: 100%;

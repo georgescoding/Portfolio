@@ -55,6 +55,7 @@ body {
 #prevSection.portrait,
 #nextSection.portrait {
     font-size: 3.5vw;
+    padding: 1vw;
 }
 
 #prevSection.portrait {
@@ -97,6 +98,7 @@ body {
 
 .centerVertical {
     position: relative;
+    height: auto;
 }
 
 
@@ -1164,12 +1166,16 @@ a:focus {
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 7vw;
+}
+
+
+#contact.portrait .resumeButton,
+#contact.portrait .bugButton,
+#contact.portrait .icons {
     height: calc(15vw - 4vh);
 }
 
-.socials button {
-    margin-bottom: 1vw;
-}
 
 .resume,
 .reportBug,
