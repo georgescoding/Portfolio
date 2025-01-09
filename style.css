@@ -19,6 +19,8 @@ html {
 }
 
 html {
+    overflow-y: visible;
+
     height: auto;
     position: absolute;
 }
@@ -48,13 +50,6 @@ body {
     background-repeat: no-repeat;
     background-position: center;
     z-index: -1;
-}
-
-@media (max-width: 400px) {
-    body {
-        background-attachment: scroll;
-        height: -webkit-fill-available;
-    }
 }
 
 #prevSection.portrait,
@@ -708,6 +703,13 @@ cursor width is 1/2 border width */
 .grid.mainSmall .card,
 .grid.subSmall .card {
     width: 50vw;
+    height: 25vh;
+}
+
+.grid.mainSmall #projectName,
+.grid.subSmall #projectName {
+    font-size: 3.5vw;
+    padding-top: 0.5vh;
 }
 
 .grid.subBig {
@@ -861,11 +863,12 @@ cursor width is 1/2 border width */
     position: relative;
 }
 
-#projects .seeAll {
+.seeAll {
     font-size: 2.25vw;
-    padding: 1.5vh 1.5vw;
-    margin-top: 40px;
+    padding: 1vw 1.7vw;
+    margin-top: 5vh;
 }
+
 
 #projects .card a button {
     border-radius: 25px;
@@ -891,6 +894,14 @@ cursor width is 1/2 border width */
     vertical-align: middle;
 }
 
+
+@media (max-width: 800px) {
+    #seeAll {
+        font-size: 3.5vw;
+        padding: 2vw 3vw;
+
+    }
+}
 
 
 
@@ -926,16 +937,22 @@ cursor width is 1/2 border width */
 #contact.portrait .reportBug {
     height: 20vw;
     margin-top: 5vh;
-
 }
 
-#contact.portrait .icons,
-#contact.portrait #resume,
-#contact.portrait #reportBug {
-    height: 10vw;
+@media (max-width: 400px) {
+
+    #resume,
+    #reportBug,
+    #platforms {
+        height: calc(20vw - 4vh);
+    }
+
+    #contact.portrait .links,
+    #contact.portrait .resume,
+    #contact.portrait .reportBug {
+        height: 25vw;
+    }
 }
-
-
 
 
 
@@ -1141,13 +1158,13 @@ a:focus {
     display: block;
 }
 
-#resume,
-#reportBug,
+.resumeButton,
+.bugButton,
 .icons {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 7vw;
+    height: calc(15vw - 4vh);
 }
 
 .socials button {
@@ -1196,7 +1213,7 @@ button {
 
 .copyright.portrait {
     padding-top: 5vh;
-    font-size: 1.5vw;
+    font-size: 2vw;
 }
 
 body::-webkit-scrollbar {
