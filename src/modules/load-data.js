@@ -303,7 +303,7 @@ function setHeight() {
         sectionHeight = vh - navbarHeight,
         sectionHeightCSS = sectionHeight.toString() + "px",
         welcomeHeight = centerVertical[0].getBoundingClientRect().height;
-
+    console.log(vh)
     centerVertical.forEach((section) => section.style.top = "0px")
     centerVertical[0].style.top = ((sectionHeight - welcomeHeight) / 2).toString() + "px";
     /* if is portrait mode, then make contact section in the middle */
