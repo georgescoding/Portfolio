@@ -30,7 +30,9 @@ html {
 }
 
 @media (max-width: 430px) {
-    body {
+
+    body,
+    html {
         height: 90.8dvh;
     }
 }
