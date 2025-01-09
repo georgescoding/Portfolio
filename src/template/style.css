@@ -390,7 +390,7 @@ body {
 }
 
 @media (max-width: 400px) {
-    body {
+    #main {
         background-attachment: scroll;
         height: -webkit-fill-available;
     }
