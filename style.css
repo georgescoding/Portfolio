@@ -29,19 +29,12 @@ html {
     visibility: hidden;
 }
 
-html {
-    overflow: hidden;
-    width: 100%;
-}
-
-@media (max-width: 430px ) {
+@media (max-width: 430px) {
     body {
-        height: 100%;
-        position: fixed;
-        overflow-y: scroll;
-        -webkit-overflow-scrolling: touch;
+        height: 90.8dvh;
     }
 }
+
 
 /* Background Picture */
 body {

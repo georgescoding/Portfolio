@@ -24,6 +24,12 @@ html {
     position: absolute;
 }
 
+@media (max-width: 430px) {
+    body {
+        margin-bottom: 20vh;
+    }
+}
+
 
 /* Navigation Bar */
 #navbar {
