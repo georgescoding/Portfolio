@@ -40,23 +40,14 @@ body {
         url("assets/background.gif");
     background-repeat: no-repeat;
     background-position: center;
-    background-attachment: scroll;
+    background-attachment: fixed;
     background-size: cover;
 }
 
 
 @media screen and (max-width: 400px) {
-    #main {
+    body {
         height: -webkit-fill-available;
-    }
-}
-
-@media screen and (max-width:400px) {
-    #overview,
-    #experience,
-    #projects,
-    #contact {
-        padding-top: -5vh;
     }
 }
 
