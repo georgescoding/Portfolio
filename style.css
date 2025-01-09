@@ -21,7 +21,7 @@ html {
 
 @media (max-width: 430px) {
     body {
-        height: 100dvh;
+        height: 85vh;
     }
 }
 
@@ -947,9 +947,9 @@ cursor width is 1/2 border width */
 
 @media (max-width: 400px) {
 
-    #resume,
-    #reportBug,
-    #platforms {
+    #contact.portrait #resume,
+    #contact.portrait #reportBug,
+    #contact.portrait #platforms {
         height: calc(20vw - 4vh);
     }
 
