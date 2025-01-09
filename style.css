@@ -33,7 +33,7 @@ html {
 
     body,
     html {
-        height: 90.8dvh;
+        min-height: -webkit-fill-available;
     }
 }
 
