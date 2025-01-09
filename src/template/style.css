@@ -393,12 +393,6 @@ body {
     z-index: -1;
 }
 
-@media (max-width: 400px) {
-    body {
-        height: 100%;
-    }
-}
-
 /* Slideshow container */
 .slideshow {
     text-align: center;

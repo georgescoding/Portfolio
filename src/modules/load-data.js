@@ -216,7 +216,6 @@ function styleHome() {
 
 
 
-
 // scrolls to the next or previous section of main page
 function toggleSection(selector) {
 

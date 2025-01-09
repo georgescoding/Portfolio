@@ -1,6 +1,6 @@
 // remove trailing slash from url
 window.history.pushState('', '', location.pathname.slice(0, -1));
-
+window.scrollTo(0, 1)
 
 ///////////////////////////////////////////////////////////////////////
 ///// dynamically load modules depending on the current directory /////
