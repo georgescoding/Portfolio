@@ -46,9 +46,7 @@ body {
 
 
 @media screen and (max-width: 400px) {
-    body {
-        height: -webkit-fill-available;
-    }
+
 }
 
 #prevSection.portrait,
