@@ -16,10 +16,10 @@ html {
     width: 100%;
     min-height: 100%;
     overflow-x: hidden;
+    overflow-y: visible;
 }
 
 html {
-    overflow-y: hidden;
     height: auto;
     position: absolute;
 }

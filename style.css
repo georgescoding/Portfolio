@@ -16,11 +16,16 @@ html {
     width: 100%;
     min-height: 100%;
     overflow-x: hidden;
+    overflow-y: visible;
+}
+
+@supports (height: 100dvh) {
+    body {
+        height: 100dvh;
+    }
 }
 
 html {
-    overflow-y: visible;
-
     height: auto;
     position: absolute;
 }
@@ -33,7 +38,6 @@ html {
 
 /* Background Picture */
 body {
-    overflow-y: visible;
     margin-top: 9vh;
     height: 90.8vh;
     background-color: rgb(23, 39, 45);
