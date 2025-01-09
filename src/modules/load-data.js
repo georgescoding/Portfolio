@@ -740,7 +740,9 @@ function scaleSocials() {
 
 // completes copyright by inserting the current year
 export function copyright() {
-
+    resizeBody();
+    window.onresize = function () { resizeBody(); }
+    
     let viewport, navbarHeight, vh, vw;
 
     wait("navbar", 1).then(() => {
@@ -758,4 +760,8 @@ export function copyright() {
             footer.classList.add("portrait")
         }
     })
+}
+
+function resizeBody() {
+    document.body.height = window.innerHeight;
 }
