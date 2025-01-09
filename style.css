@@ -53,6 +53,7 @@ body {
 @media (max-width: 400px) {
     body {
         background-attachment: scroll;
+        height: -webkit-fill-available;
     }
 }
 
