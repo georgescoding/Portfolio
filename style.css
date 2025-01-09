@@ -560,10 +560,6 @@ cursor width is 1/2 border width */
 }
 
 
-#overviewFlex {
-    display: flex;
-}
-
 /* Work */
 #experience {
     margin: 0% 10%;
