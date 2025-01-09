@@ -407,7 +407,7 @@ export function checkSession() {
     var c = getCookie("visited");
     if (c === "yes") {
     } else {
-        alert("Welcome new visitor! \n\n Please note that this website was built for desktop, so it hasn't been tested across many mobile platforms. (As a tip for Apple users using Safari, hide the tool bar using page settings so you can see all of the content.) If you an encounter an error or have any feedback, please email support@georgescoding.com. \n\n Thanks for your understanding! \n\n - George.");
+        alert("Welcome new visitor! \n\n Please note that this website was built for desktops. Although it will work for mobile browsers, it looks best on desktops. If you encounter an error or have any feedback, please email support@georgescoding.com. \n\n Thanks for your understanding! \n\n - George.");
     }
     setCookie("visited", "yes", 7); // expire in 1 year; or use null to never expire
 }
