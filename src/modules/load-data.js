@@ -312,6 +312,7 @@ function setHeight(landscape) {
         padding = styles.getPropertyValue('padding-top').toString().replace("px", "");
 
     centerVertical.forEach((section) => section.style.top = "0px")
+    centerVertical.forEach((section) => section.style.paddingTop = "")
     centerVertical[0].style.top = ((sectionHeight - welcomeHeight) / 2).toString() + "px";
 
     if (landscape) {
