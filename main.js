@@ -9,7 +9,6 @@ window.scrollTo(0, 1)
 // root directory
 if (window.location.pathname == "/") {
     import("./src/modules/load-data.js").then((load) => {
-        load.checkSession();
         load.copyright();
         load.home();
         load.summary(true);
