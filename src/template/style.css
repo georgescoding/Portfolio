@@ -14,8 +14,7 @@ html {
     margin: 0;
     scroll-behavior: smooth;
     width: 100%;
-    overflow-x: hidden;
-    overflow-y: visible;
+    overflow: hidden;
 }
 
 html {
@@ -23,13 +22,25 @@ html {
     position: absolute;
 }
 
+#logo {
+    cursor: pointer;
+}
+
+.navSection {
+    cursor: pointer;
+}
+
+:root {
+    --light: rgb(62, 105, 121);
+    --dark: rgb(23, 39, 45);
+}
 
 /* Background Picture */
 body {
     overflow-y: visible;
     margin-top: 9vh;
     height: 90.8dvh;
-    background-color: rgb(23, 39, 45);
+    background-color: var(--dark);
 }
 
 /* Navigation Bar */
@@ -38,7 +49,7 @@ body {
     top: 0;
     width: 100%;
     padding: 0vw 0.7vw;
-    background-color: rgb(23, 39, 45);
+    background-color: var(--dark);
     z-index: 1;
     height: 9vh;
 }
@@ -115,7 +126,7 @@ body {
 }
 
 .navSection.highlight {
-    background-color: rgb(62, 105, 121);
+    background-color: var(--light);
     padding: 0px 10px;
 }
 
@@ -123,7 +134,7 @@ body {
 .right-nav a:hover,
 .collapsedNav button:hover,
 #projectNav:hover .fa-caret-down {
-    color: rgb(62, 105, 121);
+    color: var(--light);
 }
 
 #dropdown:hover #content {
@@ -173,7 +184,7 @@ body {
 #collapsed-content {
     display: none;
     padding-top: 3vh;
-    background-color: rgb(62, 105, 121);
+    background-color: var(--light);
     top: 9vh;
     border-radius: 25px;
     position: absolute;
@@ -243,7 +254,7 @@ body {
     font-size: 1.5vw;
     width: auto;
     line-height: 1.5;
-    background-color: rgb(23, 39, 45);
+    background-color: var(--dark);
     border-radius: 25px;
     padding: 1.5vw 2vw 1.5vw 2vw;
 }
@@ -262,7 +273,7 @@ body {
 #prev,
 #next,
 #number {
-    background-color: rgb(62, 105, 121);
+    background-color: var(--light);
     transition: all 0.3s ease-in-out;
     font-size: 1.75vw;
     color: white;
@@ -284,7 +295,7 @@ body {
     border: gray 1px solid;
     height: 1vh;
     width: 64vw;
-    background-color: rgb(62, 105, 121);
+    background-color: var(--light);
 }
 
 .center #play,
@@ -326,7 +337,7 @@ video {
     max-height: 85vh;
     max-width: 57vw;
     border-radius: 0.7rem;
-    background-color: rgb(23, 39, 45);
+    background-color: var(--dark);
     padding: 1vw;
 }
 
@@ -340,7 +351,7 @@ video::-webkit-media-controls {
 
 
 progress[value]::-webkit-progress-value {
-    background-color: rgb(62, 105, 121);
+    background-color: var(--light);
     position: relative;
     transition: width 1s linear;
 }
@@ -420,7 +431,7 @@ button,
     display: inline-block;
     justify-content: center;
     align-items: center;
-    border: rgb(62, 105, 121) 0.5vw solid;
+    border: var(--light) 0.5vw solid;
     max-height: 85vh;
     max-width: 57vw;
 }
@@ -436,7 +447,7 @@ button,
     margin-bottom: 20px;
     cursor: pointer;
     border-radius: 25px;
-    border: rgb(23, 39, 45) 0.3vw solid;
+    border: var(--dark) 0.3vw solid;
 }
 
 #number {
@@ -449,7 +460,7 @@ button,
 /* On hover, add a black background color with a little bit see-through */
 #prev:hover,
 #next:hover {
-    background-color: rgb(23, 39, 45);
+    background-color: var(--dark);
 }
 
 /* Fading animation */
@@ -479,7 +490,7 @@ body::-webkit-scrollbar {
 
 body::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-    background-color: rgb(23, 39, 45);
+    background-color: var(--dark);
 }
 
 body::-webkit-scrollbar-thumb {

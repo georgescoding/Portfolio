@@ -29,12 +29,24 @@ html {
 }
 
 
+#logo,
+.nav-about,
+.nav-work,
+.nav-projects,
+.nav-contact {
+    cursor: pointer;
+}
+
+:root {
+    --light: rgb(62, 105, 121);
+    --dark: rgb(23, 39, 45);
+}
 
 /* Background Picture */
 body {
     margin-top: 9vh;
     height: 90.8dvh;
-    background-color: rgb(23, 39, 45);
+    background-color: var(--dark)
 }
 
 .fixed-background {
@@ -69,7 +81,7 @@ body {
     z-index: 99;
     border: 0.2vw solid black;
     outline: none;
-    background-color: rgb(62, 105, 121);
+    background-color: var(--light);
     color: white;
     cursor: pointer;
     padding: 0.5vw 0.75vw;
@@ -107,13 +119,15 @@ body {
     visibility: visible;
 }
 
+
+
 /* Navigation Bar */
 #navbar {
     position: fixed;
     top: 0;
     width: 100%;
     padding: 0vw 0.7vw;
-    background-color: rgb(23, 39, 45);
+    background-color: var(--dark);
     z-index: 1;
     height: 9vh;
 }
@@ -190,7 +204,7 @@ body {
 }
 
 .navSection.highlight {
-    background-color: rgb(62, 105, 121);
+    background-color: var(--light);
     padding: 0px 10px;
 }
 
@@ -198,7 +212,7 @@ body {
 .right-nav a:hover,
 .collapsedNav button:hover,
 #projectNav:hover .fa-caret-down {
-    color: rgb(62, 105, 121);
+    color: var(--light);
 }
 
 #dropdown:hover #content {
@@ -248,7 +262,7 @@ body {
 #collapsed-content {
     display: none;
     padding-top: 3vh;
-    background-color: rgb(62, 105, 121);
+    background-color: var(--light);
     top: 9vh;
     border-radius: 25px;
     position: absolute;
@@ -398,7 +412,7 @@ cursor width is 1/2 border width */
     margin: 1vh 1vw;
     padding: 0.5vh 1.5vw;
     border-radius: 15px;
-    background-color: rgb(62, 105, 121);
+    background-color: var(--light);
 }
 
 @keyframes marquee {
@@ -432,12 +446,12 @@ cursor width is 1/2 border width */
 }
 
 .button .readmore {
-    background-color: rgb(27, 47, 54);
+    background-color: var(--dark);
     margin-right: 3vw;
 }
 
 .button .contactbutton {
-    background-color: rgb(62, 105, 121);
+    background-color: var(--light);
 }
 
 .button button {
@@ -487,8 +501,8 @@ cursor width is 1/2 border width */
 #profile-image img {
     border-radius: 50%;
     width: 30vw;
-    background-color: rgb(23, 39, 45);
-    border: 0.5vw solid rgb(23, 39, 45);
+    background-color: var(--dark);
+    border: 0.5vw solid var(--dark);
     position: sticky;
 }
 
@@ -602,7 +616,7 @@ cursor width is 1/2 border width */
 
 #experience #plangroup img {
     border-radius: 25px;
-    border: 0.5vw solid rgb(23, 39, 45);
+    border: 0.5vw solid var(--dark);
 }
 
 .selfie {
@@ -800,7 +814,7 @@ cursor width is 1/2 border width */
     transition: transform 1s;
     transform-style: preserve-3d;
     cursor: pointer;
-    background-color: rgb(23, 39, 45);
+    background-color: var(--dark);
     border-radius: 25px;
     overflow: visible;
     position: relative;
@@ -851,7 +865,7 @@ cursor width is 1/2 border width */
 }
 
 #projects button {
-    background-color: rgb(62, 105, 121);
+    background-color: var(--light);
 }
 
 .middle {
@@ -1043,16 +1057,16 @@ cursor width is 1/2 border width */
 }
 
 #contact .socials h4 {
-    background-color: rgb(23, 39, 45);
+    background-color: var(--dark);
 }
 
 #contact h4 {
-    background-color: rgb(62, 105, 121);
+    background-color: var(--light);
 }
 
 .form {
     border-radius: 25px;
-    background-color: rgb(23, 39, 45);
+    background-color: var(--dark);
     width: 80%;
 }
 
@@ -1095,7 +1109,7 @@ textarea {
 }
 
 #contact .grid button {
-    background-color: rgb(62, 105, 121);
+    background-color: var(--light);
     font-size: 1.9vw;
     padding: 0.65vw 1.7vw;
 }
@@ -1174,7 +1188,7 @@ a:focus {
 .resume,
 .reportBug,
 .links {
-    background-color: rgb(62, 105, 121);
+    background-color: var(--light);
     border-radius: 25px 25px 25px 25px;
     height: 11vw;
     overflow: hidden;
@@ -1222,7 +1236,7 @@ body::-webkit-scrollbar {
 
 body::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-    background-color: rgb(23, 39, 45);
+    background-color: var(--dark);
 }
 
 body::-webkit-scrollbar-thumb {

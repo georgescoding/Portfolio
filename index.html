@@ -14,7 +14,6 @@
 <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
 <link rel="stylesheet" href="/style.css">
 </head>
-<a id="top"></a>
 
 <noscript>
     <style type="text/css">
@@ -45,23 +44,23 @@
         <!--Navigation Bar-->
         <nav id="navbar">
 
-            <a class="logo" href="#top"> <img src="assets/favicon.ico"></a>
+            <a class="logo"><img id="logo" title="Top" src="assets/favicon.ico"></a>
 
             <ul class="collapsed-dropdown">
                 <button class="collapsedNav">&#9776</button>
                 <li id="collapsed-content">
-                    <a href="#overview">About</a><br>
-                    <a href="#experience">Work</a><br>
-                    <a href="#projects">Projects</a><br>
-                    <a href="#contact">Contact</a>
+                    <a class="nav-about">About</a><br>
+                    <a class="nav-work">Work</a><br>
+                    <a class="nav-projects">Projects</a><br>
+                    <a class="nav-contact">Contact</a>
                 </li>
             </ul>
 
             <div class="right-nav">
-                <a class="navSection" href="#overview">About</a>
-                <a class="navSection" href="#experience">Work</a>
+                <a class="navSection nav-about">About</a>
+                <a class="navSection nav-work">Work</a>
                 <ul id="dropdown">
-                    <a class="navSection" id="projectNav" href="#projects">Projects<i class="fa fa-caret-down" id="caret-down"></i></a>
+                    <a class="navSection nav-projects" id="projectNav">Projects<i class="fa fa-caret-down" id="caret-down"></i></a>
                     <div id="invisible"></div>
                     <li id="content">
                         <a id="chess" href="/projects/chess">1. Chess App</a>
@@ -73,7 +72,7 @@
                         <a id="see-all" href="/projects">See All</a>
                     </li>
                 </ul>
-                <a class="navSection" href="#contact">Contact</a>
+                <a class="navSection nav-contact">Contact</a>
             </div>
         </nav>
 
@@ -87,8 +86,8 @@
                     <div class="marquee"><span id="marqueeText"></span><span id="marqueeText2"></span></div>
                 </div>
                 <div class="button">
-                    <a href="#overview"><button class="readmore">Read More</button></a>
-                    <a href="#contact"><button class="contactbutton">Contact</button></a>
+                    <button id="readmore" class="readmore">Read More</button>
+                    <button id="contactButton" class="contactbutton">Contact</button>
                 </div>
             </div>
         </section>

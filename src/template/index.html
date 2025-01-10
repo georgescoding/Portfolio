@@ -3,19 +3,19 @@
 <!--Navigation Bar-->
 <nav id="navbar">
 
-    <a class="logo" href="#top"> <img src="/assets/favicon.ico"></a>
+    <a class="logo"><img id="logo" src="/assets/favicon.ico" title="Top"></a>
 
     <ul class="collapsed-dropdown">
-        <button class="collapsedNav">&#9776</button>
+        <button class="collapsedNav" title="Collapsed menu">&#9776</button>
         <li id="collapsed-content">
-            <a href="/projects">Back</a><br>
+            <a href="/projects" title="See all projects">Back</a><br>
             <a href="/">Home</a>
         </li>
     </ul>
 
     <div class="right-nav">
         <ul id="dropdown">
-            <a class="navSection" id="projectNav" href="#projects">Projects<i class="fa fa-caret-down" id="caret-down"></i></a>
+            <a class="navSection" id="projectNav">Projects<i class="fa fa-caret-down" id="caret-down"></i></a>
             <div id="invisible"></div>
             <li id="content">
                 <a id="chess" href="/projects/chess">1. Chess App</a>
@@ -27,8 +27,8 @@
                 <a id="see-all" href="/projects">See All</a>
             </li>
         </ul>
-        <a href="/projects">Back</a>
-        <a href="/" class="fa-solid fa-house"></a>
+        <a href="/projects" title="See all projects">Back</a>
+        <a href="/" class="fa-solid fa-house" title="Home Page"></a>
     </div>
 </nav>
 
