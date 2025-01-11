@@ -19,6 +19,8 @@ var currentSection;
 // loads contents of the home page, adds event listeners and rescales recaptcha 
 export function home() {
 
+    setHeight();
+
     // paste text from JSON
     document.getElementById("overviewText").innerHTML = homePage.overview;
     document.getElementById("workText").innerHTML = homePage.plangroup;
@@ -27,7 +29,6 @@ export function home() {
 
     // styles home page elements, unhides page
     styleHome();
-    document.querySelector(".page").classList.remove("hide")
 
     let resizeSocials = new ResizeObserver(() => {
         scaleSocials();
@@ -107,8 +108,7 @@ function styleHome() {
         vw = viewport.width;
 
     // changable parameters
-    let unit,
-        landscape;
+    let unit;
 
     // navbar elements
     let rightnav = document.querySelector(".right-nav"),
@@ -150,7 +150,6 @@ function styleHome() {
 
     // landscape mode
     if (vw >= vh * 1.5) {
-        landscape = true;
 
         // remove font size
         overviewText.style.fontSize = "";
@@ -172,8 +171,6 @@ function styleHome() {
 
     // portrait mode
     else {
-        landscape = false;
-
         // collapse navbar options into single menu
         rightnav.classList.add("collapsed")
         collapsedNav.classList.add("collapsed")
@@ -209,8 +206,6 @@ function styleHome() {
         workDate.forEach((date) => { date.style.fontSize = "2.5" + unit; });
         sectionName.forEach((section) => { section.style.fontSize = "4.6" + unit })
     }
-
-    setHeight(landscape);
 }
 
 
@@ -294,13 +289,16 @@ function handleIntersect(entries) {
 
 
 // make each section fit exactly the entire pages
-function setHeight(landscape) {
+function setHeight() {
+
     let navbar = document.getElementById("navbar"),
         centerVertical = document.querySelectorAll(".centerVertical"),
         sections = document.querySelectorAll(".section");
 
     let navbarHeight = navbar.getBoundingClientRect().height,
-        vh = Math.max(document.documentElement.getBoundingClientRect().height || 0, window.innerHeight || 0),
+        viewport = document.documentElement.getBoundingClientRect(),
+        vh = viewport.height - navbarHeight,
+        vw = viewport.width,
         sectionHeight = vh - navbarHeight,
         sectionHeightCSS = sectionHeight.toString() + "px",
         welcomeHeight = centerVertical[0].getBoundingClientRect().height,
@@ -308,14 +306,16 @@ function setHeight(landscape) {
         workHeight = centerVertical[2].getBoundingClientRect().height;
 
     let overview = document.getElementById("overview"),
+        typing = document.getElementById("typing"),
         styles = window.getComputedStyle(overview),
         padding = styles.getPropertyValue('padding-top').toString().replace("px", "");
 
     centerVertical.forEach((section) => section.style.top = "0px")
     centerVertical.forEach((section) => section.style.paddingTop = "")
     centerVertical[0].style.top = ((sectionHeight - welcomeHeight) / 2).toString() + "px";
+    typing.classList.add("show");
 
-    if (landscape) {
+    if (vw >= vh * 1.5) {
         centerVertical[1].style.paddingTop = ((sectionHeight - overviewHeight - padding * 3) / 2).toString() + "px";
         centerVertical[2].style.paddingTop = ((sectionHeight - workHeight - padding * 3) / 2).toString() + "px";
     }
@@ -324,7 +324,6 @@ function setHeight(landscape) {
     sections.splice(3, 2)
     sections.forEach((section) => { section.style.height = sectionHeightCSS })
 }
-
 
 function revealSection(currentSection) {
     let sections = document.querySelectorAll(".section");

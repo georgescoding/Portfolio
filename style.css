@@ -23,12 +23,6 @@ html {
     position: absolute;
 }
 
-.page.hide {
-    position: relative;
-    visibility: hidden;
-}
-
-
 #logo,
 .nav-about,
 .nav-work,
@@ -356,9 +350,12 @@ cursor width is 1/2 border width */
     animation: blink 1060ms step-end infinite;
     animation-delay: 3s;
     content: " ";
-    border: 0.25vw white solid;
     font-size: 4.95vw;
     margin-left: 5px;
+}
+
+#welcomePage h1.show::after {
+    border: 0.25vw white solid;
 }
 
 #welcomePage h2 {

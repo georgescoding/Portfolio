@@ -1,6 +1,5 @@
 // remove trailing slash from url
 window.history.pushState('', '', location.pathname.slice(0, -1));
-window.scrollTo(0, 1)
 
 ///////////////////////////////////////////////////////////////////////
 ///// dynamically load modules depending on the current directory /////
@@ -9,15 +8,13 @@ window.scrollTo(0, 1)
 // root directory
 if (window.location.pathname == "/") {
     import("./src/modules/load-data.js").then((load) => {
-        load.copyright();
         load.home();
+        load.copyright();
         load.summary(true);
         load.showNav();
         load.scrollers(1);
-        window.addEventListener("load", () => {
-            load.navbar();
-            load.observer();
-        }, false);
+        load.navbar();
+        load.observer();
         window.addEventListener("resize", () => {
             load.observer();
             load.navbar();
