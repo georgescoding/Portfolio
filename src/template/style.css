@@ -22,11 +22,10 @@ html {
     position: absolute;
 }
 
-#logo {
-    cursor: pointer;
-}
 
-.navSection {
+.navSection,
+#logo,
+link {
     cursor: pointer;
 }
 
@@ -83,7 +82,7 @@ body {
 }
 
 
-.right-nav a {
+.right-nav a, .right-nav p {
     display: inline-block;
     border-radius: 10px;
     list-style: none;
@@ -404,6 +403,8 @@ button,
     background-position: center;
     z-index: -1;
 }
+
+
 
 /* Slideshow container */
 .slideshow {

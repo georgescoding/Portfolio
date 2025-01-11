@@ -14,7 +14,6 @@ if (window.location.pathname == "/") {
         load.copyright();
         load.summary(true);
         load.showNav();
-        load.scrollers(1);
         load.navbar();
         load.observer();
         window.addEventListener("resize", () => {
@@ -43,7 +42,6 @@ else if (window.location.pathname == "/projects") {
     import("./src/modules/load-data.js").then((load) => {
         load.summary(false);
         load.copyright();
-        load.scrollers();
     });
     import("./src/modules/effects.js").then((effects) => {
         let cards = document.querySelectorAll(".card");
@@ -58,6 +56,5 @@ else if (window.location.pathname.includes("/projects/")) {
         load.copyright();
         load.navbar();
         load.showNav();
-        load.scrollers();
     });
 }

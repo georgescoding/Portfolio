@@ -518,34 +518,6 @@ export function template() {
 }
 
 
-export function scrollers(selector) {
-    wait(".logo", 2).then(() => {
-        let logo = document.getElementById("logo");
-
-        logo.addEventListener("click", function () {
-            document.body.scrollTop = 0; // For Safari
-            document.documentElement.scrollTop = 0;// For Chrome, Firefox, IE and Opera
-        })
-    })
-
-    // main page
-    if (selector == 1) {
-        let about = Array.from(document.querySelectorAll(".nav-about")),
-            work = Array.from(document.querySelectorAll(".nav-work")),
-            projects = Array.from(document.querySelectorAll(".nav-projects")),
-            contacts = Array.from(document.querySelectorAll(".nav-contact")),
-            readmore = document.getElementById("readmore"),
-            contactButton = document.getElementById("contactButton");
-
-        about.forEach((section) => section.addEventListener("click", () => document.getElementById("overview").scrollIntoView()));
-        work.forEach((section) => section.addEventListener("click", () => document.getElementById("experience").scrollIntoView()));
-        projects.forEach((section) => section.addEventListener("click", () => document.getElementById("projects").scrollIntoView()));
-        contacts.forEach((section) => section.addEventListener("click", () => document.getElementById("contact").scrollIntoView()));
-        readmore.addEventListener("click", () => document.getElementById("overview").scrollIntoView());
-        contactButton.addEventListener("click", () => document.getElementById("contact").scrollIntoView());
-    }
-}
-
 
 // adds text and media into template file
 export async function project(projectName) {
