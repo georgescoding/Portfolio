@@ -1,3 +1,5 @@
+import wait from "./src/modules/wait.js";
+
 // remove trailing slash from url
 window.history.pushState('', '', location.pathname.slice(0, -1));
 
@@ -21,7 +23,13 @@ if (window.location.pathname == "/") {
         }, false);
     });
     import("./src/modules/effects.js").then((effects) => {
-        effects.typewriter();
+
+        import("./src/modules/wait.js").then(() => {
+            wait("#typing.start", 2).then(() => {
+                effects.typewriter();
+            })
+        })
+
         let cards = document.querySelectorAll(".card");
         cards.forEach(element => element.addEventListener("click", function () { effects.flip(element) }));
     });

@@ -313,7 +313,7 @@ function setHeight() {
     centerVertical.forEach((section) => section.style.top = "0px")
     centerVertical.forEach((section) => section.style.paddingTop = "")
     centerVertical[0].style.top = ((sectionHeight - welcomeHeight) / 2).toString() + "px";
-    typing.classList.add("show");
+    typing.classList.add("start");
 
     if (vw >= vh * 1.5) {
         centerVertical[1].style.paddingTop = ((sectionHeight - overviewHeight - padding * 3) / 2).toString() + "px";

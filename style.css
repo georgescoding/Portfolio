@@ -354,7 +354,7 @@ cursor width is 1/2 border width */
     margin-left: 5px;
 }
 
-#welcomePage h1.show::after {
+#welcomePage h1.start::after {
     border: 0.25vw white solid;
 }
 
