@@ -11,7 +11,7 @@ export function typewriter() {
     if (i < text.length) {
         document.getElementById("typing").innerHTML += text.charAt(i);
         i++;
-        setTimeout(typewriter, 150);
+        setTimeout(typewriter, 0);
     }
 }
 
