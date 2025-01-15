@@ -398,24 +398,6 @@ function videoTimer(video) {
 }
 
 
-export function analytics() {
-
-    let request = new XMLHttpRequest();
-    let head = document.getElementsByTagName('head')[0];
-
-    request.open('GET', '../src/template/analytics.html', true);
-
-    request.onload = function () {
-        if (request.status >= 200 && request.status < 400) {
-            let text = request.responseText;
-
-            head.innerHTML += text;
-        }
-    };
-
-    request.send();
-}
-
 // edits the template file for the project's individual page
 function editTemplate(project, num) {
     let video = document.getElementById('video'),
