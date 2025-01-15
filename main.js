@@ -10,6 +10,7 @@ window.history.pushState('', '', location.pathname.slice(0, -1));
 // root directory
 if (window.location.pathname == "/") {
     import("./src/modules/load-data.js").then((load) => {
+        load.analytics();
         load.home();
         load.copyright();
         load.summary(true);
@@ -40,6 +41,7 @@ if (window.location.pathname == "/") {
 // projects directory
 else if (window.location.pathname == "/projects") {
     import("./src/modules/load-data.js").then((load) => {
+        load.analytics();
         load.summary(false);
         load.copyright();
     });
@@ -51,6 +53,7 @@ else if (window.location.pathname == "/projects") {
 // individual project directory
 else if (window.location.pathname.includes("/projects/")) {
     import("./src/modules/load-data.js").then((load) => {
+        load.analytics();
         load.template()
         load.project(window.location.pathname);
         load.copyright();
