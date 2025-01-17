@@ -19,10 +19,6 @@ var currentSection;
 // loads contents of the home page, adds event listeners and rescales recaptcha 
 export function home() {
 
-    if (screen.orientation) {
-        document.documentElement.requestFullscreen().then(() => screen.orientation.lock("portrait"));
-    }
-
     setHeight();
 
     // paste text from JSON
@@ -34,7 +30,9 @@ export function home() {
     // styles home page elements, unhides page
     styleHome();
 
-    let resizeSocials = new ResizeObserver(() => { scaleSocials(); });
+    let resizeSocials = new ResizeObserver(() => {
+        scaleSocials();
+    });
 
     // add event listeners to requried elements
     let prev = document.getElementById("prevSection"),
@@ -49,13 +47,17 @@ export function home() {
         resizeSocials.observe(form);
     });
 
-    wait("navbar", 1).then(() => { window.addEventListener("resize", () => { styleHome() }); });
+    wait("navbar", 1).then(() => {
+        window.addEventListener("resize", () => { styleHome() });
+        window.addEventListener("resize", () => { setHeight() });
+    });
 
     wait(".g-recaptcha", 2).then(() => {
         scaleCaptcha();
         window.addEventListener('resize', () => { scaleCaptcha() });
     });
 }
+
 
 // shows the content of the collapsed navbar
 export function showNav() {
@@ -64,6 +66,7 @@ export function showNav() {
         nav.addEventListener("click", () => { collapsedNav() })
     })
 }
+
 
 function collapsedNav() {
     let content = document.querySelector("#collapsed-content"),
@@ -76,6 +79,7 @@ function collapsedNav() {
     }
 
 }
+
 
 // switches CSS to fit landscape or portrait mode for individual project page
 function styleProject() {
@@ -97,6 +101,7 @@ function styleProject() {
         main.classList.add("portrait")
     }
 }
+
 
 // switches CSS to fit landscape or portrait mode for home page
 function styleHome() {
@@ -209,7 +214,6 @@ function styleHome() {
 }
 
 
-
 // scrolls to the next or previous section of main page
 function toggleSection(selector) {
 
@@ -287,7 +291,6 @@ function handleIntersect(entries) {
 }
 
 
-
 // make each section fit exactly the entire pages
 function setHeight() {
 
@@ -325,6 +328,7 @@ function setHeight() {
     sections.forEach((section) => { section.style.height = sectionHeightCSS })
 }
 
+
 function revealSection(currentSection) {
     let sections = document.querySelectorAll(".section");
     sections = [].slice.call(sections, 1)
@@ -339,6 +343,7 @@ function revealSection(currentSection) {
         currentSection.classList.add("fade")
     }
 }
+
 
 // loads each the project summary for each card
 export function summary(mainPage) {
@@ -357,6 +362,7 @@ export function summary(mainPage) {
     }
 }
 
+
 // helper function
 // returns the project's order in the parameter list
 function getProjectNum(projectName) {
@@ -371,6 +377,7 @@ function getProjectNum(projectName) {
     ]);
     return projectMap.get(projectName.replace("/projects/", ""));
 }
+
 
 // helper function
 // returns the section's order in the parameter list
@@ -518,7 +525,6 @@ export function template() {
 }
 
 
-
 // adds text and media into template file
 export async function project(projectName) {
 
@@ -550,7 +556,6 @@ export async function project(projectName) {
         }
     });
 }
-
 
 
 function setInvisibleHeight() {
@@ -674,7 +679,6 @@ function scaleProjects(mainPage) {
 }
 
 
-
 /* reset classlist to default class for all item(s) 
 for multiple items, add them in an array*/
 function resetClasslist(elements) {
@@ -694,6 +698,7 @@ function resetClasslist(elements) {
     })
 
 }
+
 
 // dynamically resizes recaptcha 
 function scaleCaptcha() {
