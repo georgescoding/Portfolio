@@ -19,6 +19,10 @@ var currentSection;
 // loads contents of the home page, adds event listeners and rescales recaptcha 
 export function home() {
 
+    if (screen.orientation) {
+        document.documentElement.requestFullscreen().then(() => screen.orientation.lock("portrait"));
+    }
+
     setHeight();
 
     // paste text from JSON
@@ -30,9 +34,7 @@ export function home() {
     // styles home page elements, unhides page
     styleHome();
 
-    let resizeSocials = new ResizeObserver(() => {
-        scaleSocials();
-    });
+    let resizeSocials = new ResizeObserver(() => { scaleSocials(); });
 
     // add event listeners to requried elements
     let prev = document.getElementById("prevSection"),
@@ -47,13 +49,7 @@ export function home() {
         resizeSocials.observe(form);
     });
 
-    wait("navbar", 1).then(() => {
-        window.addEventListener("resize", () => { styleHome() });
-    });
-    if (screen.orientation) { // Property doesn't exist on screen in IE11   
-        let orientation = window.screen.orientation;
-        orientation.unlock("portrait")
-    }
+    wait("navbar", 1).then(() => { window.addEventListener("resize", () => { styleHome() }); });
 
     wait(".g-recaptcha", 2).then(() => {
         scaleCaptcha();
