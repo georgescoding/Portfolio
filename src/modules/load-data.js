@@ -50,6 +50,10 @@ export function home() {
     wait("navbar", 1).then(() => {
         window.addEventListener("resize", () => { styleHome() });
     });
+    if (screen.orientation) { // Property doesn't exist on screen in IE11   
+        let orientation = window.screen.orientation;
+        orientation.unlock("portrait")
+    }
 
     wait(".g-recaptcha", 2).then(() => {
         scaleCaptcha();
