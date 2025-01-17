@@ -496,7 +496,7 @@ cursor width is 1/2 border width */
 }
 
 #profile-image img {
-    border-radius: 50%;
+    border-radius: 1.25rem;
     width: 30vw;
     background-color: var(--dark);
     border: 0.5vw solid var(--dark);
@@ -504,7 +504,7 @@ cursor width is 1/2 border width */
 }
 
 #overviewText.landscape {
-    padding-right: 2vw;
+    padding-right: 3vw;
 }
 
 #workText.landscape,
