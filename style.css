@@ -495,16 +495,24 @@ cursor width is 1/2 border width */
     padding-bottom: 3vh;
 }
 
-#profile-image img {
-    border-radius: 1.25rem;
-    width: 30vw;
+#overview .sectionPicture img {
+    width: 25vw;
+    border-radius: 50%;
     background-color: var(--dark);
     border: 0.5vw solid var(--dark);
     position: sticky;
+    margin-top: 5vw;
 }
 
+
+
 #overviewText.landscape {
-    padding-right: 3vw;
+    padding-right: 7.5vw;
+}
+
+
+#overviewText.portrait img {
+    width: 30vw;
 }
 
 #workText.landscape,
@@ -618,13 +626,15 @@ cursor width is 1/2 border width */
 
 .selfie {
     width: 32%;
-    translate: 2vw 0vh;
-    margin-top: -32vh
+    margin-right: -2vw;
+    margin-top: -32vh;
+    position: relative;
 }
 
 #experience #plangroup .sectionPicture {
     width: 36vw;
     translate: 0vh -5vh;
+
 }
 
 .ALICE {
@@ -663,10 +673,6 @@ cursor width is 1/2 border width */
     height: 90vh
 }
 
-.grid.autoHeight {
-    height: auto;
-}
-
 .card.hide {
     display: none;
 }
@@ -674,7 +680,6 @@ cursor width is 1/2 border width */
 .grid.mainMedium {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
-    height: auto;
 }
 
 .grid.mainMedium #icon,
@@ -698,6 +703,7 @@ cursor width is 1/2 border width */
     grid-template-rows: 1fr 1fr 1fr;
     justify-content: center;
     width: 80vw;
+    height: max-content;
 }
 
 .grid.subSmall {
@@ -705,7 +711,16 @@ cursor width is 1/2 border width */
     justify-content: center;
 }
 
-
+.grid.mainSmall.mobile-landscape .card,
+.grid.mainMedium.mobile-landscape .card,
+.grid.mainBig.mobile-landscape .card,
+.grid.mainHeight.mobile-landscape .card,
+.grid.subSmall.mobile-landscape .card,
+.grid.subMedium.mobile-landscape .card,
+.grid.subBig.mobile-landscape .card,
+.grid.subHeight.mobile-landscape .card {
+    height: 40vh;
+}
 
 .grid.mainSmall .card,
 .grid.subSmall .card {

@@ -609,7 +609,11 @@ function scaleProjects(mainPage) {
 
     resetClasslist(elements)
 
-    if (vw < 500) {
+    if (vw < 750 && vh < 550) {
+        grid.classList.add("mobile-landscape")
+    }
+
+    if (vw < 500 || (vw < 750 && vh < 450)) {
         if (mainPage) {
             grid.classList.add("mainSmall")
         }
@@ -631,23 +635,15 @@ function scaleProjects(mainPage) {
     else if (vw >= 750) {
         if (mainPage) {
             grid.classList.add("mainBig")
-            if (vw > 1000) {
-                grid.classList.add("mainHeight")
-            }
-            else {
-                grid.classList.add("auto")
-            }
+            grid.classList.add("mainHeight")
+
         }
         else {
             grid.classList.add("subBig")
-            if (vw > 1000) {
-                grid.classList.add("subHeight")
-            }
-            else {
-                grid.classList.add("auto")
-            }
+            grid.classList.add("subHeight")
         }
     }
+
 
     if (vw < 1100 || vh < 500 || !mainPage && vw < 1350) {
         info.forEach((section) => {
@@ -677,7 +673,6 @@ function scaleProjects(mainPage) {
         projects.forEach((section) => { section.classList.add("show") })
     }
 }
-
 
 /* reset classlist to default class for all item(s) 
 for multiple items, add them in an array*/
