@@ -39,8 +39,6 @@ export function addListeners(captions) {
 }
 
 
-
-
 // creates a slideshow to loop through project pictures
 export function slideshow(n, captions) {
     let pictures = document.querySelectorAll(".slides"),

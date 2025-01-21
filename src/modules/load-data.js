@@ -211,6 +211,8 @@ function styleHome() {
         workDate.forEach((date) => { date.style.fontSize = "2.5" + unit; });
         sectionName.forEach((section) => { section.style.fontSize = "4.6" + unit })
     }
+
+    document.querySelector(".page").classList.remove("hide");
 }
 
 
@@ -747,4 +749,12 @@ export function copyright() {
             footer.classList.add("portrait")
         }
     })
+
+    // look at console
+    fetch("../assets/pictures/capybara.txt")
+        .then((res) => res.text())
+        .then((text) => {
+            console.log(text)
+        })
+        .catch((e) => console.error(e));
 }

@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////
-///// validate and sends email using EmailJS /////
+///// validate and sends email using _______ /////
 //////////////////////////////////////////////////
 
 
@@ -37,6 +37,10 @@ export function validate() {
 
 // Sends form to email via EmailJS, resets form and reCAPTCHA
 function send(name, email, message) {
+    
+    /* send email here */
+
+    // reset form and recaptcha
     document.getElementById("form").reset();
     grecaptcha.reset();
 }
