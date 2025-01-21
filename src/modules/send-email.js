@@ -31,26 +31,12 @@ export function validate() {
     else if (captchaToken.length == 0) {
         alert("Please complete the reCAPTCHA before sending your message!")
     }
-    else { send(name, email, message, captchaToken); }
+    else { send(name, email, message); }
 }
 
 
 // Sends form to email via EmailJS, resets form and reCAPTCHA
-function send(name, email, message, captchaToken) {
-    let templateParams = {
-        from_name: name,
-        message: message,
-        from_email: email,
-        "g-recaptcha-response": captchaToken
-    };
-    emailjs.send('service_j2mkwmy', 'template_zilck42', templateParams).then(
-        (response) => {
-            alert("Message successfully sent!");
-        },
-        (error) => {
-            alert("There was an error in sending the message. Please contact support@georgescoding.com.");
-        },
-    );
+function send(name, email, message) {
     document.getElementById("form").reset();
     grecaptcha.reset();
 }
