@@ -750,7 +750,7 @@ export function copyright() {
         }
     })
 
-    // look at console
+    // check console
     fetch("../assets/pictures/capybara.txt")
         .then((res) => res.text())
         .then((text) => {

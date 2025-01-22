@@ -20,7 +20,7 @@ if (window.location.pathname == "/") {
             load.observer();
             load.navbar();
         }, false);
-    });
+    });     
     import("./src/modules/effects.js").then((effects) => {
 
         import("./src/modules/wait.js").then(() => {
