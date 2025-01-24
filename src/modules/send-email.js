@@ -28,7 +28,7 @@ export function validate() {
         alert("Email is incorrect");
         document.getElementById("email").focus();
     }
-    else if (captchaToken.length == 1) {
+    else if (captchaToken.length == 0) {
         alert("Please complete the reCAPTCHA before sending your message!")
     }
     else {
@@ -57,6 +57,7 @@ export function validate() {
             (error) => {
                 alert("There was an error in sending the message. Please contact support@georgescoding.com.")
             });
+
         form.reset();
         grecaptcha.reset();
         contact.scrollIntoView();
