@@ -833,9 +833,6 @@ cursor width is 1/2 border width */
 }
 
 
-
-
-
 #projects h3 {
     font-size: 4.6vw;
     text-decoration: underline;
@@ -1134,6 +1131,7 @@ textarea {
     margin-bottom: 1.75vw;
 }
 
+
 input[type=email],
 input[type=name],
 textarea {
@@ -1149,7 +1147,27 @@ textarea {
     color: black;
     text-shadow: none;
     padding: 0.35vw;
-    padding-left: 0.5vw
+    padding-left: 0.5vw;
+}
+
+textarea::-webkit-scrollbar {
+    width: 0.75vw;
+}
+
+textarea::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+textarea::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: var(--light);
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+}
+
+textarea::-webkit-scrollbar-thumb:hover,
+textarea::-webkit-scrollbar-track:hover,
+textarea::-webkit-scrollbar:hover {
+    cursor: pointer;
 }
 
 ::placeholder {
@@ -1226,9 +1244,16 @@ a:focus {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.icons {
     height: 7vw;
 }
 
+.resumeButton,
+.bugButton {
+    height: 6.25vw;
+}
 
 #contact.portrait .resumeButton,
 #contact.portrait .bugButton,

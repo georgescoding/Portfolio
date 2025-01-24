@@ -508,7 +508,7 @@ function editTemplate(project, num) {
 }
 
 
-// loads template html into individual project page using an XHL request
+// loads template html into individual project page using an XML request
 export function template() {
 
     let request = new XMLHttpRequest();

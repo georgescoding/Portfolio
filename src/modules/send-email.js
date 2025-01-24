@@ -1,6 +1,6 @@
-//////////////////////////////////////////////////
-///// validate and sends email using _______ /////
-//////////////////////////////////////////////////
+/////////////////////////////////////
+///// validate and sends email /////
+////////////////////////////////////
 
 
 
@@ -28,19 +28,37 @@ export function validate() {
         alert("Email is incorrect");
         document.getElementById("email").focus();
     }
-    else if (captchaToken.length == 0) {
+    else if (captchaToken.length == 1) {
         alert("Please complete the reCAPTCHA before sending your message!")
     }
-    else { send(name, email, message); }
-}
+    else {
+        let form = document.getElementById("form"),
+            contact = document.getElementById("contact"),
+            templateParams = {
+                from_name: name,
+                message: message,
+                from_email: email,
+                "g-recaptcha-response": captchaToken
+            };
 
+        emailjs.init({
+            publicKey: "wcwKCcPMETQ63x_aP",
+            blockHeadless: true,
+            limitRate: {
+                id: 'app',
+                throttle: 10000,
+            },
+        });
 
-// Sends form to email via EmailJS, resets form and reCAPTCHA
-function send(name, email, message) {
-    
-    /* send email here */
-
-    // reset form and recaptcha
-    document.getElementById("form").reset();
-    grecaptcha.reset();
+        emailjs.send('service_j2mkwmy', 'template_zilck42', templateParams).then(
+            (response) => {
+                alert("Message successfully sent!");
+            },
+            (error) => {
+                alert("There was an error in sending the message. Please contact support@georgescoding.com.")
+            });
+        form.reset();
+        grecaptcha.reset();
+        contact.scrollIntoView();
+    }
 }

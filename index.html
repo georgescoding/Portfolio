@@ -10,6 +10,7 @@
     <script type="module" src="/main.js"></script>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <script defer src="https://cloud.umami.is/script.js" data-website-id="8316d2b9-e17b-49b7-b051-d1189af108e9"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
     <link rel="stylesheet" href="/style.css">
 </head>
@@ -230,7 +231,7 @@
                 <h3 class="sectionName">Contact</h3>
                 <div class="grid">
 
-                    <div class="form" action="https://formspree.io/f/xovjalbk" method="POST">
+                    <div class="form">
                         <h4>Leave a Message</h4>
                         <form id="form">
 
@@ -245,7 +246,7 @@
                             <div id="recaptcha">
                                 <div class="g-recaptcha" data-sitekey="6LfUxMQpAAAAANxEA_tNe3RvqT_d0iclalzDqmz8"></div>
                             </div>
-                            <button id="sendButton" type="submit">Send</button>
+                            <button type="button" id="sendButton">Send</button>
                             <button type="reset" form="form">Clear</button>
                         </form>
                     </div>
