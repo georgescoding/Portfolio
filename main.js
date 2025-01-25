@@ -1,4 +1,6 @@
 import wait from "./src/modules/wait.js";
+import konamiCode from "./src/modules/load-data.js";
+
 
 // remove trailing slash from url
 window.history.pushState('', '', location.pathname.slice(0, -1));
@@ -20,7 +22,7 @@ if (window.location.pathname == "/") {
             load.observer();
             load.navbar();
         }, false);
-    });     
+    });
     import("./src/modules/effects.js").then((effects) => {
 
         import("./src/modules/wait.js").then(() => {
@@ -58,3 +60,6 @@ else if (window.location.pathname.includes("/projects/")) {
         load.showNav();
     });
 }
+
+// easter egg
+konamiCode();

@@ -21,6 +21,9 @@ export function home() {
 
     setHeight();
 
+    // remove noscript
+    document.getElementsByTagName("noscript")[0].remove();
+
     // paste text from JSON
     document.getElementById("overviewText").innerHTML = homePage.overview;
     document.getElementById("workText").innerHTML = homePage.plangroup;
@@ -37,7 +40,8 @@ export function home() {
     // add event listeners to requried elements
     let prev = document.getElementById("prevSection"),
         next = document.getElementById("nextSection"),
-        form = document.querySelector(".form");
+        form = document.querySelector(".form"),
+        ok = document.getElementById("ok");
 
     prev.addEventListener("click", function () { toggleSection(1) })
     next.addEventListener("click", function () { toggleSection(2) })
@@ -58,6 +62,35 @@ export function home() {
     });
 }
 
+
+export default function konamiCode() {
+    let pattern = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'],
+        current = 0;
+
+    let keyHandler = function (event) {
+
+        if (pattern.indexOf(event.key) < 0 || event.key !== pattern[current]) {
+            current = 0;
+            return;
+        }
+
+        current++;
+
+        if (pattern.length === current) {
+            current = 0;
+            Swal.fire({
+                heightAuto: false,
+                showConfirmButton: false,
+                background: "rgb(62, 105, 121)",
+                customClass: 'alert',
+                html: '<iframe style="overflow: visible; height: 80vh; width: 65vw;" frameborder="0" src="https://www.youtube.com/embed/xvFZjo5PgG0?si=9OXHBPzklp5BIiby&amp;controls=0&autoplay=1?" allow="autoplay"></iframe>',
+                timer: 5000
+            })
+        }
+    };
+
+    document.addEventListener('keydown', keyHandler, false);
+}
 
 // shows the content of the collapsed navbar
 export function showNav() {
@@ -239,7 +272,13 @@ function toggleSection(selector) {
             sections[index + 1].scrollIntoView();
         }
         else {
-            alert("Catastrophic failure, please contact support@georgescoding.com.")
+            Swal.fire({
+                icon: "error",
+                heightAuto: false,
+                confirmButtonColor: "rgb(23, 39, 45)",
+                background: "rgb(62, 105, 121)",
+                title: "<h5 style='color:white'>Catastrophic failure, please contact support@georgescoding.com</h5>"
+            })
         }
     }
 }

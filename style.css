@@ -47,6 +47,9 @@ body {
     display: none;
 }
 
+.alert{
+    width: 80vw;
+}
 
 .fixed-background {
     position: fixed;
@@ -111,6 +114,7 @@ body {
 #prevSection {
     margin-bottom: 2.65vw;
 }
+
 
 @keyframes fadeIn {
     0% {
@@ -500,7 +504,8 @@ cursor width is 1/2 border width */
     margin-top: 20px;
 }
 
-.button button:hover {
+.button button:hover,
+#ok:hover {
     transform: translateY(2px);
     box-shadow: none;
     position: relative;

@@ -13,23 +13,56 @@ export function validate() {
         captchaToken = grecaptcha.getResponse();
 
     if (name == "") {
-        alert("Name must be filled");
+        Swal.fire({
+            icon: "error",
+            heightAuto: false,
+            confirmButtonColor: "rgb(23, 39, 45)",
+            background: "rgb(62, 105, 121)",
+            title: "<h5 style='color:white'>Name must be filled!</h5>",
+        })
+
         document.getElementById("name").focus();
     }
     else if (email == "") {
-        alert("Email must be filled");
+
+        Swal.fire({
+            icon: "error",
+            heightAuto: false,
+            confirmButtonColor: "rgb(23, 39, 45)",
+            background: "rgb(62, 105, 121)",
+            title: "<h5 style='color:white'>Email must be filled!</h5>",
+        });
+        document.getElementById("email").focus();
+    }
+    else if (!(String(email).match(format))) {
+        Swal.fire({
+            icon: "error",
+            heightAuto: false,
+            confirmButtonColor: "rgb(23, 39, 45)",
+            background: "rgb(62, 105, 121)",
+            title: "<h5 style='color:white'>Invalid email</h5>",
+        })
         document.getElementById("email").focus();
     }
     else if (message == "") {
-        alert("You must include a message");
+
+        Swal.fire({
+            icon: "error",
+            heightAuto: false,
+            confirmButtonColor: "rgb(23, 39, 45)",
+            background: "rgb(62, 105, 121)",
+            title: "<h5 style='color:white'>You must include a message</h5>",
+        });
         document.getElementById("message").focus();
     }
-    else if (!(String(email).match(format))) {
-        alert("Email is incorrect");
-        document.getElementById("email").focus();
-    }
-    else if (captchaToken.length == 0) {
-        alert("Please complete the reCAPTCHA before sending your message!")
+    else if (captchaToken.length == 1) {
+        Swal.fire({
+            icon: "error",
+            heightAuto: false,
+            confirmButtonColor: "rgb(23, 39, 45)",
+            background: "rgb(62, 105, 121)",
+            title: "<h5 style='color:white'>Please complete the reCAPTCHA before sending your message!</h5>",
+        })
     }
     else {
         let form = document.getElementById("form"),
@@ -52,10 +85,23 @@ export function validate() {
 
         emailjs.send('service_j2mkwmy', 'template_zilck42', templateParams).then(
             (response) => {
-                alert("Message successfully sent!");
+                Swal.fire({
+                    icon: "success",
+                    title: "<h5 style='color:white'>Message sent successfully!</h5>",
+                    heightAuto: false,
+                    timer: 2000,
+                    showConfirmButton: false,
+                    background: "rgb(62, 105, 121)",
+                })
             },
             (error) => {
-                alert("There was an error in sending the message. Please contact support@georgescoding.com.")
+                Swal.fire({
+                    icon: "error",
+                    heightAuto: false,
+                    confirmButtonColor: "rgb(23, 39, 45)",
+                    background: "rgb(62, 105, 121)",
+                    title: "<h5 style='color:white'>There was an error in sending the message. Please contact support@georgescoding.com</h5>",
+                })
             });
 
         form.reset();
