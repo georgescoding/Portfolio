@@ -83,7 +83,7 @@ export default function konamiCode() {
                 showConfirmButton: false,
                 background: "rgb(62, 105, 121)",
                 customClass: 'alert',
-                html: '<iframe style="overflow: visible; height: 80vh; width: 65vw;" frameborder="0" src="https://www.youtube.com/embed/xvFZjo5PgG0?si=9OXHBPzklp5BIiby&amp;controls=0&autoplay=1?" allow="autoplay"></iframe>',
+                html: '<iframe style="overflow: visible; height: 80vh; width: 65vw;" frameborder="0" src="https://www.youtube.com/embed/xvFZjo5PgG0?si=9OXHBPzklp5BIiby?autoplay=1?" allow="autoplay"></iframe>',
                 timer: 5000
             })
         }
