@@ -628,12 +628,7 @@ function scaleProjects(mainPage) {
     let card1 = document.getElementById("4"),
         card2 = document.getElementById("5"),
         card3 = document.getElementById("6"),
-        card4 = document.getElementById("7"),
         cards = [].concat(card1, card2, card3);
-
-    if (card4 != null) {
-        cards.push(card4)
-    }
 
     let grid = document.querySelector(".grid"),
         info = Array.from(document.querySelectorAll(".info")),
@@ -662,7 +657,9 @@ function scaleProjects(mainPage) {
             grid.classList.add("subSmall")
             home.classList.add("big")
         }
-        cards.forEach((card) => { card.classList.add("hide") })
+        if (mainPage) {
+            cards.forEach((card) => { card.classList.add("hide") })
+        }
     }
     else if (vw < 750) {
         if (mainPage) {
