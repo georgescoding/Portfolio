@@ -7,5 +7,3 @@ Implements [EmailJS](https://www.emailjs.com/) and [Apps Script](https://develop
 Uses [Umami](https://umami.is/) for web analytics (open source, GDPR compliant and completely anonymous)
 
 Credits to [webdevamin](https://webdevamin.com/) for design inspiration
-
-Use the Konami Code on any page for a suprise! (↑ ↑ ↓ ↓ ← → ← → B A)
