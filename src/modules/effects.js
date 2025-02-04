@@ -58,3 +58,32 @@ export function slideshow(n, captions) {
 
     return slideIndex - 1;
 }
+
+export default function konamiCode() {
+    let pattern = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'],
+        current = 0;
+
+    let keyHandler = function (event) {
+
+        if (pattern.indexOf(event.key) < 0 || event.key !== pattern[current]) {
+            current = 0;
+            return;
+        }
+
+        current++;
+
+        if (pattern.length === current) {
+            current = 0;
+            Swal.fire({
+                heightAuto: false,
+                showConfirmButton: false,
+                background: "rgb(62, 105, 121)",
+                customClass: 'alert',
+                html: '<video style="overflow: visible; height: 80vh; width: 65vw;" autoplay unmuted src="./assets/videos/suprise.mp4"></video>',
+                timer: 8000
+            })
+        }
+    };
+
+    document.addEventListener('keydown', keyHandler, false);
+}

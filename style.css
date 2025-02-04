@@ -47,7 +47,7 @@ body {
     display: none;
 }
 
-.alert{
+.alert {
     width: 80vw;
 }
 
@@ -183,7 +183,8 @@ body {
 }
 
 
-.right-nav a {
+.right-nav a,
+.right-nav #toolbar {
     display: inline-block;
     border-radius: 10px;
     list-style: none;
@@ -1295,6 +1296,7 @@ button {
     animation-fill-mode: both;
     box-shadow: 0.4vw 0.3vw 0px rgb(211, 211, 211);
 }
+
 
 /* Copyright */
 .copyright {

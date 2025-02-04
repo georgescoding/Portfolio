@@ -1,5 +1,5 @@
 import wait from "./src/modules/wait.js";
-import konamiCode from "./src/modules/load-data.js";
+import konamiCode from "./src/modules/effects.js";
 
 
 // remove trailing slash from url
@@ -38,6 +38,9 @@ if (window.location.pathname == "/") {
         let button = document.getElementById("sendButton");
         button.addEventListener("click", function () { email.validate() });
     });
+
+    // easter egg
+    konamiCode();
 }
 // projects directory
 else if (window.location.pathname == "/projects") {
@@ -60,6 +63,3 @@ else if (window.location.pathname.includes("/projects/")) {
         load.showNav();
     });
 }
-
-// easter egg
-konamiCode();

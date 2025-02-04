@@ -62,36 +62,6 @@ export function home() {
     });
 }
 
-
-export default function konamiCode() {
-    let pattern = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'],
-        current = 0;
-
-    let keyHandler = function (event) {
-
-        if (pattern.indexOf(event.key) < 0 || event.key !== pattern[current]) {
-            current = 0;
-            return;
-        }
-
-        current++;
-
-        if (pattern.length === current) {
-            current = 0;
-            Swal.fire({
-                heightAuto: false,
-                showConfirmButton: false,
-                background: "rgb(62, 105, 121)",
-                customClass: 'alert',
-                html: '<iframe style="overflow: visible; height: 80vh; width: 65vw;" frameborder="0" src="https://www.youtube.com/embed/xvFZjo5PgG0?si=9OXHBPzklp5BIiby&autoplay=1&controls=0" allow="autoplay"></iframe>',
-                timer: 8000
-            })
-        }
-    };
-
-    document.addEventListener('keydown', keyHandler, false);
-}
-
 // shows the content of the collapsed navbar
 export function showNav() {
     wait(".collapsedNav", 2).then(() => {
