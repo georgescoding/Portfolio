@@ -1297,6 +1297,13 @@ button {
     box-shadow: 0.4vw 0.3vw 0px rgb(211, 211, 211);
 }
 
+#resumePage {
+    height: 100vh;
+    width: 100vw;
+    border: none;
+    overflow: hidden;
+    margin-top: 0px
+}
 
 /* Copyright */
 .copyright {
