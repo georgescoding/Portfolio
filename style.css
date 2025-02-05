@@ -1298,8 +1298,8 @@ button {
 }
 
 #resumePage {
-    height: 100vh;
-    width: 100vw;
+    height: 100dvh;
+    width: 100dvw;
     border: none;
     overflow: hidden;
     margin-top: 0px
