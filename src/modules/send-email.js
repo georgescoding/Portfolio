@@ -55,7 +55,7 @@ export function validate() {
         });
         document.getElementById("message").focus();
     }
-    else if (captchaToken.length == 1) {
+    else if (captchaToken.length == 0) {
         Swal.fire({
             icon: "error",
             heightAuto: false,
