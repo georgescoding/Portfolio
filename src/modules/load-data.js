@@ -522,7 +522,7 @@ export function template() {
 
     let request = new XMLHttpRequest();
 
-    request.open('GET', '../src/template', true);
+    request.open('GET', '../../src/template', true);
 
     request.onload = function () {
         if (request.status >= 200 && request.status < 400) {
@@ -538,7 +538,6 @@ export function template() {
 
 // adds text and media into template file
 export async function project(projectName) {
-
     let num = getProjectNum(projectName);
     const projectParam = [param.chess, param.breathalyzer, param.blackjack, param.calculator, param.minesweeper, param.pHsensor, param.portfolio];
     let project = projectParam[num];
@@ -757,7 +756,7 @@ export function copyright() {
     })
 
     // check console
-    fetch("../assets/pictures/capybara.txt")
+    fetch("../../assets/pictures/capybara.txt")
         .then((res) => res.text())
         .then((text) => {
             console.log(text)

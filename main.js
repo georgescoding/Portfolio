@@ -1,10 +1,6 @@
 import wait from "./src/modules/wait.js";
 import konamiCode from "./src/modules/effects.js";
 
-
-// remove trailing slash from url
-window.history.pushState('', '', location.pathname.slice(0, -1));
-
 ///////////////////////////////////////////////////////////////////////
 ///// dynamically load modules depending on the current directory /////
 ///////////////////////////////////////////////////////////////////////
@@ -43,7 +39,7 @@ if (window.location.pathname == "/") {
     konamiCode();
 }
 // projects directory
-else if (window.location.pathname == "/projects") {
+else if (window.location.pathname == "/projects/") {
     import("./src/modules/load-data.js").then((load) => {
         load.summary(false);
         load.copyright();
@@ -57,7 +53,7 @@ else if (window.location.pathname == "/projects") {
 else if (window.location.pathname.includes("/projects/")) {
     import("./src/modules/load-data.js").then((load) => {
         load.template()
-        load.project(window.location.pathname);
+        load.project(window.location.pathname.slice(0, -1));
         load.copyright();
         load.navbar();
         load.showNav();

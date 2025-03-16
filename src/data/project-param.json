@@ -48,7 +48,7 @@
         "name": "Minesweeper",
         "tools": "C++",
         "github": "https://github.com/GeorgesCoding/Minesweeper",
-        "description": "The retro game Minesweeper is built using C++ and played on your terminal. Each action (mark, reveal) uses bitwise operations to change the state of the board. An instance of the board is dynamically allocated and deleted from memory once the game is over. To start the game, double-click the Minesweeper.exe and your machine should automatically begin a terminal with the game initialized and ready to play. This project was the first challenging C++ project we were given in our engineering programming course but despite the difficulty being substantially higher than the previous assignments, the end result was very satisfying to see. Below is a download button for the game that will enable you to play in your computer's terminal",
+        "description": "The retro game Minesweeper built using C++ and played on your terminal. Each action (mark, reveal) uses bitwise operations to change the state of the board. An instance of the board is dynamically allocated and deleted from memory once the game is over. To start the game, double-click the Minesweeper.exe and your machine should automatically begin a terminal with the game initialized and ready to play. This project was the first challenging C++ project we were given in our engineering programming course but despite the difficulty being substantially higher than the previous assignments, the end result was very satisfying to see. Below is a download button for the game that will enable you to play in your computer's terminal",
         "download": "/assets/downloads/Minesweeper.exe",
         "video": "/assets/videos/minesweeper-demo.mp4"
     },
