@@ -64,24 +64,6 @@ body {
     z-index: -1;
 }
 
-#error {
-    margin-top: -9vh;
-    position: absolute;
-    display: flex;
-    align-content: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    width: 100vw;
-    height: 100vh;
-    text-align: center;
-}
-
-#error h1,
-#error h2,
-#error h3 {
-    width: 100vw;
-    margin-bottom: 0.25vh;
-}
 
 #prevSection.portrait,
 #nextSection.portrait {
@@ -363,20 +345,6 @@ body {
 #welcomePage.portrait .contactbutton {
     font-size: 4vw;
     padding: 2vw 3vw
-}
-
-#homeButton {
-    font-size: 1.5vw;
-    margin-top: 1.5vw;
-    padding: 0.75vw 1.2vw;
-    background-color: var(--light);
-    animation-fill-mode: both;
-}
-
-#homeButton:hover {
-    transform: translateY(2px);
-    box-shadow: none;
-    position: relative;
 }
 
 #welcomePage.portrait {
