@@ -15,6 +15,7 @@ html {
     scroll-behavior: smooth;
     width: 100%;
     overflow: hidden;
+    scroll-padding-top: 9vh;
 }
 
 html {
@@ -33,6 +34,7 @@ link {
     --light: rgb(62, 105, 121);
     --dark: rgb(23, 39, 45);
 }
+
 
 /* Background Picture */
 body {
@@ -82,7 +84,8 @@ body {
 }
 
 
-.right-nav a, .right-nav p {
+.right-nav a,
+.right-nav p {
     display: inline-block;
     border-radius: 10px;
     list-style: none;
