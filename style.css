@@ -27,7 +27,8 @@ html {
 .nav-about,
 .nav-work,
 .nav-projects,
-.nav-contact {
+.nav-contact,
+.nav-resume {
     cursor: pointer;
 }
 
@@ -47,9 +48,22 @@ body {
     display: none;
 }
 
+/* swal css */
+
 .alert {
-    width: 80vw;
+    width: max-content;
 }
+
+#suprise,
+#swal2-title h5 {
+    text-shadow: none;
+}
+
+
+
+
+
+
 
 .fixed-background {
     position: fixed;
@@ -116,7 +130,8 @@ body {
 }
 
 
-.section.fade {
+.section.fade,
+#remind.fade {
     animation: fadeIn 0.75s linear;
     animation-delay: 0.1s;
     animation-fill-mode: both;
@@ -299,7 +314,6 @@ body {
 
 .right-nav.collapsed {
     display: none;
-    height: max-content;
 }
 
 
@@ -307,18 +321,25 @@ body {
 /* Header */
 #welcomePage {
     width: 80%;
-    text-align: left;
+    text-align: center;
     margin: 0% 10%;
     margin-bottom: 25vh;
     visibility: visible;
+    overflow: visible;
 }
 
 /* welcome page */
 #welcomePage h1 {
-    width: max-content;
     overflow: hidden;
     font-size: 6.6vw;
-    width: 80vw;
+}
+
+#welcomePage h1.noAfter::after {
+    margin-left: 0px;
+}
+
+#welcomePage h2 {
+    font-size: 3vw;
 }
 
 #welcomePage.portrait h1 {
@@ -331,15 +352,19 @@ body {
 
 #welcomePage.portrait h2 {
     font-size: 4vw;
+    margin-left: 3px;
+}
+
+#welcomePage.portrait h2::after {
+    font-size: 3vw;
+    margin-bottom: 99vw;
 }
 
 #welcomePage.portrait .wrapper {
     font-size: 3vw;
-    max-width: 100%;
-    text-align: center;
-    margin: 0vw 6vw;
+    max-width: 90%;
+    margin-left: 5%;
 }
-
 
 #welcomePage.portrait .readmore,
 #welcomePage.portrait .contactbutton {
@@ -353,85 +378,64 @@ body {
 }
 
 
+#remind {
+    margin-top: -20vh;
+    padding-bottom: 20vh;
+    text-align: left;
+    margin-left: 2vw;
+    animation: fade 2s linear;
+    animation-delay: 9s;
+    opacity: 0;
+    animation-fill-mode: both;
+    bottom: 0;
+    width: max-content;
+    position: relative;
+    vertical-align: bottom;
+}
+
+
+#remind.hide {
+    visibility: hidden;
+}
+
+.card.hide {
+    opacity: 0;
+}
+
+
 
 
 /* cursor 
 cursor width is 1/2 border width */
-#welcomePage h1::after {
+#welcomePage h1::after,
+#welcomePage h2.start:after {
     animation: blink 1060ms step-end infinite;
-    animation-delay: 3s;
-    content: " ";
-    font-size: 4.95vw;
+    content: "";
+}
+
+#welcomePage h1:after {
     margin-left: 5px;
+    font-size: 4.95vw;
+    animation-delay: 3s;
 }
 
 #welcomePage h1.start::after {
     border: 0.25vw white solid;
 }
 
-#welcomePage h2 {
-    opacity: 0;
-    font-size: 2.3vw;
-    z-index: -1;
-    animation: fade 2s linear;
-    animation-delay: 1.8s;
-    animation-fill-mode: both;
-    position: relative;
-    padding-bottom: 15px;
+#welcomePage h2.start::after {
+    border: 0.15vw white solid;
+    margin-left: -0.35vw;
+}
+
+#welcomePage h2.paused {
+    width: max-content;
+    border-right: 0.3vw white solid;
 }
 
 
-.wrapper {
-    overflow: hidden;
-    max-width: 45%;
-    font-size: 1.75vw;
-    animation: fade 2s linear;
-    animation-delay: 1.8s;
-    animation-fill-mode: both;
-    position: relative;
-    text-shadow: none;
-    white-space: nowrap;
-}
-
-.marquee:hover {
-    animation-play-state: paused;
-}
-
-.marquee {
-    white-space: nowrap;
-    animation: marquee 35s linear infinite;
-    display: inline-block;
-    margin: 1vh 1vw;
-}
-
-.marqueeChild.portrait {
-    padding: 1vh 2.5vw;
-    margin: 1.5vh 2.5vw;
-}
-
-.marquee.portrait {
-    margin: 1.5vh 2.5vw;
-    animation: marquee 50s linear infinite;
-}
 
 
-.marqueeChild {
-    overflow-y: visible;
-    margin: 1vh 1vw;
-    padding: 0.5vh 1.5vw;
-    border-radius: 15px;
-    background-color: var(--light);
-}
-
-@keyframes marquee {
-    0% {
-        transform: translateX(0);
-    }
-
-    100% {
-        transform: translateX(-50%);
-    }
-}
 
 @keyframes blink {
     0% {
@@ -453,12 +457,15 @@ cursor width is 1/2 border width */
     }
 }
 
-.button .readmore {
+.button .readmore,
+.button .viewResume {
     background-color: var(--dark);
-    margin-right: 3vw;
 }
 
 .button .contactbutton {
+    margin-right: 3vw;
+    margin-left: 3vw;
+
     background-color: var(--light);
 }
 
@@ -468,9 +475,9 @@ cursor width is 1/2 border width */
     padding: 1vw 2vw;
     text-align: center;
     animation: fade 2s linear;
-    animation-delay: 1.8s;
+    animation-delay: 9s;
     animation-fill-mode: both;
-    margin-top: 20px;
+    margin-top: 30px;
 }
 
 .button button:hover,
@@ -517,6 +524,22 @@ cursor width is 1/2 border width */
 }
 
 
+#skills {
+    padding-top: 3vh;
+    width: 80%;
+    text-align: middle;
+    margin: 0% 10%;
+    margin-bottom: 25vh;
+}
+
+#overviewText {
+    margin-top: 3vh;
+}
+
+#overviewText p {
+    margin-top: 2.5vh;
+}
+
 
 #overviewText.landscape {
     padding-right: 7.5vw;
@@ -527,13 +550,13 @@ cursor width is 1/2 border width */
     width: 30vw;
 }
 
-#workText.landscape,
+#workText.landscape p,
 #overviewText.landscape {
     font-size: 1.5vw;
     width: 45vw;
 }
 
-#workText.landscape {
+#workText.landscape p {
     width: 40vw;
 }
 
@@ -548,7 +571,7 @@ cursor width is 1/2 border width */
 }
 
 .workName.landscape {
-    font-size: 2.1vw;
+    font-size: 2.5vw;
 }
 
 .workDate.landscape {
@@ -559,12 +582,12 @@ cursor width is 1/2 border width */
     font-size: 2vw;
 }
 
-#overviewText.portrait {
+#overviewText.portrait p {
     width: 100%;
     padding-right: 0px;
 }
 
-#workText.portrait {
+#workText.portrait p {
     width: 100%;
 }
 
@@ -589,6 +612,40 @@ cursor width is 1/2 border width */
     margin-top: 3vh;
     float: left;
 }
+
+
+
+#skillName,
+#skillName2 {
+    margin-top: 8vh;
+    margin-bottom: 1%;
+    text-decoration: underline;
+}
+
+#skillName.landscape,
+#skillName2.landscape {
+    font-size: 3vw;
+}
+
+#skillName.portrait,
+#skillName2.portrait {
+    font-size: 4vh;
+}
+
+.workDate .skillIcon {
+    height: 8vw;
+}
+
+.workDate.landscape .skillIcon {
+    height: 10vh;
+}
+
+.skillIcon {
+    margin-top: 1vh;
+}
+
+
+
 
 
 /* Work */
@@ -619,7 +676,6 @@ cursor width is 1/2 border width */
 
 #experience p {
     margin-top: 2.5vh;
-    font-size: 1.5vw;
     float: right;
     width: 100%;
     height: max-content;
@@ -685,9 +741,6 @@ cursor width is 1/2 border width */
     height: 90vh
 }
 
-.card.hide {
-    display: none;
-}
 
 .grid.mainMedium {
     grid-template-columns: 1fr 1fr;
@@ -807,7 +860,8 @@ cursor width is 1/2 border width */
 }
 
 
-#projects h3 {
+#projects h3,
+#skills h3 {
     font-size: 4.6vw;
     text-decoration: underline;
     height: fit-content;
@@ -933,13 +987,6 @@ cursor width is 1/2 border width */
 
     }
 }
-
-
-
-
-
-
-
 
 
 /* Contact and Socials*/
@@ -1282,11 +1329,18 @@ button {
     padding-bottom: 3vh;
     bottom: 0;
     padding-top: 10vh;
+    position: relative;
 }
 
 .copyright.portrait {
     padding-top: 5vh;
     font-size: 2vw;
+}
+
+footer {
+    bottom: 0;
+    position: relative;
+
 }
 
 body::-webkit-scrollbar {

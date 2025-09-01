@@ -12,6 +12,7 @@
     <script defer src="https://cloud.umami.is/script.js" data-website-id="8316d2b9-e17b-49b7-b051-d1189af108e9"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
     <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
     <link rel="stylesheet" href="/style.css">
 </head>
@@ -46,7 +47,6 @@
         <button id="prevSection" title="Previous section"><i class="fa-solid fa-arrow-up"></i></button>
         <button id="nextSection" title="Next section"><i class="fa-solid fa-arrow-down"></i></button>
 
-
         <!--Navigation Bar-->
         <nav id="navbar">
 
@@ -56,29 +56,35 @@
                 <button class="collapsedNav">&#9776</button>
                 <div id="collapsed-content">
                     <a class="nav-about" href="#overview">About</a><br>
+                    <a class="nav-projects" href="#skills">Skills</a><br>
                     <a class="nav-work" href="#experience">Work</a><br>
                     <a class="nav-projects" href="#projects">Projects</a><br>
-                    <a class="nav-contact" href="#contact">Contact</a>
+                    <a class="nav-projects" href="#contact">Contact</a><br>
+                    <a class="nav-resume" href="/resume" target="_blank">Résumé</a>
                 </div>
             </div>
 
             <div class="right-nav">
                 <a class="navSection nav-about" href="#overview">About</a>
+                <a class="navSection nav-contact" href="#skills">Skills</a>
                 <a class="navSection nav-work" href="#experience">Work</a>
                 <div id="dropdown">
                     <a class="navSection nav-projects" id="projectNav" href="#projects">Projects<i class="fa fa-caret-down" id="caret-down"></i></a>
                     <div id="invisible"></div>
                     <div id="content">
-                        <a id="chess" href="/projects/chess">1. Chess App</a>
-                        <a href="/projects/portfolio">2. Portfolio Website</a>
+                        <a id="chess" href="/projects/multivibrator">1. Multivibrator PCB</a>
+                        <a href="/projects/chess">2. Chess App</a>
                         <a href="/projects/breathalyzer">3. Breathalyzer</a>
                         <a href="/projects/blackjack">4. Blackjack</a>
                         <a href="/projects/ph-sensor">5. pH-Sensor</a>
                         <a href="/projects/minesweeper">6. Minesweeper</a>
-                        <a id="see-all" href="/projects">See All</a>
+                        <a id="chess" href="/projects/portfolio">7. Portfolio Website</a>
+                        <a href="/projects/calculator">8. Calculator App</a>
+                        <a href="/projects/logic-gates">9. Logic Gates PCB</a>
                     </div>
                 </div>
                 <a class="navSection nav-contact" href="#contact">Contact</a>
+                <a class="navSection nav-contact" href="/resume" target="_blank">Résumé</a>
             </div>
         </nav>
 
@@ -87,48 +93,95 @@
         <section id="welcomePage" class="section">
             <div class="centerVertical">
                 <h1 id="typing"></h1>
-                <h2 id="university">University of Waterloo | Electrical Engineering</h2>
-                <div id="marquee" class="wrapper">
-                    <div class="marquee"><span id="marqueeText"></span><span id="marqueeText2"></span></div>
-                </div>
+                <h2 id="welcome"></h2>
                 <div class="button">
                     <a href="#overview"><button id="readmore" class="readmore">Read More</button></a>
                     <a href="#contact"><button id="contactButton" class="contactbutton">Contact</button></a>
                 </div>
             </div>
         </section>
+        <div id="remind">type "suprise"</div>
+
 
 
         <!--Overview-->
         <section id="overview" class="section">
             <div class="centerVertical">
                 <h3 class="sectionName">About Me</h3>
-                <p id="overviewText"></p>
+                <div id="overviewText">
+                    <p id="overview1"></p>
+                    <p id="overview2"></p>
+                    <p id="overview3"></p>
+                    <p id="overview4"></p>
+                </div>
+
                 <picture id="profile-image" class="sectionPicture">
                     <div id="profile-box"><img src='/assets/pictures/overview-picture.webp'></div>
                 </picture>
+
             </div>
+
         </section>
 
 
+        <!-- Skills -->
+        <section id="skills" class="section">
+            <h3 class="sectionName">Skills</h3>
+
+            <h4 id="skillName">Software</h4>
+            <h5 class="workDate">
+                <img class="skillIcon" title="C" src="assets/pictures/logo-c.svg" />
+                <img class="skillIcon" title="C++" src="assets/pictures/logo-cpp.svg" />
+                <img class="skillIcon" title="Python" src="assets/pictures/logo-python.svg" />
+                <img class="skillIcon" title="VHDL" src="assets/pictures/logo-vhdl.svg" />
+                <img class="skillIcon" title="Verilog" src="assets/pictures/logo-verilog.svg" />
+                <img class="skillIcon" title="MATLAB" src="assets/pictures/logo-matlab.svg" />
+                <img class="skillIcon" title="Java" src="assets/pictures/logo-java.svg" />
+                <img class="skillIcon" title="JavaScript" src="assets/pictures/logo-javascript.svg" />
+                <img class="skillIcon" title="C#" src="assets/pictures/logo-csharp.svg" />
+                <img class="skillIcon" title="HTML5" src="assets/pictures/logo-html.svg" />
+                <img class="skillIcon" title="CSS3" src="assets/pictures/logo-css.svg" />
+                <img class="skillIcon" title="CMake" src="assets/pictures/logo-cmake.svg" />
+                <img class="skillIcon" title="Git" src="assets/pictures/logo-git.svg" />
+            </h5>
+
+            <h4 id="skillName2">CAD Tools</h4>
+            <h5 class="workDate">
+                <img class="skillIcon" title="Altium Designer" src="assets/pictures/logo-altium.png" />
+                <img class="skillIcon" title="LTspice" style="background-color: rgb(255, 110, 110);" src="assets/pictures/logo-ltspice.png" />
+                <img class="skillIcon" title="KiCad" src="assets/pictures/logo-kicad.png" />
+                <img class="skillIcon" title="Micro-Cap" src="assets/pictures/logo-microcap.png" />
+                <img class="skillIcon" title="Quartus Prime" src="assets/pictures/logo-quartus.png" />
+                <img class="skillIcon" title="COMSOL Multiphysics" src="assets/pictures/logo-comsol.png" />
+                <img class="skillIcon" title="Digital" src="assets/pictures/logo-digital.svg" />
+                <img class="skillIcon" title="AutoCAD" src="assets/pictures/logo-autocad.png" />
+                <img class="skillIcon" title="Revit" src="assets/pictures/logo-revit.png" />
+            </h5>
+
+        </section>
+
         <!-- Work -->
         <section id="experience" class="section">
-            <div class="centerVertical">
 
-                <h3 class="sectionName">Work Experience</h3>
+            <h3 class="sectionName">Work Experience</h3>
 
-                <div id="plangroupDetails">
-                    <h4 class="workName">Plan Group</h4>
-                    <h4 class="workTitle">Electrical Designer</h4>
-                    <h5 class="workDate">Date: Jan 2023 - Apr 2023</h5>
-                </div>
+            <div id="plangroupDetails">
+                <h4 class="workName">Plan Group</h4>
+                <h4 class="workTitle">Electrical Designer</h4>
+                <h5 class="workDate">Date: Jan 2023 - Apr 2023</h5>
+            </div>
 
-                <p id="workText"></p>
+            <div id="workText">
+                <p id="workText1"></p>
+                <p id="workText2"></p>
+                <p id="workText3"></p>
+                <p id="workText4"></p>
+            </div>
 
-                <div id="plangroup" class="sectionPicture">
-                    <img id="ALICE" class="ALICE" src='/assets/pictures/work-alice.webp'>
-                    <img id="selfie" class="selfie" src='/assets/pictures/work-selfie.webp'>
-                </div>
+            <div id="plangroup" class="sectionPicture">
+                <img id="ALICE" class="ALICE" title="picture of one internal tool" src='/assets/pictures/work-alice.webp'>
+                <img id="selfie" class="selfie" title="picture of me and my manager" src='/assets/pictures/work-selfie.webp'>
+            </div>
         </section>
 
 
@@ -138,6 +191,20 @@
             <div class="grid">
 
                 <div class="card" id="1">
+                    <div class="front"><img src="/assets/pictures/projects-multivibrator.webp">
+                        <div id="projectName">Multivibrator PCB</div>
+                    </div>
+                    <div class="back">
+                        <div class="info">
+                            <a href="https://github.com/GeorgesCoding/Multivibrator" target="_blank" class="fa fa-github" id="icon"></a>
+                            <a href="/projects/multivibrator"><button class="learnMore">Learn More</button></a>
+                            <p>Altium Designer</p>
+                        </div>
+                        <div id="multivibratorText" class="text"></div>
+                    </div>
+                </div>
+
+                <div class="card" id="2">
                     <div class="front"><img src='/assets/pictures/projects-chess.webp'>
                         <div id="projectName">Chess App</div>
                     </div>
@@ -148,20 +215,6 @@
                             <p>Python</p>
                         </div>
                         <div id="chessText" class="text"></div>
-                    </div>
-                </div>
-
-                <div class="card" id="2">
-                    <div class="front"><img src='/assets/pictures/projects-portfolio.webp'>
-                        <div id="projectName">Portfolio Website</div>
-                    </div>
-                    <div class="back">
-                        <div class="info">
-                            <a href="https://github.com/GeorgesCoding/Portfolio" target="_blank" class="fa fa-github" id="icon"></a>
-                            <a href="/projects/portfolio"><button class="learnMore">Learn More</button></a>
-                            <p>JavaScript, HTML, CSS</p>
-                        </div>
-                        <div id="portfolioText" class="text"></div>
                     </div>
                 </div>
 
@@ -214,7 +267,7 @@
                     <div class="back">
                         <div class="info">
                             <a href="https://github.com/GeorgesCoding/Minesweeper" target="_blank" class="fa fa-github" id="icon"></a>
-                            <a href="./projects/minesweeper"><button class="learnMore">Learn More</button></a>
+                            <a href="./projects/minesweeper/index.html"><button class="learnMore">Learn More</button></a>
                             <p>C++</p>
                         </div>
                         <div id="minesweeperText" class="text"></div>
@@ -224,13 +277,16 @@
             </div>
 
             <div class="middle"> <a href="/projects"><button id="seeAll" class="seeAll">See All</button></a></div>
+
         </section>
 
 
         <!-- Contact/Socials-->
         <section id="contact" class="section">
+
             <div class="centerVertical">
                 <h3 class="sectionName">Contact</h3>
+
                 <div class="grid">
 
                     <div class="form">
@@ -257,7 +313,7 @@
                         <div class="links">
                             <h4>Say Hi!</h4>
                             <div class="icons" id="platforms">
-                                <a href="https://github.com/GeorgesCoding" target="_blank" class="fa fa-github"></a>&nbsp&nbsp
+                                <a href="https://github.com/georgescoding" target="_blank" class="fa fa-github"></a>&nbsp&nbsp
                                 <a href="mailto:george@georgescoding.com" class="fa fa-envelope"></a>&nbsp&nbsp
                                 <a href="https://www.linkedin.com/in/georgechn" target="_blank" class="fa fa-linkedin"></a>&nbsp&nbsp
                                 <a href="https://www.youtube.com/@georgeonpiano" target="_blank" class="fa-brands fa-youtube"></a>
@@ -265,24 +321,26 @@
                         </div>
 
                         <div class="resume">
-                            <h4>View My Resume</h4>
-                            <div id="resume" class="resumeButton"><a href="/resume" target="_blank"><button>Click Me!</button></a></div>
+                            <h4>View My Résumé</h4>
+                            <div id="resume" class="resumeButton"><a href="/resume" target="_blank"><button>Open PDF Viewer</button></a></div>
                         </div>
 
                         <div class="reportBug">
                             <h4>Report a Bug!</h4>
                             <div id="reportBug" class="bugButton"><a href="mailto:support@georgescoding.com?subject=Issue/Bug on Website"><button class=" fa-solid fa-bug"></button></a></div>
                         </div>
+
                     </div>
+
                 </div>
             </div>
         </section>
 
-        <!--Copyright-->
-        <footer>
-            <p class="copyright">Copyright © George Chen</p>
-        </footer>
     </main>
 </body>
+<!--Copyright-->
+<footer>
+    <p class="copyright">Copyright © George Chen</p>
+</footer>
 
 </html>

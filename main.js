@@ -1,5 +1,5 @@
 import wait from "./src/modules/wait.js";
-import konamiCode from "./src/modules/effects.js";
+import keylogger from "./src/modules/effects.js";
 
 ///////////////////////////////////////////////////////////////////////
 ///// dynamically load modules depending on the current directory /////
@@ -36,7 +36,7 @@ if (window.location.pathname == "/") {
     });
 
     // easter egg
-    konamiCode();
+    keylogger();
 }
 // projects directory
 else if (window.location.pathname == "/projects/") {

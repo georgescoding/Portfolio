@@ -16,8 +16,14 @@ import wait from './wait.js';
 var currentSection;
 
 
+export function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 // loads contents of the home page, adds event listeners and rescales recaptcha 
 export function home() {
+
+    document.getElementById("typing").classList.add("start");
 
     setHeight();
 
@@ -25,10 +31,15 @@ export function home() {
     document.getElementsByTagName("noscript")[0].remove();
 
     // paste text from JSON
-    document.getElementById("overviewText").innerHTML = homePage.overview;
-    document.getElementById("workText").innerHTML = homePage.plangroup;
-    document.getElementById("marqueeText").innerHTML = homePage.marqueeText;
-    document.getElementById("marqueeText2").innerHTML += homePage.marqueeText;
+    document.getElementById("overview1").innerHTML = homePage.overview1;
+    document.getElementById("overview2").innerHTML = homePage.overview2;
+    document.getElementById("overview3").innerHTML = homePage.overview3;
+    document.getElementById("overview4").innerHTML = homePage.overview4;
+
+    document.getElementById("workText1").innerHTML = homePage.plangroup1;
+    document.getElementById("workText2").innerHTML = homePage.plangroup2;
+    document.getElementById("workText3").innerHTML = homePage.plangroup3;
+    document.getElementById("workText4").innerHTML = homePage.plangroup4;
 
     // styles home page elements, unhides page
     styleHome();
@@ -125,12 +136,17 @@ function styleHome() {
 
     // main page elements
     let welcomePage = document.getElementById("welcomePage"),
-        university = document.getElementById("university"),
-        marquee = document.querySelector(".marquee"),
-        marqueeChild = Array.from(document.querySelectorAll(".marqueeChild")),
+        remind = document.getElementById("remind"),
         prevSection = document.getElementById("prevSection"),
         nextSection = document.getElementById("nextSection"),
         overviewText = document.getElementById("overviewText"),
+        overview1 = document.getElementById("overview1"),
+        overview2 = document.getElementById("overview2"),
+        overview3 = document.getElementById("overview3"),
+        overview4 = document.getElementById("overview4"),
+        skillName = document.getElementById("skillName"),
+        skillName2 = document.getElementById("skillName2"),
+        overviewPoints = [].concat(overview1, overview2, overview3, overview4),
         workText = document.getElementById("workText"),
         sectionName = Array.from(document.querySelectorAll(".sectionName")),
         sectionPicture = Array.from(document.querySelectorAll(".sectionPicture")),
@@ -140,17 +156,17 @@ function styleHome() {
         contact = document.getElementById("contact"),
         grid = document.querySelector("#contact .grid"),
         copyright = document.querySelector(".copyright"),
-        elements = [].concat(marqueeChild, sectionName, sectionPicture, workName, workDate, workTitle, rightnav, collapsedNav);
+        elements = [].concat(sectionName, sectionPicture, workName, workDate, workTitle, rightnav, collapsedNav, overviewPoints);
 
     // reset class lists
-    resetClasslist(elements)
+    resetClasslist(elements);
     welcomePage.className = "section";
-    university.innerHTML = "Universtiy of Waterloo | Electrical Engineering"
-    marquee.className = "marquee";
     grid.className = "grid"
     prevSection.className = "";
     nextSection.className = ""
     overviewText.className = "";
+    skillName.className = "";
+    skillName2.className = "";
     workText.className = ""
     collapsedContent.className = ""
     contact.className = "section";
@@ -161,6 +177,8 @@ function styleHome() {
 
         // remove font size
         overviewText.style.fontSize = "";
+        overviewPoints.forEach((points) => { points.style.fontSize = ""; });
+
         workText.style.fontSize = "";
         workName.forEach((name) => { name.style.fontSize = ""; });
         workDate.forEach((date) => { date.style.fontSize = ""; });
@@ -170,11 +188,14 @@ function styleHome() {
         // turns on landscape CSS
         overviewText.classList.add("landscape");
         workText.classList.add("landscape");
+        skillName.classList.add("landscape");
+        skillName2.classList.add("landscape");
         sectionName.forEach((section) => { section.classList.add("landscape") })
         sectionPicture.forEach((section) => { section.classList.add("landscape") })
         workName.forEach((name) => { name.classList.add("landscape") })
         workDate.forEach((date) => { date.classList.add("landscape") })
         workTitle.forEach((title) => { title.classList.add("landscape") })
+        remind.removeAttribute("style");
     }
 
     // portrait mode
@@ -184,9 +205,8 @@ function styleHome() {
         collapsedNav.classList.add("collapsed")
 
         // turns on landscape CSS
-        university.innerHTML = "Electrical Engineering at UW"
-        marquee.classList.add("portrait");
-        marqueeChild.forEach((child) => { child.classList.add("portrait") })
+        skillName.classList.add("portrait");
+        skillName2.classList.add("portrait");
         prevSection.classList.add("portrait");
         nextSection.classList.add("portrait")
         welcomePage.classList.add("portrait");
@@ -195,7 +215,8 @@ function styleHome() {
         sectionPicture.forEach((section) => { section.classList.add("portrait") })
         grid.classList.add("portrait");
         contact.classList.add("portrait");
-        copyright.classList.add("portrait")
+        copyright.classList.add("portrait");
+        remind.style.visibility = "hidden";
 
 
         // finds if width or height is greater
@@ -207,7 +228,8 @@ function styleHome() {
         }
 
         // changes font size for section based on size
-        overviewText.style.fontSize = "2.2" + unit;
+        overviewPoints.forEach((points) => { points.style.fontSize = "2.2" + unit; });
+
         workText.style.fontSize = "2.2" + unit;
         workName.forEach((name) => { name.style.fontSize = "2.5" + unit; });
         workTitle.forEach((title) => { title.style.fontSize = "2.5" + unit; });
@@ -276,7 +298,7 @@ export function observer() {
 
 
 // updates the navbar section style depending on the current section
-function handleIntersect(entries) {
+async function handleIntersect(entries) {
     entries.forEach((entry) => {
 
         if (entry.intersectionRatio > 0) {
@@ -292,13 +314,15 @@ function handleIntersect(entries) {
                 href = "#" + entry.target.id;
                 navSection[sectionIndex].classList.add("highlight")
             }
+
             else {
-                href = "#top"
+                href = "#top";
             }
 
             currentSection = href.slice(1);
         }
     })
+
 }
 
 
@@ -320,14 +344,12 @@ function setHeight() {
         workHeight = centerVertical[2].getBoundingClientRect().height;
 
     let overview = document.getElementById("overview"),
-        typing = document.getElementById("typing"),
         styles = window.getComputedStyle(overview),
         padding = styles.getPropertyValue('padding-top').toString().replace("px", "");
 
     centerVertical.forEach((section) => section.style.top = "0px")
     centerVertical.forEach((section) => section.style.paddingTop = "")
     centerVertical[0].style.top = ((sectionHeight - welcomeHeight) / 2).toString() + "px";
-    typing.classList.add("start");
 
     if (vw >= vh * 1.5) {
         centerVertical[1].style.paddingTop = ((sectionHeight - overviewHeight - padding * 3) / 2).toString() + "px";
@@ -335,14 +357,18 @@ function setHeight() {
     }
 
     sections = Array.from(sections)
-    sections.splice(3, 2)
+    sections.splice(4, 2)
     sections.forEach((section) => { section.style.height = sectionHeightCSS })
 }
 
 
-function revealSection(currentSection) {
-    let sections = document.querySelectorAll(".section");
+async function revealSection(currentSection) {
+    let sections = document.querySelectorAll(".section"),
+        remind = document.getElementById("remind");
     sections = [].slice.call(sections, 1)
+    remind.classList.remove("fade");
+    remind.classList.remove("hide");
+
 
     sections.forEach((section) => {
         if (section != currentSection) {
@@ -351,7 +377,12 @@ function revealSection(currentSection) {
     })
 
     if (currentSection.id != "welcomePage") {
-        currentSection.classList.add("fade")
+        currentSection.classList.add("fade");
+        remind.classList.add("hide");
+    }
+    else if (getComputedStyle(document.querySelector("button#readmore")).opacity == 1) {
+        await sleep(1000);
+        remind.classList.add("fade");
     }
 }
 
@@ -361,15 +392,17 @@ export function summary(mainPage) {
     scaleProjects(mainPage);
     window.addEventListener('resize', () => { scaleProjects(mainPage) });
 
+    document.getElementById("multivibratorText").innerHTML += projectSummary.multivibrator;
     document.getElementById("chessText").innerHTML += projectSummary.chess;
     document.getElementById("breathalyzerText").innerHTML += projectSummary.breathalyzer;
-    document.getElementById("portfolioText").innerHTML += projectSummary.portfolio;
     document.getElementById("blackjackText").innerHTML += projectSummary.blackjack;
     document.getElementById("sensorText").innerHTML += projectSummary.pHsensor;
     document.getElementById("minesweeperText").innerHTML += projectSummary.minesweeper;
 
     if (!mainPage) {
+        document.getElementById("portfolioText").innerHTML += projectSummary.portfolio;
         document.getElementById("calculatorText").innerHTML += projectSummary.calculator;
+        document.getElementById("gatesText").innerHTML += projectSummary.logicGates;
     }
 }
 
@@ -384,7 +417,9 @@ function getProjectNum(projectName) {
         ["calculator", 3],
         ["minesweeper", 4],
         ["ph-sensor", 5],
-        ["portfolio", 6]
+        ["portfolio", 6],
+        ["multivibrator", 7],
+        ["logic-gates", 8]
     ]);
     return projectMap.get(projectName.replace("/projects/", ""));
 }
@@ -396,9 +431,10 @@ function getSectionNum(sectionName) {
     const sectionMap = new Map([
         ["top", 0],
         ["overview", 1],
-        ["experience", 2],
-        ["projects", 3],
-        ["contact", 4]
+        ["skills", 2],
+        ["experience", 3],
+        ["projects", 4],
+        ["contact", 5]
     ]);
 
     return sectionMap.get(sectionName);
@@ -539,7 +575,7 @@ export function template() {
 // adds text and media into template file
 export async function project(projectName) {
     let num = getProjectNum(projectName);
-    const projectParam = [param.chess, param.breathalyzer, param.blackjack, param.calculator, param.minesweeper, param.pHsensor, param.portfolio];
+    const projectParam = [param.chess, param.breathalyzer, param.blackjack, param.calculator, param.minesweeper, param.pHsensor, param.portfolio, param.multivibrator, param.logicGates];
     let project = projectParam[num];
 
     // wait untill the template page has loaded
@@ -759,7 +795,8 @@ export function copyright() {
     fetch("../../assets/pictures/capybara.txt")
         .then((res) => res.text())
         .then((text) => {
-            console.log(text)
+            console.log(text);
+            console.log("I've see you found me...")
         })
         .catch((e) => console.error(e));
 }

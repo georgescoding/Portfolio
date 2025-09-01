@@ -76,5 +76,35 @@
         "github": "https://github.com/GeorgesCoding/Portfolio",
         "description": "Inspired by my friend and the desire to learn more about a new type of programming, decided to make a portfolio website. At first, I did a simple coming soon page with a countdown made using JavaScript and a simple ellipsis animation to make the page come to life. The original static a website was complete within 10 days, including my introduction, work experience and all my projects listed. However, I felt that this current website felt lacking, especially after I took a look at more advanced websites and realized that there was no threshold to how simple or complicated my website could be, it was entirely up to me. So I began with animating my nameusing a typewriter animation in JavaScript, paying homage to my hobby of speed typing and mechanical keyboards. After, I created asimple but functional button, moving on hover. Lastly, I decided to use a card layout to display my projects. However, because I still wanted to include a small explanation of the project in the card, but wasn’t enough room. So I thought of making the card flip on click,with the backside being the short description and links to the GitHub page and individual project page with more details. Below, I have included the coming soon page for my website that was used as a placeholder while I created the actual website.",
         "old": "portfolio/coming-soon"
+    },
+    "multivibrator": {
+        "name": "Multivibrator PCB",
+        "tools": "Altium Designer",
+        "github": "https://github.com/GeorgesCoding/Multivibrator",
+        "description": "An astable multivibrator PCB in Altium Designer for stable pulse generation including schematic design, component selection, PCB layout optimization and waveform analysis. This was my first time designing a PCB, so it took quite a while to get familiar with the software. Although I followed a tutorial from Altium to design the circuit, I ended up making a couple of alterations to the original design to a more standard design with the cross coupled transistors forming an “X”. When running the simulation, it kept on halting before the specified end time and gave the error “internal timestep too small”. After some research, I found a solution that involved adding capacitors to the base of the transistors. ",
+        "pictures": [
+            "/assets/pictures/multivibrator-pcb-schem.webp",
+            "/assets/pictures/multivibrator-pcb-topview.webp",
+            "/assets/pictures/multivibrator-simulation-schem.webp",
+            "/assets/pictures/multivibrator-simulation.webp"
+        ],
+        "captions": [
+            "Schematic of the PCB",
+            "Picture of the top view of the PCB",
+            "Schematic used for the transient simulation",
+            "Transient analysis of schematic"
+        ]
+    },
+    "logicGates": {
+        "name": "TTL Logic Gates PCB",
+        "tools": "KiCAD",
+        "github": "https://github.com/GeorgesCoding/TTL-Gates",
+        "description": "",
+        "pictures": [
+            "/assets/pictures/in-progress.webp"
+        ],
+        "captions": [
+            ".....come back later!"
+        ]
     }
 }
